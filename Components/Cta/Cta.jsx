@@ -74,6 +74,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
     backgroundColor: '#000',
+    borderRadius: 12,
+    margin: 16,
   },
   bgImage: {
     ...StyleSheet.absoluteFillObject,

@@ -29,37 +29,20 @@ export default function SettingPage() {
   const [isModified, setIsModified] = useState(false);
   const [toasts, setToasts] = useState([]);
 
-  const getUserData = async () => {
-  try {
-    const jsonValue = await AsyncStorage.getItem('userData');
-    return jsonValue != null ? JSON.parse(jsonValue) : {};
-  } catch (e) {
-    console.error('Error reading value', e);
-    return {};
-  }
-};
-
-const [customerData, setCustomerData] = useState({});
-const [userData, setUserData] = useState({});
-
-useEffect(() => {
-  (async () => {
-    setCustomerData(await getUserData());
-    setUserData(await getUserData());
-  })();
-}, []);
-
-
   useEffect(() => {
-    const fetchCustomerData = async () => {
+    const loadCustomer = async () => {
       try {
-        const data = await getCustomerDetails(customerData.customerId);
-        setCustomerDetails(data.data);
-      } catch (error) {
-        console.error('Failed to load customer data', error);
+        const jsonValue = await AsyncStorage.getItem("userData");
+        const parsed = jsonValue != null ? JSON.parse(jsonValue) : {};
+        setCustomer(parsed); // ✅ load directly from AsyncStorage
+        setCustomerDetails(parsed)
+        console.log("Loaded customer:", parsed);
+      } catch (e) {
+        console.error("Error reading userData from storage", e);
       }
     };
-    fetchCustomerData();
+
+    loadCustomer();
   }, []);
 
   useEffect(() => {

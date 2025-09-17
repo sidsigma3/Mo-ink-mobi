@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 const HeroSection = ({ productName, breadcrumbs = [] }) => {
   return (
+    <View style={{ margin: 10 , borderRadius: 22, overflow: 'hidden'}}>
     <ImageBackground
       source={require('../../assets/Images/cta-bg.png')} // ✅ Correct way for local image
       style={styles.background}
@@ -31,6 +32,7 @@ const HeroSection = ({ productName, breadcrumbs = [] }) => {
         </ScrollView>
       </View>
     </ImageBackground>
+    </View>
   );
 };
 
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     alignItems: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: 50,
   },
   title: {
     fontSize: 22,

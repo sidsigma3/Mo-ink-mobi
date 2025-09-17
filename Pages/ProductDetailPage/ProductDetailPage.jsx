@@ -28,6 +28,8 @@ import IconClose from "react-native-vector-icons/Ionicons";
 import IconStar from "react-native-vector-icons/MaterialIcons";
 import BottomNav from "../../Components/BottomNav/BottomNav";
 import NavbarHeader from "../../Components/NavBarHeader/NavbarHeader";
+import Cta from "../../Components/Cta/Cta";
+import Footer from "../../Components/Footer/Footer";
 
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -123,31 +125,26 @@ export default function ProductDetailPage() {
     loadCustomer();
   }, []);
 
-  console.log(product.id,size,variantType)
+useEffect(() => {
+  if (product?.id) {
+    loadColors();
+  }
+}, [product, size, variantType]); // ✅ also re-run when size/type changes
 
-  useEffect(() => {
-    if (product?.id) {
-      loadColors();
+const loadColors = async () => {
+  try {
+    if (!product?.id) {
+      console.warn("⚠️ No product.id available, skipping fetch");
+      return;
     }
-  }, [product]);
-
-  const loadColors = async () => {
-  if (!size) return;
-
-  // Extract only the first token before space → "2/80"
-  const normalizedSize = size.split(" ")[0];  
-
-  console.log("Sending size:", normalizedSize, "variantType:", variantType);
-
-  const colors = await getUnusedActiveColors(product.id, normalizedSize, variantType);
-  console.log("API returned colors:", colors);
-
-  setFilteredColors(colors);
+    const colors = await getUnusedActiveColors(product.id, size, variantType);
+    setFilteredColors(colors || []);
+  } catch (err) {
+    setFilteredColors([]); // fallback to empty
+  }
 };
 
-  
 
-  console.log(filteredColors)
   const showToast = (message, type = "success") => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3000);
@@ -218,8 +215,8 @@ export default function ProductDetailPage() {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-         <NavbarHeader />
+      <ScrollView style={{ marginBottom: 100 }}>
+        <NavbarHeader />
         {/* Back Button */}
         <TouchableOpacity
           onPress={() =>
@@ -263,7 +260,8 @@ export default function ProductDetailPage() {
 
           {/* Color Selector */}
           <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.colorSelectBtn}>
-            <Text style={{ color: "#2563eb", fontWeight: "600" }}>Choose Color</Text>
+            <Image source={require("../../assets/Images/select-color.png")} style={styles.colorPaletteIcon} />
+            <Text style={{ color: "#2563eb", fontWeight: "600" }}>Click here for color catalogue</Text>
           </TouchableOpacity>
 
           {/* Selected Colors */}
@@ -277,12 +275,21 @@ export default function ProductDetailPage() {
           </View>
 
           <TouchableOpacity
-            onPress={handleAddToCart}
+            onPress={() => {
+              if (isInCart) {
+                navigation.navigate("Cart"); 
+              } else {
+                handleAddToCart();
+              }
+            }}
             style={[styles.addBtn, isInCart && { backgroundColor: "#16a34a" }]}
           >
             <IconCart size={18} color="#fff" />
-            <Text style={{ color: "#fff", marginLeft: 6 }}>{isInCart ? "Go to Cart" : "Add to Cart"}</Text>
+            <Text style={{ color: "#fff", marginLeft: 6 }}>
+              {isInCart ? "Go to Cart" : "Add to Cart"}
+            </Text>
           </TouchableOpacity>
+
         </View>
 
         {/* Accordion */}
@@ -296,6 +303,13 @@ export default function ProductDetailPage() {
               {activeIndex === index && <View style={styles.content}>{section.content}</View>}
             </View>
           ))}
+        </View>
+        <View style={{ marginTop: 20 }}>
+        <Cta></Cta>
+        </View>
+
+        <View style={{ marginTop: 20 }}>
+          <Footer></Footer>
         </View>
       </ScrollView>
 
@@ -338,7 +352,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
   centered: { flex: 1, justifyContent: "center", alignItems: "center" },
   backBtn: {
-    marginTop: 16,
+    margin: 16,
     marginLeft: 16,
     padding: 6,
     backgroundColor: "#f3e8ff",
@@ -364,10 +378,12 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     marginTop: 12,
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#2563eb",
     borderRadius: 6,
+    display: "flex",
+    flexDirection: "row",
+    gap: 10,
   },
+  colorPaletteIcon: { width: 30, height: 30, resizeMode: "contain" },
   selectedWrapper: { flexDirection: "row", flexWrap: "wrap", marginTop: 12 },
   selectedItem: { alignItems: "center", marginRight: 8, marginBottom: 8 },
   selectedImg: { width: 48, height: 48, borderRadius: 4 },

@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   },
   navBtnText: { color: '#6D28D9', fontWeight: 'bold', fontSize: 18 },
   sliderList: { paddingBottom: 8 },
-  sliderItem: { marginRight: 12, width: 260 },
+  sliderItem: { marginRight: 17, width: 160},
 });
 
 export default ProductList;

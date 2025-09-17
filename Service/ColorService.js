@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { APP_BASE_URL } from '@env';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL + '/colors';
+const BASE_URL = APP_BASE_URL + '/colors';
 
 export const getColorLibraryByProductId = async (productId) => {
   const response = await axios.get(`${BASE_URL}/product/${productId}`);
