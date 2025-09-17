@@ -17,6 +17,7 @@ const Wishlist = () => {
     const loadCustomer = async () => {
       try {
         const storedData = await AsyncStorage.getItem("userData");
+        console.log(storedData,'stored data')
         if (storedData) {
           const parsed = JSON.parse(storedData);
           if (parsed?.customerId) {

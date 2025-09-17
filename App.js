@@ -28,7 +28,16 @@ import ShippingPolicy from './Pages/ShippingPolicy/ShippingPolicy';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import FAQs from './Pages/FAQs/FAQs';
 import TermOfUse from './Pages/TermOfUse/TermOfUse';
-
+import OrderDetails from './Pages/Order/OrderDetails';
+import RazorpayWebView from './Components/RazorpayWebView/RazorpayWebView';
+import PaymentSuccess from './Pages/PaymentSuccess/PaymentSuccess';
+import PaymentFailure from './Pages/PaymentFailure/PaymentFailure';
+import OnbordingPage from './Components/OnbordingPage/OnbordingPage';
+import PhoneNumberScreen from './Pages/Onboard/PhoneNumberScreen';
+import OtpScreen from './Pages/Onboard/OtpScreen';
+import CreateAccountScreen from './Pages/Onboard/CreateAccountScreen';
+import ProfileScreen from './Pages/Onboard/ProfileScreen';
+import AccountCreatedScreen from './Pages/Onboard/AccountCreatedScreen'; 
 
 const Stack = createNativeStackNavigator();
 
@@ -40,7 +49,7 @@ export default function App() {
     <AppProvider>
       <NavigationContainer>
       <StatusBar style="auto" />
-      <Stack.Navigator initialRouteName="Landing" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Onboarding" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Auth">
           {(props) => (
             <AuthPage
@@ -50,6 +59,7 @@ export default function App() {
             />
           )}
         </Stack.Screen>
+        <Stack.Screen name="Onboarding" component={OnbordingPage} />
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordPage} />
         <Stack.Screen name="Otp" component={Otp} />
@@ -72,6 +82,15 @@ export default function App() {
         <Stack.Screen name="PrivacyPolicy"  component={PrivacyPolicy}/>
         <Stack.Screen name="Faq"  component={FAQs}/>
         <Stack.Screen name="Terms"  component={TermOfUse}/>
+        <Stack.Screen name="OrderDetails"  component={OrderDetails}/>
+        <Stack.Screen name="RazorpayCheckoutScreen"  component={RazorpayWebView}/>
+        <Stack.Screen name="PaymentSuccess"  component={PaymentSuccess}/>
+        <Stack.Screen name="PaymentFail"  component={PaymentFailure}/>
+         <Stack.Screen name="PhoneNumberScreen" component={PhoneNumberScreen} />
+        <Stack.Screen name="OtpScreen" component={OtpScreen} />
+        <Stack.Screen name="CreateAccountScreen" component={CreateAccountScreen} />
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen name="AccountCreatedScreen" component={AccountCreatedScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     </AppProvider>

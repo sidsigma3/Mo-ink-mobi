@@ -71,10 +71,10 @@ const FeturedList = () => {
   }, []);
 
   const handleNavigation = (selectedCategory) => {
-    console.log("Navigating to category:", selectedCategory);
     navigation.navigate("Category", { name: selectedCategory });
   };
 
+  
   const aggregateProductData = (productData) => {
     return productData
       .filter((product) => product.availableStatus === "ACTIVE")
@@ -131,6 +131,7 @@ const FeturedList = () => {
                 color={product.groupedVariants
                   .map((group) => group.variants.length)
                   .reduce((acc, current) => acc + current, 0)}
+                onPress={() => handleNavigation(product.productName)}
               />
             </TouchableOpacity>
           ))

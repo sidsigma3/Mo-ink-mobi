@@ -209,7 +209,7 @@ const ProductDetailBox = ({
               ]}
               onPress={handleCartButtonClick}
             >
-              <Icon name={isInCart ? "eye-outline" : "cart-outline"} size={20} color="#fff" />
+              <Icon name={isInCart ? "eye-outline" : "cart-outline"} size={18} color="#fff" />
   
             </TouchableOpacity>
           )}
@@ -233,6 +233,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     margin: 10,
     overflow: 'hidden',
+    width: 160,
   },
   imageContainer: {
     height: 160,
@@ -267,7 +268,7 @@ const styles = StyleSheet.create({
   },
   sizeText: {
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 14,
     color: '#6D28D9',
     textAlign: 'center',
     marginBottom: 6,
@@ -282,9 +283,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F3F4F6',
     color: '#222',
     borderRadius: 8,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
     paddingVertical: 4,
-    fontSize: 13,
+    fontSize: 11,
     marginHorizontal: 2,
     borderWidth: 1,
     borderColor: '#eee',
@@ -371,10 +372,10 @@ const styles = StyleSheet.create({
   cartBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 50,
-    width: 50,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
+    height: 40,
+    width: 40,
+    paddingHorizontal: 12,
+    paddingVertical: 12,
     gap: 8,
     borderRadius: 50,
   },

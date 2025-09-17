@@ -18,37 +18,53 @@ export default function OrderPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      const userStr = await AsyncStorage.getItem("userData");
-      const user = userStr ? JSON.parse(userStr) : {};
-      if (user?.customerId) {
-        fetchOrders(user.customerId, currentPage);
-      }
-    })();
-  }, [currentPage]);
-
-  const fetchOrders = async (customerId, page) => {
+const fetchOrders = async (customerId, page) => {
     setLoading(true);
     try {
       const data = await getPaginatedCustomerOrders(customerId, page, 10);
-
       if (data) {
-        setOrders(data.orders || []);
-        const totalOrders = data.totalOrders || data.total || 0;
+        setOrders(data);
+        console.log(data,'orders data')
+        const totalOrders = data.totalOrders ?? data.total ?? 0;
         setTotalPages(Math.ceil(totalOrders / 10));
       } else {
         setOrders([]);
         setTotalPages(0);
       }
     } catch (error) {
-      console.error("Failed to fetch orders:", error);
+      console.error("❌ Failed to fetch orders:", error);
       setOrders([]);
+      setTotalPages(0);
     } finally {
       setLoading(false);
     }
   };
+
+  // ✅ Load customerId from AsyncStorage and fetch orders
+  useEffect(() => {
+    const loadOrders = async () => {
+      try {
+        const userStr = await AsyncStorage.getItem("userData");
+        const user = userStr ? JSON.parse(userStr) : null;
+
+        if (user?.customerId) {
+          console.log("✅ Loaded user:", user.customerId);
+          await fetchOrders(user.customerId, currentPage);
+        } else {
+          console.warn("⚠️ No customerId found in AsyncStorage");
+          setOrders([]);
+          setTotalPages(0);
+        }
+      } catch (err) {
+        console.error("❌ Error loading user data:", err);
+      }
+    };
+
+    loadOrders();
+  }, [currentPage]);
+
+
+  console.log(orders,'orders data')
 
   const handleOrderClick = (order) => {
     navigation.navigate("OrderDetails", { order });

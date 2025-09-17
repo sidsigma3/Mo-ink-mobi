@@ -111,23 +111,43 @@ const CheckoutPage = () => {
   // Replace localStorage with AsyncStorage
   const [customer, setCustomer] = useState({});
 
-  useEffect(() => {
-    const fetchAndStore = async () => {
-      try {
-        const data = await getCustomerDetails(1); // 🔥 always fetch
-        await AsyncStorage.setItem("userData", JSON.stringify(data.data)); // store
-        setCustomer(data.data); // set state
+  // useEffect(() => {
+  //   const fetchAndStore = async () => {
+  //     try {
+  //       const data = await getCustomerDetails(1); // 🔥 always fetch
+  //       await AsyncStorage.setItem("userData", JSON.stringify(data.data)); // store
+  //       setCustomer(data.data); // set state
+  //       setTimeout(async () => {
+  //         const userData = await AsyncStorage.getItem("userData");
+  //         console.log(userData, "customer data");
+  //       }, 1000);
+  //     } catch (error) {
+  //       console.error("❌ Error fetching customer:", error);
+  //     }
+  //   };
 
+  //   fetchAndStore();
+  // }, []);
+
+    useEffect(() => {
+    const loadCustomer = async () => {
+      try {
+        const userData = await AsyncStorage.getItem("userData");
+        if (userData) {
+          const parsedData = JSON.parse(userData);
+          setCustomer(parsedData);
+          console.log(parsedData, "customer data");
+        } else {
+          console.log("⚠️ No customer data found in storage");
+        }
       } catch (error) {
-        console.error("❌ Error fetching customer:", error);
+        console.error("❌ Error retrieving customer:", error);
       }
     };
 
-    fetchAndStore();
+    loadCustomer();
   }, []);
-
-  
-   
+ 
   const customerId = customer?.customerId;
   const billingAddress = customer?.addresses?.find((addr) => addr.addressType === "HOME");
   const selectedAddress =
@@ -901,154 +921,114 @@ const handleCreateOrder = async () => {
             showToast(errorMessage, "error");
             }
       };
-      console.log("RazorpayCheckout:", RazorpayCheckout);
+
+     const handleOnlinePaymentFlow = async () => {
+  let orderId = null;
+
+  try {
+    if (!customerId) {
+      showToast("Customer info missing!", "error");
+      return;
+    }
+
+    if (selectedCartItems.length === 0) {
+      showToast("Cart is empty!", "error");
+      return;
+    }
+
+    const isAddressValid = (address) => {
+      return (
+        address &&
+        address.id &&
+        address.customerAddress &&
+        address.city &&
+        address.state &&
+        address.country &&
+        address.zipcode
+      );
+    };
+
+    if (!isAddressValid(billingAddress)) {
+      showToast("Billing address is incomplete!", "error");
+      return;
+    }
+
+    if (!isAddressValid(selectedAddress)) {
+      showToast("Shipping address is incomplete!", "error");
+      return;
+    }
+
+    const orderVariants = buildDetailedOrderVariantsForPayment(selectedCartItems);
+    if (orderVariants.length === 0) {
+      showToast("No valid items or weight!", "error");
+      return;
+    }
+
+    const totalAmount = Number(adjustedNetPay).toFixed(0);
+    const walletUsedAmount = walletUsed || 0;
+
+    const orderData = {
+      customer: {
+        customerId,
+        billingAddressId: billingAddress?.id || null,
+        shippingAddressId: selectedAddress?.id || null,
+      },
+      status: "PENDING",
+      totalAmount: Number(totalAmount),
+      discountId: appliedCoupon?.discountId || null,
+      quantity: orderVariants.length,
+      paymentTypeDiscount: extractPaymentTypeDiscount(selectedPayment) || "",
+      payment: {
+        totalAmount: Number(totalAmount),
+        codAmount: Number(codPay.toFixed(0)),
+        onlineAmount: Number(onlinePay.toFixed(0)),
+        transactionId: "COD" + Date.now(),
+        paidAmount: Number(onlinePay.toFixed(0)),
+        pendingAmount: Number(codPay.toFixed(0)),
+        paymentStatus: "UNPAID",
+        walletAmount: walletUsedAmount,
+        totalDiscount: Number(
+          orderVariants.reduce((sum, v) => sum + Number(v.orderVariantDiscount || 0), 0).toFixed(0)
+        ),
+        totalIgst: isOdisha ? 0.0 : Number(gstAmount.toFixed(0)),
+        totalSgst: isOdisha ? Number((gstAmount / 2).toFixed(0)) : 0.0,
+        totalCgst: isOdisha ? Number((gstAmount / 2).toFixed(0)) : 0.0,
+        totalHandlingCharges: Number(
+          orderVariants.reduce((sum, v) => sum + Number(v.orderVariantHandlingCharges || 0), 0).toFixed(0)
+        ),
+      },
+      orderVariants,
+    };
+
+    // 1. Create order in backend
+    const createdOrder = await createOrder(orderData);
+    orderId = createdOrder.data?.orderId;
+
+    // 2. Ask backend to initiate Razorpay order
+    const paymentData = await initiatePayment(orderId);
+    const { razorpayOrderId } = paymentData.data;
+
+    if (!razorpayOrderId || paymentData.status !== "SUCCESS") {
+      throw new Error("Failed to get valid Razorpay order");
+    }
+
+    // 3. Navigate to RazorpayWebView screen instead of Razorpay SDK
+   navigation.navigate("RazorpayCheckoutScreen", {
+  razorpayOrderId,
+  amount: Number(onlinePay.toFixed(0)),
+  customer,
+  orderId,
+  selectedCartItems,   // <-- must include
+});
 
 
-      const handleOnlinePaymentFlow = async () => {
-        let orderId = null;
-
-        try {
-          if (!customerId) {
-            showToast("Customer info missing!", "error");
-            return;
-          }
-
-          if (selectedCartItems.length === 0) {
-            showToast("Cart is empty!", "error");
-            return;
-          }
-
-          const isAddressValid = (address) => {
-            return (
-              address &&
-              address.id &&
-              address.customerAddress &&
-              address.city &&
-              address.state &&
-              address.country &&
-              address.zipcode
-            );
-          };
-
-          if (!isAddressValid(billingAddress)) {
-            showToast("Billing address is incomplete!", "error");
-            return;
-          }
-
-          if (!isAddressValid(selectedAddress)) {
-            showToast("Shipping address is incomplete!", "error");
-            return;
-          }
-
-          const orderVariants = buildDetailedOrderVariantsForPayment(selectedCartItems);
-          if (orderVariants.length === 0) {
-            showToast("No valid items or weight!", "error");
-            return;
-          }
-
-          const totalAmount = Number(adjustedNetPay).toFixed(0);
-          const walletUsedAmount = walletUsed || 0;
-
-          const orderData = {
-            customer: {
-              customerId,
-              billingAddressId: billingAddress?.id || null,
-              shippingAddressId: selectedAddress?.id || null,
-            },
-            status: "PENDING",
-            totalAmount: Number(totalAmount),
-            discountId: appliedCoupon?.discountId || null,
-            quantity: orderVariants.length,
-            paymentTypeDiscount: extractPaymentTypeDiscount(selectedPayment) || "",
-            payment: {
-              totalAmount: Number(totalAmount),
-              codAmount: Number(codPay.toFixed(0)),
-              onlineAmount: Number(onlinePay.toFixed(0)),
-              transactionId: "COD" + Date.now(),
-              paidAmount: Number(onlinePay.toFixed(0)),
-              pendingAmount: Number(codPay.toFixed(0)),
-              paymentStatus: "UNPAID",
-              walletAmount: walletUsedAmount,
-              totalDiscount: Number(
-                orderVariants.reduce((sum, v) => sum + Number(v.orderVariantDiscount || 0), 0).toFixed(0)
-              ),
-              totalIgst: isOdisha ? 0.0 : Number(gstAmount.toFixed(0)),
-              totalSgst: isOdisha ? Number((gstAmount / 2).toFixed(0)) : 0.0,
-              totalCgst: isOdisha ? Number((gstAmount / 2).toFixed(0)) : 0.0,
-              totalHandlingCharges: Number(
-                orderVariants.reduce((sum, v) => sum + Number(v.orderVariantHandlingCharges || 0), 0).toFixed(0)
-              ),
-            },
-            orderVariants,
-          };
-
-          // 1. Create order in your backend
-          const createdOrder = await createOrder(orderData);
-          orderId = createdOrder.data?.orderId;
-
-          // 2. Ask backend to initiate Razorpay order
-          const paymentData = await initiatePayment(orderId);
-          const { razorpayOrderId, amount } = paymentData.data;
-
-          if (!razorpayOrderId || paymentData.status !== "SUCCESS") {
-            throw new Error("Failed to get valid Razorpay order");
-          }
-
-          // 3. Open Razorpay Checkout in RN
-          const options = {
-            description: `Payment for Order #${razorpayOrderId}`,
-            image: 'https://yourcdn.com/logo.png', // optional
-            currency: 'INR',
-            key: razorpayKey, // your Razorpay key_id
-            // amount: Math.round(onlinePay * 100),
-            name: "Mo ink and Dye",
-            order_id: razorpayOrderId,
-            prefill: {
-              name: customer.customerName || "",
-              email: customer.email || "",
-              contact: customer.phoneNumber || "",
-            },
-            notes: {
-              orderId,
-            },
-            theme: { color: "#3399cc" },
-          };
-
-          RazorpayCheckout.open(options)
-            .then(async (data) => {
-              // Payment success
-              try {
-                await updateOrderStatuses(orderId, { status: "NEW" });
-
-                await Promise.all(
-                  selectedCartItems.map(item =>
-                    removeFromCart(customerId, item.variantId)
-                  )
-                );
-
-                updateCartAndWishlistCounts();
-
-                navigate('/paymentSuccess');
-              } catch (err) {
-                console.error("Post-payment flow failed:", err);
-                showToast("Payment succeeded but post-processing failed.", "error");
-                navigate('/paymentFail');
-              }
-            })
-            .catch((error) => {
-              // Payment failed or cancelled
-              console.error("Payment failed:", error);
-              showToast("Payment failed. Please try again.", "error");
-              navigate('/paymentFail');
-            });
-
-        } catch (error) {
-          console.error("Order creation failed:", error);
-          const errorMessage =
-            error?.response?.data?.data?.message || "Failed to place order";
-          showToast(errorMessage, "error");
-        }
-      };
+  } catch (error) {
+    console.error("Order creation failed:", error);
+    const errorMessage =
+      error?.response?.data?.data?.message || "Failed to place order";
+    showToast(errorMessage, "error");
+  }
+};
 
       
 

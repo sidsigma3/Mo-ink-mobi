@@ -10,17 +10,15 @@ import {
   ActivityIndicator,
   TouchableWithoutFeedback,
 } from 'react-native';
-
+import { useNavigation, useRoute } from '@react-navigation/native';
 import NavbarHeader from '../../Components/NavBarHeader/NavbarHeader';
 import HeroSection from '../../Components/HeroSection/HeroSection';
 import Footer from '../../Components/Footer/Footer';
 import BottomNav from '../../Components/BottomNav/BottomNav';
 import CategoryBox from '../../Components/CategoryBox/CategoryBox';
 import { fetchProducts } from '../../Service/ProductService';
-
 import IconFilter from 'react-native-vector-icons/Ionicons';
 import IconClose from 'react-native-vector-icons/Ionicons';
-import { useRoute } from '@react-navigation/native';
 
 export default function Category() {
   const [products, setProducts] = useState([]);
@@ -30,7 +28,7 @@ export default function Category() {
   const [loading, setLoading] = useState(true);
 
   const route = useRoute();
-  const categoryFromRoute = route?.params?.categoryName;
+  const categoryFromRoute = route?.params?.name;
 
   useEffect(() => {
     const load = async () => {
@@ -201,7 +199,7 @@ export default function Category() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
   filterWrapper: {
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
     marginHorizontal: 16,
     marginTop: 12,
   },
@@ -233,7 +231,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6B21A8',
     padding: 14,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'left',
   },
   sidebarTitle: { color: '#fff', fontWeight: 'bold', fontSize: 18 },
   sectionTitle: { fontSize: 16, fontWeight: 'bold', marginBottom: 6 },
