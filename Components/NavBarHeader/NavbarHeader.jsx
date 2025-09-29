@@ -34,12 +34,17 @@ const NavbarHeader = () => {
   return (
     <View style={styles.header}>
       {/* Logo */}
+
+       <TouchableOpacity onPress={() => setSidebarVisible(true)}>
+          <Icon name="menu" size={30} color="#000" />
+        </TouchableOpacity>
+
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Image source={require('../../assets/Images/logo.png')} style={styles.logo} />
       </TouchableOpacity>
 
       {/* Right side icons */}
-      <View style={styles.iconGroup}>
+      {/* <View style={styles.iconGroup}>
         <TouchableOpacity onPress={() => navigation.navigate('Wishlist')}>
           <Icon name="heart-outline" size={24} color="#000" />
         </TouchableOpacity>
@@ -51,7 +56,7 @@ const NavbarHeader = () => {
         <TouchableOpacity onPress={() => setSidebarVisible(true)}>
           <Icon name="menu" size={30} color="#000" />
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       {/* Slide-out Menu */}
       <Modal
@@ -106,9 +111,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-start',
     alignItems: 'center',
-    elevation: 4,
     paddingTop:30,
   },
   logo: {

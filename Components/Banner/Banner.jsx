@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { useNavigation } from '@react-navigation/native';
-import { useTranslation } from 'react-i18next';
 
 const { width } = Dimensions.get('window');
 
-// Dummy translation function. Replace with your i18n.
+// Translation dictionary
 const t = (key) => {
   const dict = {
     "banner.main.crafting.title": "Crafting Excellence",
@@ -19,17 +17,12 @@ const t = (key) => {
     "banner.main.vibrant.desc": "A spectrum of shades for your imagination.",
     "banner.main.threads.title": "Strong Threads",
     "banner.main.threads.desc": "Durable and reliable for all uses.",
-    "banner.side.excellence.title": "Trusted by Artisans",
-    "banner.side.excellence.desc": "Our yarns are loved by professionals.",
-    "banner.side.quality.title": "Quality Assured",
-    "banner.side.quality.desc": "Every batch tested for perfection.",
   };
   return dict[key] || key;
 };
 
-// Dummy navigation function. Replace with your navigation.
+// Navigation handler
 const navigateToCategory = () => {
-  // navigation.navigate('Category');
   alert('Navigate to Category');
 };
 
@@ -39,7 +32,7 @@ const ShopButton = ({ onPress }) => (
   </TouchableOpacity>
 );
 
-const mainBannerItems = [
+const bannerItems = [
   {
     titleKey: "banner.main.crafting.title",
     descKey: "banner.main.crafting.desc",
@@ -67,24 +60,10 @@ const mainBannerItems = [
   }
 ];
 
-const bannerItems = [
-  {
-    titleKey: "banner.side.excellence.title",
-    descKey: "banner.side.excellence.desc",
-    img: "https://ik.imagekit.io/mediadata/Mo%20Ink%20n%20Dyes/banner-2.png?updatedAt=1753180558990"
-  },
-  {
-    titleKey: "banner.side.quality.title",
-    descKey: "banner.side.quality.desc",
-    img: "https://ik.imagekit.io/mediadata/Mo%20Ink%20n%20Dyes/banner-3.png?updatedAt=1753180558990"
-  }
-];
-
 const Banner = () => {
   return (
     <ScrollView style={styles.container}>
-      {/* Main Banner Swiper */}
-      <View style={styles.mainBannerSection}>
+      <View style={styles.bannerSection}>
         <Swiper
           autoplay
           autoplayTimeout={2}
@@ -93,38 +72,11 @@ const Banner = () => {
           dotStyle={styles.dot}
           activeDotStyle={styles.activeDot}
         >
-          {mainBannerItems.map((item, idx) => (
-            <ImageBackground
-              key={idx}
-              source={{ uri: item.img }}
-              style={styles.bannerImage}
-              imageStyle={{ borderRadius: 16 }}
-            >
-              <View style={styles.bannerOverlay}>
-                <Text style={styles.bannerTitle}>{t(item.titleKey)}</Text>
-                <Text style={styles.bannerDesc}>{t(item.descKey)}</Text>
-                <ShopButton onPress={navigateToCategory} />
-              </View>
-            </ImageBackground>
-          ))}
-        </Swiper>
-      </View>
-
-      {/* Side Banner Swiper */}
-      <View style={styles.sideBannerSection}>
-        <Swiper
-          autoplay
-          autoplayTimeout={30}
-          showsPagination
-          height={180}
-          dotStyle={styles.dot}
-          activeDotStyle={styles.activeDot}
-        >
           {bannerItems.map((item, idx) => (
             <ImageBackground
               key={idx}
               source={{ uri: item.img }}
-              style={styles.sideBannerImage}
+              style={styles.bannerImage}
               imageStyle={{ borderRadius: 16 }}
             >
               <View style={styles.bannerOverlay}>
@@ -141,27 +93,34 @@ const Banner = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAFC' },
-  mainBannerSection: {
+  container: { 
+    flex: 1, 
+    backgroundColor: '#F8FAFC' 
+  },
+  bannerSection: {
     width: '100%',
     height: 220,
     marginTop: 12,
     marginBottom: 16,
+    marginHorizontal: 16,
     borderRadius: 16,
     overflow: 'hidden',
   },
   bannerImage: {
-    width: width - 32,
+    width: '100%',
     height: 220,
     justifyContent: 'flex-end',
-    padding: 24,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
     borderRadius: 16,
   },
   bannerOverlay: {
-    backgroundColor: 'rgba(255,255,255,0.7)',
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 12,
+    // backgroundColor: 'rgba(255,255,255,0.7)',
+    borderRadius: 12,
+    padding: 2,
+    marginHorizontal: 2,
+    marginBottom: 40,
+    maxWidth: '80%',
   },
   bannerTitle: {
     fontSize: 22,
@@ -199,20 +158,6 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     marginHorizontal: 2,
-  },
-  sideBannerSection: {
-    width: '100%',
-    height: 180,
-    marginBottom: 24,
-    borderRadius: 16,
-    overflow: 'hidden',
-  },
-  sideBannerImage: {
-    width: width - 32,
-    height: 180,
-    justifyContent: 'flex-end',
-    padding: 24,
-    borderRadius: 16,
   },
 });
 

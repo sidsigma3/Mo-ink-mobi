@@ -1117,7 +1117,7 @@ return (
           style={styles.addAddressBtn}
           onPress={() => navigation.navigate("Address")}
         >
-          <Text style={styles.addAddressText}>ADD NEW ADDRESS</Text>
+          {/* <Text style={styles.addAddressText}>ADD NEW ADDRESS</Text> */}
           <Icon name="add" size={18} color="#6b21a8" />
         </TouchableOpacity>
       </View>
@@ -1478,7 +1478,7 @@ summaryBox: {
 row: {
   flexDirection: "row",
   justifyContent: "space-between",
-  marginBottom: 6,
+  marginBottom: 12,
 },
 rowWithBorder: {
   flexDirection: "row",
@@ -1486,7 +1486,7 @@ rowWithBorder: {
   borderBottomWidth: 1,
   borderBottomColor: "#ddd",
   paddingBottom: 6,
-  marginBottom: 6,
+  marginBottom: 12,
 },
 label: { fontSize: 16, fontWeight: "500" },
 subLabel: { fontSize: 14, color: "#666" },

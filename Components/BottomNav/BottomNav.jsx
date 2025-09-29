@@ -35,9 +35,10 @@ const BottomNav = () => {
       >
         <Image
           source={require('../../assets/Images/NavLogo.png')}
-          style={{ width: 30, height: 30 }}
+          style={styles.homeIcon}
+          resizeMode="contain"
         />
-        <Text style={[styles.label, selected === 'Landing' && styles.activeLabel]}>Home</Text>
+        <Text style={[styles.label, selected === 'home' && styles.activeLabel]}>Home</Text>
       </TouchableOpacity>
 
       {/* Wishlist */}
@@ -119,6 +120,14 @@ const styles = StyleSheet.create({
     borderTopWidth: 3,
     borderTopColor: '#6D28D9',
     borderRadius: 6,
+  },
+  homeIcon: {
+    width: 28,
+    height: 28,
+    // Alternative approach if still cropping:
+    // width: 30,
+    // height: 30,
+    // borderRadius: 15, // if you want rounded corners
   },
   label: {
     fontSize: 12,

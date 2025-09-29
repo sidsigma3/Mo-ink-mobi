@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     color: '#4B0082',
+    textAlign: 'center'
   },
   colorText: {
     fontSize: 13,

@@ -145,9 +145,9 @@ const FeaturedBySize = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { marginTop: 24, marginBottom: 24, paddingHorizontal: 8 },
+  container: { marginTop: 24, marginBottom: 24, paddingHorizontal: 16 },
   headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
-  header: { fontSize: 24, fontWeight: 'bold', color: '#6D28D9', paddingVertical: 8 },
+  header: { fontSize: 22, fontWeight: 'bold', color: '#6D28D9', paddingVertical: 8 },
   flatList: { paddingBottom: 12 },
   card: {
     backgroundColor: '#fff',
@@ -157,7 +157,8 @@ const styles = StyleSheet.create({
     padding: 12,
     marginRight: 12,
     minWidth: 180,
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#dbdbdbff',
   },
   cardImage: {
     width: 56,

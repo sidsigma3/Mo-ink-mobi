@@ -28,12 +28,12 @@ const SliderCard = ({ title, data, onViewAll }) => {
           <Text style={styles.viewAllBtn}>View All</Text>
         </TouchableOpacity>
         <View style={styles.navBtns}>
-          <TouchableOpacity onPress={handlePrevious} style={styles.navBtn}>
+          {/* <TouchableOpacity onPress={handlePrevious} style={styles.navBtn}>
             <Text style={styles.navBtnText}>{"<"}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleNext} style={styles.navBtn}>
             <Text style={styles.navBtnText}>{">"}</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
       <FlatList
@@ -162,27 +162,36 @@ const ProductList = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F8FAFC' },
   productSection: { marginBottom: 24 },
-  sliderCard: { marginHorizontal: 8, marginBottom: 8 },
+  sliderCard: { 
+    marginHorizontal: 8, 
+    marginBottom: 8 
+  },
   sliderHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
     marginTop: 12,
+    paddingHorizontal: 8, // Add padding for better spacing from edges
   },
-  sliderTitle: { fontSize: 20, fontWeight: 'bold', color: '#6D28D9' },
-  viewAllBtn: { color: '#6D28D9', fontWeight: 'bold', fontSize: 15 },
-  navBtns: { flexDirection: 'row', marginLeft: 10 },
-  navBtn: {
-    backgroundColor: '#EDE9FE',
-    borderRadius: 20,
-    paddingHorizontal: 10,
+  sliderTitle: { 
+    fontSize: 20, 
+    fontWeight: 'bold', 
+    color: '#6D28D9',
+    flex: 1, // Allow title to take available space
+  },
+  viewAllBtn: { 
+    color: '#6D28D9', 
+    fontWeight: 'bold', 
+    fontSize: 15,
     paddingVertical: 4,
-    marginHorizontal: 2,
+    paddingHorizontal: 8, // Add padding for better touch area
   },
-  navBtnText: { color: '#6D28D9', fontWeight: 'bold', fontSize: 18 },
   sliderList: { paddingBottom: 8 },
-  sliderItem: { marginRight: 17, width: 160},
+  sliderItem: { 
+    marginRight: 17, 
+    width: 160
+  },
 });
 
 export default ProductList;

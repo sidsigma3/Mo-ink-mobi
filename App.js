@@ -32,7 +32,10 @@ import OrderDetails from './Pages/Order/OrderDetails';
 import RazorpayWebView from './Components/RazorpayWebView/RazorpayWebView';
 import PaymentSuccess from './Pages/PaymentSuccess/PaymentSuccess';
 import PaymentFailure from './Pages/PaymentFailure/PaymentFailure';
-import OnbordingPage from './Components/OnbordingPage/OnbordingPage';
+import SplashScreen from './Pages/OnbordingPage/SplashScreen';
+import OnboardingScreen1 from './Pages/OnbordingPage/OnboardingScreen1';
+import OnboardingScreen2 from './Pages/OnbordingPage/OnboardingScreen2';
+import OnboardingScreen3 from './Pages/OnbordingPage/OnboardingScreen3';
 import PhoneNumberScreen from './Pages/Onboard/PhoneNumberScreen';
 import OtpScreen from './Pages/Onboard/OtpScreen';
 import CreateAccountScreen from './Pages/Onboard/CreateAccountScreen';
@@ -49,7 +52,7 @@ export default function App() {
     <AppProvider>
       <NavigationContainer>
       <StatusBar style="auto" />
-      <Stack.Navigator initialRouteName="Onboarding" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="AccountCreatedScreen" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Auth">
           {(props) => (
             <AuthPage
@@ -59,7 +62,11 @@ export default function App() {
             />
           )}
         </Stack.Screen>
-        <Stack.Screen name="Onboarding" component={OnbordingPage} />
+        <Stack.Screen name="SplashScreen" component={SplashScreen} screenOptions={{ headerShown: false }} />
+        <Stack.Screen name="OnboardingScreen1" component={OnboardingScreen1} options={{ gestureEnabled: true  }} />
+        <Stack.Screen name="OnboardingScreen2" component={OnboardingScreen2} options={{ gestureEnabled: true  }} />
+        <Stack.Screen name="OnboardingScreen3" component={OnboardingScreen3} options={{ gestureEnabled: true  }} />
+
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordPage} />
         <Stack.Screen name="Otp" component={Otp} />
