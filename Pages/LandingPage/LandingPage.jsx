@@ -34,8 +34,8 @@ export default function LandingPage() {
             <FeturedList />
             <FeaturedBySize />
             <ProductList />
-            <FeaturesList />
-            <CtaCard />
+            {/* <FeaturesList /> */}
+            {/* <CtaCard /> */}
             <Testimonial />
             <BlogList />
             {/* <Inquiries /> */}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   contentContainer: {
-    paddingBottom: 80, // space for bottom nav
+    paddingBottom: 120, // space for bottom nav
   },
   bottomNavContainer: {
     position: 'absolute',

@@ -230,7 +230,8 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
     borderRadius: 16,
-    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#dfe1e4ff',
     margin: 10,
     overflow: 'hidden',
     width: 160,
@@ -251,8 +252,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#C0C4C6',
   },
   image: {
-    width: '90%',
-    height: '90%',
+    width: '100%',
+    height: '100%',
   },
   wishlistBtn: {
     position: 'absolute',
@@ -335,20 +336,22 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   priceBox: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: 8,
-  },
-  price: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: '#6D28D9',
-  },
-  markupPrice: {
-    color: '#aaa',
-    fontSize: 16,
-    marginLeft: 8,
-  },
+  flexDirection: 'column',
+  alignItems: 'flex-start', // Changed from 'left' to 'flex-start'
+  gap: 8,
+},
+price: {
+  fontWeight: 'bold',
+  fontSize: 20,
+  color: '#6D28D9',
+  textAlign: 'left', // Add textAlign for text alignment
+},
+markupPrice: {
+  color: '#aaa',
+  fontSize: 16,
+  marginLeft: 0, // Remove marginLeft since we want it aligned to start
+  textAlign: 'left', // Already correct
+},
   ratingBox: {
     flexDirection: 'row',
     alignItems: 'center',

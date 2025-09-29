@@ -9,6 +9,11 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createCustomer } from "../../Service/authService";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Image } from "react-native";
+import { auth } from '../../firebase'; 
+import * as AuthSession from 'expo-auth-session';
+import * as Facebook from 'expo-facebook';
 
 export default function CreateAccountScreen({ navigation, route }) {
   const { customerData: phoneData } = route.params || {}; // ✅ Get phone/whatsapp from OTP screen
@@ -52,7 +57,7 @@ export default function CreateAccountScreen({ navigation, route }) {
 
     try {
       setLoading(true);
-      const res = await createCustomer({ email, password: pw, phoneNumber: phone });
+      const res = await createCustomer({ email, password: pw, phoneNumber: phoneData?.phoneNumber });
 
       if (res?.id || res?.success) {
         Alert.alert("Success", "Account created successfully!");
@@ -68,72 +73,137 @@ export default function CreateAccountScreen({ navigation, route }) {
     }
   };
 
+  const handleSignInPress = () => {
+    navigation.navigate("SignInScreen"); // Navigate to sign in screen
+  };
+
+
+  // Google Config
+const googleClientId = "936934880171-7jrdsdglcgpetkueve55qcm1fsq9grl9.apps.googleusercontent.com"; // From Google Cloud
+const googleDiscovery = {
+  authorizationEndpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
+  tokenEndpoint: 'https://oauth2.googleapis.com/token',
+};
+
+const [request, response, promptAsync] = AuthSession.useAuthRequest(
+  {
+    clientId: googleClientId,
+    redirectUri: AuthSession.makeRedirectUri({ useProxy: true }),
+    scopes: ['openid', 'profile', 'email'],
+    responseType: 'id_token',
+  },
+  googleDiscovery
+);
+
+// Listen for Google response
+React.useEffect(() => {
+  if (response?.type === 'success') {
+    const { id_token } = response.params;
+    const credential = GoogleAuthProvider.credential(id_token);
+    signInWithCredential(auth, credential)
+      .then(user => Alert.alert('Google Sign-In Success', `Welcome ${user.user.displayName}`))
+      .catch(err => Alert.alert('Error', err.message));
+  }
+}, [response]);
+
+// Facebook Sign-In handler
+const handleFacebookLogin = async () => {
+  try {
+    await Facebook.initializeAsync({ appId: "1199335138639496" });
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ['public_profile','email'],
+    });
+
+    if (type === 'success' && token) {
+      const credential = FacebookAuthProvider.credential(token);
+      signInWithCredential(auth, credential)
+        .then(user => Alert.alert('Facebook Sign-In Success', `Welcome ${user.user.displayName}`))
+        .catch(err => Alert.alert('Error', err.message));
+    } else {
+      Alert.alert('Facebook login cancelled');
+    }
+  } catch (err) {
+    Alert.alert('Facebook login error', err.message);
+  }
+};
+
+
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Create account</Text>
-      <Text style={styles.subheader}>Start your journey with us</Text>
+      {/* Content Section */}
+      <View style={styles.content}>
+        <Text style={styles.header}>Create account</Text>
+        <Text style={styles.subheader}>Start your journey with us and explore our premium yarn collection.</Text>
 
-      <TextInput
-        placeholder="example@gmail.com"
-        style={styles.input}
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
-
-      {/* Password input with eye toggle */}
-      <View style={styles.inputWrapper}>
         <TextInput
-          placeholder="must be 8 characters"
-          style={styles.inputField}
-          value={pw}
-          onChangeText={setPw}
-          secureTextEntry={!showPw}
+          placeholder="Enter your email"
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
         />
-        <TouchableOpacity
-          onPress={() => setShowPw(!showPw)}
-          style={styles.eyeIcon}
-        >
-          <Ionicons name={showPw ? "eye-off" : "eye"} size={20} color="#555" />
-        </TouchableOpacity>
-      </View>
 
-      {/* Confirm password input with eye toggle */}
-      <View style={styles.inputWrapper}>
-        <TextInput
-          placeholder="repeat password"
-          style={styles.inputField}
-          value={confirm}
-          onChangeText={setConfirm}
-          secureTextEntry={!showConfirm}
-        />
-        <TouchableOpacity
-          onPress={() => setShowConfirm(!showConfirm)}
-          style={styles.eyeIcon}
-        >
-          <Ionicons
-            name={showConfirm ? "eye-off" : "eye"}
-            size={20}
-            color="#555"
+        {/* Password input with eye toggle */}
+        <View style={styles.inputWrapper}>
+          <TextInput
+            placeholder="Password (min 8 characters)"
+            style={styles.inputField}
+            value={pw}
+            onChangeText={setPw}
+            secureTextEntry={!showPw}
           />
+          <TouchableOpacity
+            onPress={() => setShowPw(!showPw)}
+            style={styles.eyeIcon}
+          >
+            <Ionicons name={showPw ? "eye-off" : "eye"} size={20} color="#555" />
+          </TouchableOpacity>
+        </View>
+
+        {/* Confirm password input with eye toggle */}
+        <View style={styles.inputWrapper}>
+          <TextInput
+            placeholder="Confirm password"
+            style={styles.inputField}
+            value={confirm}
+            onChangeText={setConfirm}
+            secureTextEntry={!showConfirm}
+          />
+          <TouchableOpacity
+            onPress={() => setShowConfirm(!showConfirm)}
+            style={styles.eyeIcon}
+          >
+            <Ionicons
+              name={showConfirm ? "eye-off" : "eye"}
+              size={20}
+              color="#555"
+            />
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity onPress={handleSignInPress} style={styles.signInContainer}>
+          <Text style={styles.signin}>
+            Or sign up with<Text style={styles.signInLink}></Text>
+          </Text>
         </TouchableOpacity>
+
+        <View style={styles.socialContainer}>
+          <TouchableOpacity style={styles.socialButton} onPress={() => promptAsync()}>
+  <Image source={require('../../assets/Images/GoogleIcon.png')} style={styles.socialIcon} />
+  <Text style={styles.socialButtonText}>Google</Text>
+</TouchableOpacity>
+
+<TouchableOpacity style={styles.socialButton} onPress={handleFacebookLogin}>
+  <Image source={require('../../assets/Images/facebookIcon.png')} style={styles.socialIcon} />
+  <Text style={styles.socialButtonText}>Facebook</Text>
+</TouchableOpacity>
+
+        </View>
       </View>
 
-      <Text style={styles.signin}>
-        Have an account? <Text style={{ color: "#7B32FF" }}>Sign in here</Text>
-      </Text>
-
-      <View style={styles.socialContainer}>
-        <TouchableOpacity style={styles.socialButton}>
-          <Text>Google</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <Text>Facebook</Text>
-        </TouchableOpacity>
-      </View>
-
+      {/* Button at Bottom */}
       <TouchableOpacity
-        style={[styles.button, loading && { opacity: 0.6 }]}
+        style={[styles.button, loading && { opacity: 0.5 }]}
         onPress={handleCreateAccount}
         disabled={loading}
       >
@@ -146,53 +216,112 @@ export default function CreateAccountScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 20, backgroundColor: "#FBFAF7" },
-  header: { fontSize: 24, marginBottom: 4, fontWeight: "bold" },
-  subheader: { fontSize: 14, marginBottom: 16, color: "#555" },
+  container: {
+    flex: 1,
+    backgroundColor: '#FBFAF7',
+    paddingHorizontal: 20,
+    paddingTop: 120, // Add top padding for status bar
+    paddingBottom: 40, // Add bottom padding
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  header: {
+    fontSize: 24,
+    marginBottom: 4,
+    fontWeight: 'bold',
+    textAlign: 'start',
+  },
+  subheader: {
+    fontSize: 16,
+    lineHeight: 24,
+    marginBottom: 32,
+    color: '#555',
+    textAlign: 'start',
+  },
   input: {
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: '#ddd',
     borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
-    backgroundColor: "#fff",
+    padding: 16,
+    marginBottom: 32,
+    backgroundColor: '#fff',
+    fontSize: 16,
   },
   inputWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: '#ddd',
     borderRadius: 8,
-    backgroundColor: "#fff",
-    marginBottom: 12,
-    paddingRight: 10,
+    backgroundColor: '#fff',
+    marginBottom: 16,
+    paddingRight: 16,
   },
   inputField: {
     flex: 1,
-    padding: 12,
+    padding: 16,
+    fontSize: 16,
   },
   eyeIcon: {
     padding: 6,
   },
-  signin: { fontSize: 14, marginBottom: 12, textAlign: "center" },
+  signInContainer: {
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  signin: {
+    fontSize: 14,
+    color: '#444',
+    textAlign: 'center',
+  },
+  signInLink: {
+    color: '#6B21A8', // Changed to match PhoneNumberScreen color
+    fontWeight: '500',
+  },
   socialContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginBottom: 12,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 12,
+    marginBottom: 20,
   },
   socialButton: {
-    backgroundColor: "#eee",
-    padding: 10,
-    margin: 4,
-    borderRadius: 8,
-    minWidth: 100,
-    alignItems: "center",
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: '#f2f2f2',
+  paddingVertical: 16,
+  paddingHorizontal: 24,
+  borderRadius: 40,
+  marginVertical: 5, 
+  width: '40%',          // 🔹 constant width for both buttons
+  alignSelf: 'center',   // 🔹 center align buttons
+  borderWidth: 1,        // 🔹 border added
+  borderColor: '#ccc',   // 🔹 light gray border
+   justifyContent: 'center', 
+},
+socialIcon: {
+  width: 20,
+  height: 20,
+  marginRight: 8,
+  resizeMode: 'contain',
+},
+socialButtonText: {
+  fontSize: 16,
+  fontWeight: '500',
+  color: '#333',
+},
+
+  button: {
+    backgroundColor: '#6B21A8', // Changed to match PhoneNumberScreen color
+    padding: 18,
+    borderRadius: 12,
+    marginTop: 'auto', // This pushes the button to the bottom
   },
-  button: { backgroundColor: "#7B32FF", padding: 16, borderRadius: 8 },
   buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    textAlign: "center",
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
     fontSize: 16,
   },
 });

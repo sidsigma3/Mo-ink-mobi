@@ -56,7 +56,7 @@ export default function OtpScreen({ navigation, route }) {
 
   const handleResend = async () => {
     try {
-      await otpSend(customerData.phoneNumber);
+      await otpSend({ phone }); // Fixed: use phone from route params
       setTimer(20);
       Alert.alert("Info", "OTP resent to your phone");
     } catch (error) {
@@ -66,38 +66,42 @@ export default function OtpScreen({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Enter OTP</Text>
-      <Text style={styles.subheader}>
-        We've sent a code to {phone}. Please enter it below.
-      </Text>
+      {/* Content Section */}
+      <View style={styles.content}>
+        <Text style={styles.header}>Enter OTP</Text>
+        <Text style={styles.subheader}>
+          We've sent a code to {phone}. Please enter it below to verify your account.
+        </Text>
 
-      {/* OTP Inputs */}
-      <View style={styles.otpContainer}>
-        {[...Array(6)].map((_, i) => (
-          <TextInput
-            key={i}
-            style={styles.otpInput}
-            keyboardType="number-pad"
-            maxLength={1}
-            value={otp[i] || ""}
-            onChangeText={(v) => {
-              const next = otp.split("");
-              next[i] = v;
-              setOtp(next.join(""));
-            }}
-          />
-        ))}
+        {/* OTP Inputs */}
+        <View style={styles.otpContainer}>
+          {[...Array(6)].map((_, i) => (
+            <TextInput
+              key={i}
+              style={styles.otpInput}
+              keyboardType="number-pad"
+              maxLength={1}
+              value={otp[i] || ""}
+              onChangeText={(v) => {
+                const next = otp.split("");
+                next[i] = v;
+                setOtp(next.join(""));
+              }}
+            />
+          ))}
+        </View>
+
+        {/* Timer / Resend */}
+        {timer > 0 ? (
+          <Text style={styles.timer}>Send code again in 00:{timer < 10 ? `0${timer}` : timer}</Text>
+        ) : (
+          <TouchableOpacity onPress={handleResend} activeOpacity={0.7}>
+            <Text style={[styles.timer, styles.resendText]}>Resend Code</Text>
+          </TouchableOpacity>
+        )}
       </View>
 
-      {/* Timer / Resend */}
-      {timer > 0 ? (
-        <Text style={styles.timer}>Send code again in 00:{timer < 10 ? `0${timer}` : timer}</Text>
-      ) : (
-        <TouchableOpacity onPress={handleResend}>
-          <Text style={[styles.timer, { color: "#7B32FF" }]}>Resend Code</Text>
-        </TouchableOpacity>
-      )}
-
+      {/* Button at Bottom */}
       <TouchableOpacity
         style={[styles.button, (otp.length !== 6 || loading) && { opacity: 0.5 }]}
         onPress={handleVerify}
@@ -112,21 +116,69 @@ export default function OtpScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 20, backgroundColor: "#FBFAF7" },
-  header: { fontSize: 24, marginBottom: 4, fontWeight: "bold" },
-  subheader: { fontSize: 14, marginBottom: 16, color: "#555" },
-  otpContainer: { flexDirection: "row", justifyContent: "space-between", marginBottom: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: '#FBFAF7',
+    paddingHorizontal: 20,
+    paddingTop: 120, // Add top padding for status bar
+    paddingBottom: 40, // Add bottom padding
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  header: {
+    fontSize: 24,
+    marginBottom: 4,
+    fontWeight: 'bold',
+    textAlign: 'start',
+  },
+  subheader: {
+    fontSize: 16,
+    lineHeight: 24,
+    marginBottom: 32,
+    color: '#555',
+    textAlign: 'start',
+  },
+  otpContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 24,
+  },
   otpInput: {
     borderWidth: 1,
     borderColor: "#ddd",
     borderRadius: 8,
-    padding: 12,
-    width: 40,
+    padding: 16,
+    width: 48,
+    height: 56,
     textAlign: "center",
     fontSize: 18,
     backgroundColor: "#fff",
+    fontWeight: '600',
   },
-  timer: { fontSize: 12, textAlign: "center", marginBottom: 16, color: "#777" },
-  button: { backgroundColor: "#7B32FF", padding: 16, borderRadius: 8 },
-  buttonText: { color: "#fff", fontWeight: "bold", textAlign: "center", fontSize: 16 },
+  timer: {
+    fontSize: 14,
+    textAlign: "center",
+    marginBottom: 20,
+    color: "#777",
+    lineHeight: 20,
+  },
+  resendText: {
+    color: "#6B21A8",
+    fontWeight: '500',
+    textDecorationLine: 'underline',
+  },
+  button: {
+    backgroundColor: '#6B21A8',
+    padding: 18,
+    borderRadius: 12,
+    marginTop: 'auto', // This pushes the button to the bottom
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 16,
+  },
 });

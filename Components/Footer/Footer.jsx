@@ -19,31 +19,17 @@ export default function Footer() {
     <ScrollView contentContainerStyle={styles.container}>
       {/* Logo & Tagline */}
       <View style={styles.logoContainer}>
-        <Image
+        {/* <Image
           source={{ uri: 'https://ik.imagekit.io/mediadata/Mo%20Ink%20n%20Dyes/image%202.png?updatedAt=1746846159615' }}
           style={styles.logo}
         />
-        <Text style={styles.tagline}>{t('footer.tagline')}</Text>
+        <Text style={styles.tagline}>{t('footer.tagline')}</Text> */}
 
-        {/* Social Icons */}
-        <View style={styles.socialRow}>
-          <TouchableOpacity onPress={() => Linking.openURL('https://www.facebook.com/yourpage')}>
-            <FontAwesome name="facebook" size={24} color="#333" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/yourpage')}>
-            <FontAwesome name="instagram" size={24} color="#333" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL('https://twitter.com/yourpage')}>
-            <FontAwesome name="twitter" size={24} color="#333" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/company/inkndyes')}>
-            <FontAwesome name="linkedin" size={24} color="#333" />
-          </TouchableOpacity>
-        </View>
+      
       </View>
 
       
-      <View style={styles.columns}>
+      {/* <View style={styles.columns}>
         <View style={styles.column}>
           <Text style={styles.colTitle}>{t('footer.helpfulLinks')}</Text>
           {['contact', 'faq', 'terms'].map((key) => (
@@ -60,7 +46,7 @@ export default function Footer() {
             </TouchableOpacity>
           ))}
         </View>
-      </View>
+      </View> */}
 
     
       {/* <View style={styles.downloadSection}>
@@ -90,8 +76,24 @@ export default function Footer() {
       </View> */}
 
       {/* Bottom Text */}
-      <Text style={styles.footerText}>{t('footer.madeWithLove')}</Text>
-      <Text style={styles.subText}>{t('footer.copyright')}</Text>
+      <Text style={styles.liveItUpText}>Yarns {"\n"}That Connect!</Text>
+      <Text style={styles.craftedText}>Crafted with ❤️ in India</Text>
+
+        {/* Social Icons */}
+        <View style={styles.socialRow}>
+          <TouchableOpacity onPress={() => Linking.openURL('https://www.facebook.com/yourpage')}>
+            <FontAwesome name="facebook" size={24} color="#333" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/yourpage')}>
+            <FontAwesome name="instagram" size={24} color="#333" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL('https://twitter.com/yourpage')}>
+            <FontAwesome name="twitter" size={24} color="#333" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/company/inkndyes')}>
+            <FontAwesome name="linkedin" size={24} color="#333" />
+          </TouchableOpacity>
+        </View>
     </ScrollView>
   );
 }
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
   logoContainer: { alignItems: 'center', marginBottom: 24 },
   logo: { width: 80, height: 80, marginBottom: 8 },
   tagline: { fontSize: 14, color: '#6b7280', textAlign: 'center' },
-  socialRow: { flexDirection: 'row', marginTop: 12, justifyContent: 'center', gap: 16 },
+  socialRow: { flexDirection: 'row', marginTop: 20, justifyContent: 'start', gap: 16 },
   columns: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 24 },
   column: { flex: 1, marginHorizontal: 8 },
   colTitle: { fontSize: 16, fontWeight: '600', marginBottom: 8 },
@@ -132,6 +134,18 @@ const styles = StyleSheet.create({
   assuranceImg: { width: 40, height: 40, marginRight: 12 },
   assuranceTitle: { fontSize: 14, fontWeight: '600' },
   assuranceText: { fontSize: 12, color: '#6b7280' },
-  footerText: { fontSize: 14, color: '#374151', marginTop: 24, textAlign: 'center' },
-  subText: { fontSize: 12, color: '#9ca3af', textAlign: 'center', marginTop: 4 },
+  liveItUpText: { 
+    fontSize: 60, 
+    fontWeight: 'bold', 
+    color: '#bec3ccff', 
+    marginTop: 24, 
+    textAlign: 'start',
+    letterSpacing: -1
+  },
+  craftedText: { 
+    fontSize: 20, 
+    color: '#6b7280', 
+    textAlign: 'start', 
+    marginTop: 8 
+  },
 });

@@ -30,6 +30,11 @@ import BottomNav from "../../Components/BottomNav/BottomNav";
 import NavbarHeader from "../../Components/NavBarHeader/NavbarHeader";
 import Cta from "../../Components/Cta/Cta";
 import Footer from "../../Components/Footer/Footer";
+import IconInfo from "react-native-vector-icons/Feather";
+import IconPackage from "react-native-vector-icons/Feather";
+import IconSettings from "react-native-vector-icons/Feather";
+import IconShield from "react-native-vector-icons/Feather";
+
 
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -70,51 +75,84 @@ export default function ProductDetailPage() {
   };
 
   // Accordion data
-  const accordionData = [
-    {
-      title: "Product Description",
-      content: (
-        <View>
-          {(variantDescription || "No description available.")
-            .split("\n")
-            .map((line, idx) => (
-              <Text key={idx} style={styles.accordionText}>
-                {line.trim()}
-              </Text>
-            ))}
+ const accordionData = [
+  {
+    title: "Product Description",
+    icon: "info",
+    iconColor: "#6B21A8",
+    content: (
+      <View>
+        {(variantDescription || "No description available.")
+          .split("\n")
+          .map((line, idx) => (
+            <Text key={idx} style={styles.accordionText}>
+              {line.trim()}
+            </Text>
+          ))}
+      </View>
+    ),
+  },
+  {
+    title: "Packaging & Delivery",
+    icon: "package",
+    iconColor: "#6B21A8",
+    content: (
+      <View>
+        <View style={styles.listItemRow}>
+          <View style={styles.bulletPoint} />
+          <Text style={styles.listItem}>Carton Box with moisture resistant gunny bag packing.</Text>
         </View>
-      ),
-    },
-    {
-      title: "Packaging & Delivery",
-      content: (
-        <View>
-          <Text style={styles.listItem}>• Carton Box with moisture resistant gunny bag packing.</Text>
-          <Text style={styles.listItem}>• Orders are dispatched within 7 business days.</Text>
-          <Text style={styles.listItem}>• Timely delivery to the doorstep / nearest transport godown.</Text>
+        <View style={styles.listItemRow}>
+          <View style={styles.bulletPoint} />
+          <Text style={styles.listItem}>Orders are dispatched within 7 business days.</Text>
         </View>
-      ),
-    },
-    {
-      title: "Suggested Use",
-      content: (
-        <View>
-          <Text style={styles.listItem}>• Suitable for handloom and power loom weaving.</Text>
-          <Text style={styles.listItem}>• Customized processing available on pre-order basis.</Text>
+        <View style={styles.listItemRow}>
+          <View style={styles.bulletPoint} />
+          <Text style={styles.listItem}>Timely delivery to the doorstep / nearest transport godown.</Text>
         </View>
-      ),
-    },
-    {
-      title: "Precautions",
-      content: (
-        <View>
-          <Text style={styles.listItem}>• Store yarns in a dry, cool place away from sunlight.</Text>
-          <Text style={styles.listItem}>• Keep packaging sealed to avoid dust accumulation.</Text>
-          <Text style={styles.listItem}>• Storage area should be rodent-free with pest control.</Text>
+      </View>
+    ),
+  },
+  {
+    title: "Suggested Use",
+    icon: "settings",
+    iconColor: "#6B21A8",
+    content: (
+      <View>
+        <View style={styles.listItemRow}>
+          <View style={styles.bulletPoint} />
+          <Text style={styles.listItem}>Suitable for handloom and power loom weaving.</Text>
         </View>
-      ),
-    },
-  ];
+        <View style={styles.listItemRow}>
+          <View style={styles.bulletPoint} />
+          <Text style={styles.listItem}>Customized processing available on pre-order basis.</Text>
+        </View>
+      </View>
+    ),
+  },
+  {
+    title: "Precautions",
+    icon: "shield",
+    iconColor: "#6B21A8",
+    content: (
+      <View>
+        <View style={styles.listItemRow}>
+          <View style={styles.bulletPoint} />
+          <Text style={styles.listItem}>Store yarns in a dry, cool place away from sunlight.</Text>
+        </View>
+        <View style={styles.listItemRow}>
+          <View style={styles.bulletPoint} />
+          <Text style={styles.listItem}>Keep packaging sealed to avoid dust accumulation.</Text>
+        </View>
+        <View style={styles.listItemRow}>
+          <View style={styles.bulletPoint} />
+          <Text style={styles.listItem}>Storage area should be rodent-free with pest control.</Text>
+        </View>
+      </View>
+    ),
+  },
+];
+
 
   useEffect(() => {
     const loadCustomer = async () => {
@@ -285,8 +323,8 @@ const loadColors = async () => {
             style={[styles.addBtn, isInCart && { backgroundColor: "#16a34a" }]}
           >
             <IconCart size={18} color="#fff" />
-            <Text style={{ color: "#fff", marginLeft: 6 }}>
-              {isInCart ? "Go to Cart" : "Add to Cart"}
+            <Text style={{ fontSize: 14, fontWeight: '600', color: "#fff", marginLeft: 6 }}>
+              {isInCart ? "GO TO CART" : "ADD TO CART"}
             </Text>
           </TouchableOpacity>
 
@@ -294,16 +332,32 @@ const loadColors = async () => {
 
         {/* Accordion */}
         <View style={styles.accordionWrapper}>
-          {accordionData.map((section, index) => (
-            <View key={index} style={styles.section}>
-              <TouchableOpacity onPress={() => toggleAccordion(index)} style={styles.header}>
-                <Text style={styles.accordionTitle}>{section.title}</Text>
-                <AntDesign name={activeIndex === index ? "up" : "down"} size={20} color="#333" />
-              </TouchableOpacity>
-              {activeIndex === index && <View style={styles.content}>{section.content}</View>}
-            </View>
-          ))}
+        
+  <Text style={styles.sectionHeaderTitle}>Product Information</Text>
+  {accordionData.map((section, index) => (
+    <View key={index} style={[
+      styles.section, 
+      index === accordionData.length - 1 && { borderBottomWidth: 0 }
+    ]}>
+      <TouchableOpacity onPress={() => toggleAccordion(index)} style={styles.header}>
+        <View style={styles.headerLeft}>
+          <View style={[styles.iconContainer, { backgroundColor: `${section.iconColor}15` }]}>
+            <IconInfo name={section.icon} size={18} color={section.iconColor} />
+          </View>
+          <Text style={styles.accordionTitle}>{section.title}</Text>
         </View>
+        <View style={[styles.chevronContainer, activeIndex === index && styles.chevronActive]}>
+          <AntDesign name="down" size={18} color="#4b5563" />
+        </View>
+      </TouchableOpacity>
+      {activeIndex === index && (
+        <View style={styles.content}>
+          {section.content}
+        </View>
+      )}
+    </View>
+  ))}
+</View>
         <View style={{ marginTop: 20 }}>
         <Cta></Cta>
         </View>
@@ -330,11 +384,11 @@ const loadColors = async () => {
             numColumns={3}
             keyExtractor={(item) => String(item.id)}
             renderItem={renderColorItem}
-            contentContainerStyle={{ paddingVertical: 10 }}
+            contentContainerStyle={{ paddingVertical: 4 }}
           />
           <View style={{ marginTop: 20, alignItems: "flex-end" }}>
             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.submitBtn}>
-              <Text style={{ color: "#fff" }}>Done</Text>
+              <Text style={{ fontSize: 14, fontWeight: '600', color: "#fff" }}>DONE</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -360,7 +414,7 @@ const styles = StyleSheet.create({
     width: 32,
     alignItems: "center",
   },
-  productImg: { width: "100%", height: 280, backgroundColor: "#eee" },
+  productImg: { width: "100%", height: 450, backgroundColor: "#eee" },
   info: { padding: 16 },
   productTitle: { fontSize: 20, fontWeight: "700", color: "#111" },
   price: { fontSize: 22, fontWeight: "700", color: "#6B21A8", marginTop: 8 },
@@ -393,9 +447,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#6B21A8",
-    paddingVertical: 10,
-    borderRadius: 6,
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    backgroundColor: '#6B21A8',
   },
 
   // Modal
@@ -412,41 +468,138 @@ const styles = StyleSheet.create({
   },
   colorItem: {
     width: "30%",
+    aspectRatio: 0.78,
     margin: "1.5%",
-    borderWidth: 2,
-    borderColor: "#ccc",
+    borderWidth: 1,
+    borderColor: "#e0e0e0",
     borderRadius: 8,
-    padding: 6,
+    padding: 10,
     alignItems: "center",
+    justifyContent: "space-between", // Changed from flex-start
+    backgroundColor: "#fff",
   },
-  colorImg: { width: "100%", height: 50, borderRadius: 4 },
-  colorName: { fontSize: 10, marginTop: 4 },
-  colorCode: { fontSize: 10, color: "#888" },
-  submitBtn: {
-    backgroundColor: "#6B21A8",
-    paddingVertical: 8,
-    paddingHorizontal: 14,
+  colorImg: { 
+    width: "95%", // Reduced from 80% to give more equal padding
+    height: "69%", // Reduced from 65% to give more equal padding
     borderRadius: 6,
+    resizeMode: "contain",
+    backgroundColor: "#f5f5f5",
+    marginTop: 5, 
+    marginBottom: 6,
+  },
+  colorName: { 
+    fontSize: 12,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#333",
+    marginBottom: 5, // Add bottom margin for equal spacing below
   },
 
+  submitBtn: {
+      backgroundColor: "#6B21A8",
+      paddingVertical: 12,
+      paddingHorizontal: 48,
+      alignItems: 'center',
+      borderRadius: 8,
+    },
+// colorCode: { 
+//   fontSize: 10, 
+//   color: "#666",
+//   textAlign: "center",
+//   marginTop: 2,
+// },
+
   // Accordion
-  accordionWrapper: {
-    marginTop: 16,
-    borderRadius: 8,
-    borderColor: "#E9D5FF",
-    borderWidth: 1,
-    overflow: "hidden",
+accordionWrapper: {
+  marginTop: 24,
+  borderRadius: 12,
+  backgroundColor: "#fff",
+
+},
+
+sectionHeaderTitle: {
+  fontSize: 18,
+  fontWeight: "700",
+  color: "#121313ff",
+  marginBottom: 16,
+  letterSpacing: 0.5,
+  marginHorizontal: 16,
+
+},
+
+section: {
+  borderBottomWidth: 1,
+  borderBottomColor: "#F3F4F6",
     marginHorizontal: 16,
-  },
-  section: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#E9D5FF",
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-  },
-  header: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  accordionTitle: { fontSize: 16, fontWeight: "600", color: "#1F2937" },
-  content: { marginTop: 8 },
-  accordionText: { fontSize: 14, color: "#4B5563", marginBottom: 6 },
-  listItem: { fontSize: 14, color: "#4B5563", marginLeft: 12, marginBottom: 6 },
+
+},
+header: { 
+  flexDirection: "row", 
+  justifyContent: "space-between", 
+  alignItems: "center",
+  paddingVertical: 16,
+  paddingHorizontal: 16,
+},
+headerLeft: {
+  flexDirection: "row",
+  alignItems: "center",
+  flex: 1,
+},
+iconContainer: {
+  width: 36,
+  height: 36,
+  borderRadius: 18,
+  justifyContent: "center",
+  alignItems: "center",
+  marginRight: 12,
+},
+accordionTitle: { 
+  fontSize: 16, 
+  fontWeight: "600", 
+  color: "#1F2937",
+  flex: 1,
+},
+chevronContainer: {
+  width: 28,
+  height: 28,
+  borderRadius: 20,
+  backgroundColor: "#F9FAFB",
+  justifyContent: "center",
+  alignItems: "center",
+  transform: [{ rotate: "0deg" }],
+},
+chevronActive: {
+  transform: [{ rotate: "180deg" }],
+  backgroundColor: "#EDE9FE",
+},
+content: { 
+  paddingHorizontal: 16,
+  paddingBottom: 16,
+  paddingTop: 4,
+},
+accordionText: { 
+  fontSize: 14, 
+  color: "#6B7280", 
+  lineHeight: 20,
+  marginBottom: 8,
+},
+listItemRow: {
+  flexDirection: "row",
+  alignItems: "flex-start",
+  marginBottom: 8,
+},
+bulletPoint: {
+  width: 6,
+  height: 6,
+  borderRadius: 3,
+  backgroundColor: "#6B21A8",
+  marginTop: 7,
+  marginRight: 12,
+},
+listItem: { 
+  fontSize: 14, 
+  color: "#6B7280", 
+  lineHeight: 20,
+  flex: 1,
+},
 });
