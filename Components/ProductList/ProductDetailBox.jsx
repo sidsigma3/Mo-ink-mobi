@@ -9,6 +9,7 @@ import { addToWishlist ,getWishlist ,removeFromWishlist } from '../../Service/Wi
 import { addToCart,getCart ,removeFromCart } from '../../Service/CartService';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const ProductDetailBox = ({
   productName,
   price,
@@ -227,7 +228,9 @@ const ProductDetailBox = ({
 };
 
 const styles = StyleSheet.create({
+  
   card: {
+    
     backgroundColor: '#fff',
     borderRadius: 16,
     borderWidth: 1,
@@ -235,27 +238,39 @@ const styles = StyleSheet.create({
     margin: 10,
     overflow: 'hidden',
     width: 160,
+  
   },
   imageContainer: {
+    
     height: 160,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+  
   },
   coneBg: {
+    
     backgroundColor: '#A2A5AC',
+  
   },
   hankBg: {
+    
     backgroundColor: '#D6D2D3',
+  
   },
   defaultBg: {
+    
     backgroundColor: '#C0C4C6',
+  
   },
   image: {
+    
     width: '100%',
     height: '100%',
+  
   },
   wishlistBtn: {
+    
     position: 'absolute',
     top: 12,
     right: 12,
@@ -263,11 +278,15 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 20,
     elevation: 2,
+  
   },
   content: {
+    
     padding: 16,
+  
   },
   sizeText: {
+    fontFamily: Fonts.bold,
     fontWeight: 'bold',
     fontSize: 14,
     color: '#6D28D9',
@@ -275,12 +294,15 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   colorRow: {
+    
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 8,
     marginBottom: 8,
+  
   },
   colorBadge: {
+    fontFamily: Fonts.regular,
     backgroundColor: '#F3F4F6',
     color: '#222',
     borderRadius: 8,
@@ -292,19 +314,24 @@ const styles = StyleSheet.create({
     borderColor: '#eee',
   },
   row: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
     justifyContent: 'space-between',
+  
   },
   weightPicker: {
+    
     flex: 1,
     marginRight: 10,
     backgroundColor: '#F3E8FF',
     borderRadius: 8,
     overflow: 'hidden',
+  
   },
   qtyContainer: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
@@ -312,16 +339,21 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#fff',
     paddingHorizontal: 6,
+  
   },
   qtyBtn: {
+    
     padding: 6,
+  
   },
   qtyBtnText: {
+    fontFamily: Fonts.bold,
     fontSize: 18,
     color: '#6D28D9',
     fontWeight: 'bold',
   },
   qtyInput: {
+    fontFamily: Fonts.bold,
     width: 32,
     fontSize: 16,
     color: '#222',
@@ -330,49 +362,61 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   priceRow: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
+  
   },
   priceBox: {
+    
   flexDirection: 'column',
   alignItems: 'flex-start', // Changed from 'left' to 'flex-start'
   gap: 8,
-},
+
+  },
 price: {
-  fontWeight: 'bold',
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold',
   fontSize: 20,
   color: '#6D28D9',
   textAlign: 'left', // Add textAlign for text alignment
-},
+  },
 markupPrice: {
-  color: '#aaa',
+    fontFamily: Fonts.regular,
+    color: '#aaa',
   fontSize: 16,
   marginLeft: 0, // Remove marginLeft since we want it aligned to start
   textAlign: 'left', // Already correct
-},
+  },
   ratingBox: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FFF9C4',
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingVertical: 2,
+  
   },
   ratingText: {
+    fontFamily: Fonts.bold,
     marginLeft: 4,
     color: '#FFD700',
     fontWeight: 'bold',
     fontSize: 15,
   },
   btnRow: {
+    
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 8,
     gap: 12,
+  
   },
   cartBtn: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     height: 40,
@@ -381,19 +425,26 @@ markupPrice: {
     paddingVertical: 12,
     gap: 8,
     borderRadius: 50,
+  
   },
   cartBtnActive: {
+    
     backgroundColor: '#22C55E',
+  
   },
   cartBtnInactive: {
+    
     backgroundColor: '#6D28D9',
+  
   },
   cartBtnText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
     marginLeft: 8,
   },
+
 });
 
 export default ProductDetailBox;

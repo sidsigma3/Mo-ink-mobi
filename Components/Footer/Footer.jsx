@@ -11,6 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { FontAwesome, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { Fonts } from '../../Utils/Fonts';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -119,30 +120,32 @@ const styles = StyleSheet.create({
   },
   logoContainer: { alignItems: 'center', marginBottom: 24 },
   logo: { width: 80, height: 80, marginBottom: 8 },
-  tagline: { fontSize: 14, color: '#6b7280', textAlign: 'center' },
+  tagline: { fontFamily: Fonts.regular, fontSize: 14, color: '#6b7280', textAlign: 'center' },
   socialRow: { flexDirection: 'row', marginTop: 20, justifyContent: 'start', gap: 16 },
   columns: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 24 },
   column: { flex: 1, marginHorizontal: 8 },
-  colTitle: { fontSize: 16, fontWeight: '600', marginBottom: 8 },
-  link: { fontSize: 14, color: '#374151', marginBottom: 6 },
+  colTitle: { fontFamily: Fonts.semiBold, fontSize: 16, fontWeight: '600', marginBottom: 8 },
+  link: { fontFamily: Fonts.regular, fontSize: 14, color: '#374151', marginBottom: 6 },
   downloadSection: { alignItems: 'center', marginTop: 24 },
-  text: { fontSize: 14, color: '#6b7280', marginVertical: 8, textAlign: 'center' },
+  text: { fontFamily: Fonts.regular, fontSize: 14, color: '#6b7280', marginVertical: 8, textAlign: 'center' },
   downloadRow: { flexDirection: 'row', gap: 16 },
   storeImg: { width: 100, height: 32, marginHorizontal: 8 },
   assuranceSection: { marginTop: 24 },
   assuranceRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 16, gap: 12 },
   assuranceImg: { width: 40, height: 40, marginRight: 12 },
-  assuranceTitle: { fontSize: 14, fontWeight: '600' },
-  assuranceText: { fontSize: 12, color: '#6b7280' },
+  assuranceTitle: { fontFamily: Fonts.semiBold, fontSize: 14, fontWeight: '600' },
+  assuranceText: { fontFamily: Fonts.regular, fontSize: 12, color: '#6b7280' },
   liveItUpText: { 
+    fontFamily: Fonts.bold,
     fontSize: 60, 
-    fontWeight: 'bold', 
+    fontWeight: '700', 
     color: '#bec3ccff', 
     marginTop: 24, 
     textAlign: 'start',
     letterSpacing: -1
   },
   craftedText: { 
+    fontFamily: Fonts.regular,
     fontSize: 20, 
     color: '#6b7280', 
     textAlign: 'start', 

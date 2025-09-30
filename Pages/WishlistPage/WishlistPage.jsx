@@ -11,6 +11,7 @@ import Cta from '../../Components/Cta/Cta';
 import Footer from '../../Components/Footer/Footer';
 import BottomNav from '../../Components/BottomNav/BottomNav';
 
+import { Fonts } from '../Utils/Fonts';
 const WishlistPage = () => {
   const breadcrumbs = [
     { label: 'Home', link: '/home' },
@@ -42,12 +43,18 @@ const WishlistPage = () => {
 export default WishlistPage;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#fff', // Background color instead of Tailwind
+  
   },
   scrollContent: {
+    
     paddingHorizontal: 16, // instead of px-6 md:px-14
     paddingVertical: 12,
+  
   },
+
 });

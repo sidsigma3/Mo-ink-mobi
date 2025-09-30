@@ -28,6 +28,7 @@ import { createOrder , updateOrderStatuses } from "../../Service/OrderService";
 import { initiatePayment } from "../../Service/PaymentService";
 import { useAppContext } from "../../Utils/AppContext";
 import RazorpayCheckout from 'react-native-razorpay';
+import { Fonts } from '../Utils/Fonts';
 const razorpayKey = process.env.RAZORPAY_CLIENT_KEY;
 
 // --- Utility Functions ---
@@ -1426,13 +1427,28 @@ return (
 export default CheckoutPage;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 16 },
-  header: { marginBottom: 12 },
-  section: { marginVertical: 16 },
-  sectionHeader: { flexDirection: "row", justifyContent: "space-between" },
-  sectionTitle: { fontSize: 18, fontWeight: "600", marginBottom: 8 },
-  cartItem: { marginVertical: 8, backgroundColor: "#f9f9f9", borderRadius: 8 },
+  
+  container: {
+     flex: 1, backgroundColor: "#fff", padding: 16 
+  },
+  header: {
+     marginBottom: 12 
+  },
+  section: {
+     marginVertical: 16 
+  },
+  sectionHeader: {
+     flexDirection: "row", justifyContent: "space-between" 
+  },
+  sectionTitle: {
+    fontFamily: Fonts.semiBold,
+    fontSize: 18, fontWeight: "600", marginBottom: 8
+  },
+  cartItem: {
+     marginVertical: 8, backgroundColor: "#f9f9f9", borderRadius: 8 
+  },
   removeBtn: {
+    
     position: "absolute",
     right: 10,
     top: 10,
@@ -1440,18 +1456,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 20,
     padding: 4,
+  
   },
-  noItems: { textAlign: "center", marginVertical: 20, fontSize: 16 },
+  noItems: {
+    fontFamily: Fonts.regular,
+    textAlign: "center", marginVertical: 20, fontSize: 16
+  },
   addAddressBtn: {
+    
     flexDirection: "row",
     alignItems: "center",
     padding: 6,
     borderWidth: 1,
     borderColor: "#6b21a8",
     borderRadius: 6,
+  
   },
-  addAddressText: { color: "#6b21a8", marginRight: 6 },
+  addAddressText: {
+     color: "#6b21a8", marginRight: 6 
+  },
   addressBox: {
+    
     marginTop: 10,
     padding: 12,
     borderWidth: 1,
@@ -1459,93 +1484,132 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flexDirection: "row",
     justifyContent: "space-between",
+  
   },
   discountBtn: {
+    
     marginTop: 8,
     padding: 12,
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 6,
+  
   },
 summaryBox: {
+    
   marginVertical: 20,
   padding: 16,
   borderWidth: 1,
   borderColor: "#ddd",
   borderRadius: 8,
   backgroundColor: "#fff",
-},
+
+  },
 row: {
+    
   flexDirection: "row",
   justifyContent: "space-between",
   marginBottom: 12,
-},
+
+  },
 rowWithBorder: {
+    
   flexDirection: "row",
   justifyContent: "space-between",
   borderBottomWidth: 1,
   borderBottomColor: "#ddd",
   paddingBottom: 6,
   marginBottom: 12,
-},
-label: { fontSize: 16, fontWeight: "500" },
-subLabel: { fontSize: 14, color: "#666" },
-value: { fontSize: 16, fontWeight: "600" },
+
+  },
+label: {
+    fontFamily: Fonts.medium,
+    fontSize: 16, fontWeight: "500"
+  },
+subLabel: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, color: "#666"
+  },
+value: {
+    fontFamily: Fonts.semiBold,
+    fontSize: 16, fontWeight: "600"
+  },
 walletInput: {
-  borderWidth: 1,
+    fontFamily: Fonts.regular,
+    borderWidth: 1,
   borderColor: "#ccc",
   borderRadius: 6,
   padding: 4,
   width: 80,
   textAlign: "right",
   color: "green",
-},
-errorText: { color: "red", fontSize: 12, marginTop: 4 },
+  },
+errorText: {
+    fontFamily: Fonts.regular,
+    color: "red", fontSize: 12, marginTop: 4
+  },
 
   codBtn: {
+    
     backgroundColor: "#f97316",
     padding: 14,
     borderRadius: 8,
     alignItems: "center",
+  
   },
   payBtn: {
+    
     backgroundColor: "#6b21a8",
     padding: 14,
     borderRadius: 8,
     alignItems: "center",
+  
   },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  btnText: {
+    fontFamily: Fonts.semiBold,
+    color: "#fff", fontSize: 16, fontWeight: "600"
+  },
   sidebarOverlay: {
+    
   flex: 1,
   backgroundColor: "rgba(0,0,0,0.4)",
   justifyContent: "flex-end",
-},
+
+  },
 sidebar: {
+    
   height: "80%",
   backgroundColor: "white",
   borderTopLeftRadius: 16,
   borderTopRightRadius: 16,
   padding: 16,
-},
+
+  },
 closeBtn: {
+    
   position: "absolute",
   right: 16,
   top: 16,
   zIndex: 10,
-},
+
+  },
 sidebarTitle: {
-  fontSize: 20,
+    fontFamily: Fonts.bold,
+    fontSize: 20,
   fontWeight: "bold",
   marginBottom: 12,
-},
+  },
 input: {
+    
   borderWidth: 1,
   borderColor: "#ccc",
   borderRadius: 8,
   padding: 10,
   marginBottom: 16,
-},
+
+  },
 discountItem: {
+    
   flexDirection: "row",
   alignItems: "center",
   borderWidth: 1,
@@ -1554,11 +1618,31 @@ discountItem: {
   padding: 12,
   marginBottom: 12,
   backgroundColor: "#fff",
-},
-discountCode: { fontSize: 18, fontWeight: "bold" },
-discountSave: { color: "green", marginVertical: 4, fontWeight: "600" },
-discountText: { fontSize: 14, color: "#555" },
-applyBtn: { color: "#6b21a8", fontWeight: "bold", fontSize: 14 },
-notEligible: { color: "#999", fontSize: 12 },
-noDiscounts: { textAlign: "center", marginTop: 20, color: "#777" },
+
+  },
+discountCode: {
+    fontFamily: Fonts.bold,
+    fontSize: 18, fontWeight: "bold"
+  },
+discountSave: {
+    fontFamily: Fonts.semiBold,
+    color: "green", marginVertical: 4, fontWeight: "600"
+  },
+discountText: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, color: "#555"
+  },
+applyBtn: {
+    fontFamily: Fonts.bold,
+    color: "#6b21a8", fontWeight: "bold", fontSize: 14
+  },
+notEligible: {
+    fontFamily: Fonts.regular,
+    color: "#999", fontSize: 12
+  },
+noDiscounts: {
+    fontFamily: Fonts.regular,
+    textAlign: "center", marginTop: 20, color: "#777"
+  },
+
 });

@@ -18,6 +18,7 @@ import Cta from "../../Components/Cta/Cta";
 import Footer from "../../Components/Footer/Footer";
 import BottomNav from "../../Components/BottomNav/BottomNav";
 
+import { Fonts } from '../Utils/Fonts';
 const PaymentFailure = () => {
   const navigation = useNavigation();
   const route = useRoute();
@@ -197,16 +198,22 @@ const PaymentFailure = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     alignItems: "center",
     padding: 20,
+  
   },
   image: {
+    
     width: 120,
     height: 120,
     marginBottom: 20,
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 22,
     fontWeight: "600",
     color: "#111",
@@ -214,21 +221,26 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   message: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: "#555",
     textAlign: "center",
     marginBottom: 20,
   },
   link: {
+    fontFamily: Fonts.medium,
     color: "#7C3AED",
     fontWeight: "500",
   },
   buttonGroup: {
+    
     width: "100%",
     marginTop: 10,
     gap: 10,
+  
   },
   codButton: {
+    
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -236,55 +248,74 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 8,
     marginBottom: 10,
+  
   },
   retryButton: {
+    
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#7C3AED",
     paddingVertical: 12,
     borderRadius: 8,
+  
   },
   disabledButton: {
+    
     opacity: 0.5,
+  
   },
   closeButton: {
+    
     paddingVertical: 12,
     borderRadius: 8,
     backgroundColor: "#E5E7EB",
     alignItems: "center",
+  
   },
   closeText: {
+    fontFamily: Fonts.medium,
     color: "#333",
     fontWeight: "500",
   },
   buttonText: {
+    fontFamily: Fonts.medium,
     color: "#fff",
     fontWeight: "500",
     marginHorizontal: 8,
   },
   toastContainer: {
+    
     position: "absolute",
     top: 40,
     right: 20,
     left: 20,
     alignItems: "center",
+  
   },
   toast: {
+    
     padding: 10,
     borderRadius: 6,
     marginVertical: 4,
+  
   },
   errorToast: {
+    
     backgroundColor: "#F87171",
+  
   },
   successToast: {
+    
     backgroundColor: "#4ADE80",
+  
   },
   toastText: {
+    fontFamily: Fonts.medium,
     color: "#fff",
     fontWeight: "500",
   },
+
 });
 
 export default PaymentFailure;

@@ -12,6 +12,7 @@ import BlogBox3 from '../../Components/BlogList/BlogBox3';
 import BlogBox4 from '../../Components/BlogList/BlogBox4';
 import NavbarHeader from '../../Components/NavBarHeader/NavbarHeader';
 
+import { Fonts } from '../Utils/Fonts';
 const Blogs = () => {
   const breadcrumbs = [
     { label: 'Home', link: '/home' },
@@ -53,18 +54,26 @@ const Blogs = () => {
 export default Blogs;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#fff',
+  
   },
   scrollContainer: {
+    
     padding: 16,
     paddingBottom: 80, // space for bottom nav
+  
   },
   blogGrid: {
+    
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     marginTop: 16,
+  
   },
+
 });

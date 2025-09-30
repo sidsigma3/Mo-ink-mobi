@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const CategoryBox = ({
   size,
   color,
@@ -80,48 +81,62 @@ const CategoryBox = ({
 export default CategoryBox;
 
 const styles = StyleSheet.create({
+  
   card: {
+    
     flex: 1,
     backgroundColor: '#E9D5FF',
     borderRadius: 12,
     padding: 12,
     marginBottom: 12,
     marginHorizontal: 4,
+  
   },
   inner: {
+    
     alignItems: 'center',
+  
   },
   icon: {
+    
     width: 48,
     height: 48,
     marginBottom: 6,
+  
   },
   sizeText: {
+    fontFamily: Fonts.semiBold,
     fontSize: 15,
     fontWeight: '600',
     color: '#4B0082',
     textAlign: 'center'
   },
   colorText: {
+    fontFamily: Fonts.regular,
     fontSize: 13,
     color: '#555',
     marginVertical: 4,
   },
   variantText: {
+    fontFamily: Fonts.bold,
     fontSize: 15,
     fontWeight: 'bold',
     color: '#6B21A8',
   },
   buttonWrapper: {
+    
     marginTop: 10,
     backgroundColor: '#fff',
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 8,
+  
   },
   viewColorsButton: {
+    fontFamily: Fonts.semiBold,
     fontSize: 12,
     fontWeight: '600',
     color: '#6B21A8',
   },
+
 });

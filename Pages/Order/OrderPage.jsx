@@ -12,6 +12,7 @@ import BottomNav from "../../Components/BottomNav/BottomNav";
 
 import { getPaginatedCustomerOrders } from "../../Service/OrderService";
 
+import { Fonts } from '../Utils/Fonts';
 export default function OrderPage() {
   const navigation = useNavigation();
   const [orders, setOrders] = useState([]);
@@ -149,38 +150,55 @@ const fetchOrders = async (customerId, page) => {
 }
 
 const styles = StyleSheet.create({
+  
   listContainer: {
+    
     padding: 16,
+  
   },
   noOrders: {
+    fontFamily: Fonts.regular,
     textAlign: "center",
     fontSize: 16,
     color: "#666",
     marginTop: 20,
   },
   pagination: {
+    
     flexDirection: "row",
     justifyContent: "center",
     marginVertical: 10,
+  
   },
   pageButton: {
+    
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderWidth: 1,
     borderColor: "#6B21A8",
     marginHorizontal: 2,
     borderRadius: 4,
+  
   },
   pageText: {
+    
     color: "#6B21A8",
+  
   },
   activePage: {
+    
     backgroundColor: "#6B21A8",
+  
   },
   activeText: {
+    
     color: "#fff",
+  
   },
   disabledButton: {
+    
     borderColor: "#ccc",
+  
   },
+
 });

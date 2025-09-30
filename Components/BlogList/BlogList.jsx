@@ -8,6 +8,7 @@ import BlogBox2 from './BlogBox2';
 import BlogBox3 from './BlogBox3';
 import BlogBox4 from './BlogBox4';
 
+import { Fonts } from '../../Utils/Fonts';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const BlogList = () => {
@@ -71,12 +72,16 @@ const BlogList = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     position: 'relative',
     paddingVertical: 16,
     backgroundColor: '#fff',
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 24,
     fontWeight: '600',
     textAlign: 'center',
@@ -84,14 +89,19 @@ const styles = StyleSheet.create({
     color: '#111',
   },
   scrollContainer: {
+    
     flexDirection: 'row',
     paddingHorizontal: 10,
+  
   },
   blogBox: {
+    
     width: SCREEN_WIDTH * 0.7,
     marginHorizontal: 10,
+  
   },
   leftButton: {
+    
     position: 'absolute',
     left: 10,
     top: '50%',
@@ -99,9 +109,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#e5e7eb',
     padding: 10,
     borderRadius: 20,
-    transform: [{ translateY: -25 }],
+    transform: [{ translateY: -25 
+  }],
   },
   rightButton: {
+    
     position: 'absolute',
     right: 10,
     top: '50%',
@@ -109,12 +121,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#e5e7eb',
     padding: 10,
     borderRadius: 20,
-    transform: [{ translateY: -25 }],
+    transform: [{ translateY: -25 
+  }],
   },
   arrow: {
+    fontFamily: Fonts.bold,
     fontSize: 18,
     fontWeight: 'bold',
   },
+
 });
 
 export default BlogList;

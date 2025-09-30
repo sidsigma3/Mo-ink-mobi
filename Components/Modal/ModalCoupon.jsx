@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import LottieView from 'lottie-react-native';
 
+import { Fonts } from '../../Utils/Fonts';
 const ModalCoupon = ({ isOpen, onClose, savings, discount, discountCode }) => {
   useEffect(() => {
     if (isOpen) {
@@ -47,14 +48,18 @@ const ModalCoupon = ({ isOpen, onClose, savings, discount, discountCode }) => {
 };
 
 const styles = StyleSheet.create({
+  
   overlay: {
+    
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 24,
+  
   },
   modalContent: {
+    
     backgroundColor: '#fff',
     borderRadius: 20,
     padding: 24,
@@ -63,14 +68,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     elevation: 8,
     overflow: 'hidden',
+  
   },
   animationContainer: {
+    
     width: '100%',
     alignItems: 'center',
     marginBottom: 12,
     zIndex: 2,
+  
   },
   discountText: {
+    fontFamily: Fonts.bold,
     fontSize: 32,
     fontWeight: 'bold',
     color: '#222',
@@ -79,6 +88,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   savingsText: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     color: '#555',
     textAlign: 'center',
@@ -86,6 +96,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   codeText: {
+    fontFamily: Fonts.regular,
     fontSize: 20,
     color: '#555',
     textAlign: 'center',
@@ -93,9 +104,11 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   bold: {
+    fontFamily: Fonts.bold,
     fontWeight: 'bold',
     color: '#222',
   },
+
 });
 
 export default ModalCoupon;

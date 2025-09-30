@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { otpSend } from '../../Service/authService';
 
+import { Fonts } from '../../Utils/Fonts';
 export default function PhoneNumberScreen({ navigation }) {
   const [phone, setPhone] = useState('');
   const [accepted, setAccepted] = useState(false);
@@ -108,24 +109,31 @@ export default function PhoneNumberScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#FBFAF7',
     paddingHorizontal: 20,
     paddingTop: 120, // Add top padding for status bar
     paddingBottom: 40, // Add bottom padding
+  
   },
   content: {
+    
     flex: 1,
     justifyContent: 'flex-start',
+  
   },
   header: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     marginBottom: 4,
     fontWeight: 'bold',
     textAlign: 'start',
   },
   subheader: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     lineHeight: 24,
     marginBottom: 32,
@@ -133,6 +141,7 @@ const styles = StyleSheet.create({
     textAlign: 'start',
   },
   input: {
+    fontFamily: Fonts.regular,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
@@ -142,11 +151,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   checkboxContainer: {
+    
     flexDirection: 'row',
     alignItems: 'flex-start',
     marginBottom: 20,
+  
   },
   checkbox: {
+    
     width: 20,
     height: 20,
     borderWidth: 2,
@@ -156,40 +168,52 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 2, // Slight adjustment to align with text
+  
   },
   checkboxChecked: {
+    
     backgroundColor: '#6B21A8',
     borderColor: '#6B21A8',
+  
   },
   checkmark: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontSize: 12,
     fontWeight: 'bold',
   },
   checkboxTextWrapper: {
+    
     flex: 1,
     marginLeft: 12,
+  
   },
   checkboxText: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#444',
     lineHeight: 20,
   },
   linkText: {
+    fontFamily: Fonts.medium,
     color: '#6B21A8', // Your primary color
     textDecorationLine: 'underline',
     fontWeight: '500',
   },
   button: {
+    
     backgroundColor: '#6B21A8',
     padding: 18,
     borderRadius: 12,
     marginTop: 'auto', // This pushes the button to the bottom
+  
   },
   buttonText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 16,
   },
+
 });

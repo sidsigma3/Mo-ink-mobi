@@ -6,6 +6,7 @@ import WorkIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import OtherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ModalAddressDelete from '../Modal/ModalAddressDelete';
 
+import { Fonts } from '../../Utils/Fonts';
 const AddressBox = ({ address, name, company, phone, onDelete }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -84,7 +85,9 @@ const AddressBox = ({ address, name, company, phone, onDelete }) => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#E5E7EB',
@@ -93,22 +96,29 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
+  
   },
   leftColumn: {
+    
     flex: 1,
+  
   },
   headerRow: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 6,
     flexWrap: 'wrap',
+  
   },
   name: {
+    fontFamily: Fonts.bold,
     fontSize: 16,
     fontWeight: 'bold',
     marginRight: 8,
   },
   addressTypeTag: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: '#6B21A8',
@@ -117,13 +127,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     marginRight: 8,
+  
   },
   addressTypeText: {
+    fontFamily: Fonts.semiBold,
     color: '#6B21A8',
     fontWeight: '600',
     marginLeft: 4,
   },
   deleteButton: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: '#B91C1C',
@@ -131,27 +144,34 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 8,
     paddingVertical: 4,
+  
   },
   deleteText: {
+    fontFamily: Fonts.semiBold,
     fontSize: 12,
     fontWeight: '600',
     color: '#B91C1C',
     marginLeft: 4,
   },
   company: {
+    fontFamily: Fonts.medium,
     fontWeight: '500',
     color: '#6B7280',
   },
   addressLine: {
+    fontFamily: Fonts.medium,
     fontWeight: '500',
     color: '#6B7280',
     marginTop: 2,
   },
   arrowContainer: {
+    
     marginLeft: 8,
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
+
 });
 
 export default AddressBox;

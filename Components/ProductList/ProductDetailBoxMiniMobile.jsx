@@ -5,6 +5,7 @@ import { Picker } from '@react-native-picker/picker';
 import {REACT_APP_IMAGE_URL} from '@env';
 
 
+import { Fonts } from '../../Utils/Fonts';
 const ProductDetailBoxMiniMobile = ({
   cartItems = [],
   setCartItems = () => {},
@@ -168,37 +169,58 @@ const ProductDetailBoxMiniMobile = ({
 };
 
 const styles = StyleSheet.create({
+  
   groupCard: {
+    
     backgroundColor: '#fff',
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#eee',
     marginBottom: 16,
     padding: 12,
+  
   },
-  headerRow: { flexDirection: 'row', marginBottom: 10 },
+  headerRow: {
+     flexDirection: 'row', marginBottom: 10 
+  },
   headerImage: {
+    
     width: 70,
     height: 70,
     borderRadius: 8,
     marginRight: 12,
     backgroundColor: '#eee',
+  
   },
-  productName: { fontWeight: 'bold', fontSize: 18, color: '#222' },
-  productInfo: { fontSize: 14, color: '#555', marginTop: 2 },
-  pricePerKg: { fontSize: 15, color: '#222', marginTop: 4 },
+  productName: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', fontSize: 18, color: '#222'
+  },
+  productInfo: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, color: '#555', marginTop: 2
+  },
+  pricePerKg: {
+    fontFamily: Fonts.regular,
+    fontSize: 15, color: '#222', marginTop: 4
+  },
   variantCard: {
+    
     backgroundColor: '#F3E8FF',
     borderRadius: 10,
     padding: 10,
     marginBottom: 8,
+  
   },
   variantHeader: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 6,
+  
   },
   colorCircle: {
+    
     width: 22,
     height: 22,
     borderRadius: 11,
@@ -207,17 +229,31 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     marginRight: 8,
     backgroundColor: '#fff',
+  
   },
-  colorImage: { width: '100%', height: '100%' },
-  colorName: { fontWeight: 'bold', fontSize: 14, marginRight: 8 },
-  hexCode: { fontSize: 13, color: '#555', marginRight: 8 },
-  removeBtn: { marginLeft: 'auto' },
+  colorImage: {
+     width: '100%', height: '100%' 
+  },
+  colorName: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', fontSize: 14, marginRight: 8
+  },
+  hexCode: {
+    fontFamily: Fonts.regular,
+    fontSize: 13, color: '#555', marginRight: 8
+  },
+  removeBtn: {
+     marginLeft: 'auto' 
+  },
   variantControls: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  
   },
   picker: {
+    
     width: 70,
     height: 30,
     backgroundColor: '#fff',
@@ -225,13 +261,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
+  
   },
   qtyControls: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     marginHorizontal: 8,
+  
   },
   qtyBtn: {
+    
     width: 28,
     height: 28,
     borderRadius: 6,
@@ -240,11 +280,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  
   },
-  qtyBtnText: { fontSize: 18, color: '#222' },
-  qtyText: { fontWeight: 'bold', fontSize: 15, marginHorizontal: 8 },
-  variantPrice: { fontWeight: 'bold', fontSize: 16, color: '#222', width: 70, textAlign: 'right' },
+  qtyBtnText: {
+    fontFamily: Fonts.regular,
+    fontSize: 18, color: '#222'
+  },
+  qtyText: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', fontSize: 15, marginHorizontal: 8
+  },
+  variantPrice: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', fontSize: 16, color: '#222', width: 70, textAlign: 'right'
+  },
   groupTotalRow: {
+    
     borderTopWidth: 1,
     borderTopColor: '#eee',
     marginTop: 8,
@@ -252,10 +303,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  
   },
-  groupTotalText: { fontSize: 16, fontWeight: '500' },
-  groupTotalPrice: { fontSize: 17, fontWeight: 'bold', color: '#6D28D9' },
+  groupTotalText: {
+    fontFamily: Fonts.medium,
+    fontSize: 16, fontWeight: '500'
+  },
+  groupTotalPrice: {
+    fontFamily: Fonts.bold,
+    fontSize: 17, fontWeight: 'bold', color: '#6D28D9'
+  },
   toast: {
+    
     position: 'absolute',
     top: 20,
     right: 20,
@@ -263,10 +322,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     zIndex: 999,
     minWidth: 120,
+  
   },
-  toastText: { color: '#fff', fontWeight: 'bold' },
-  toastSuccess: { backgroundColor: '#4ADE80' },
-  toastError: { backgroundColor: '#F87171' },
+  toastText: {
+    fontFamily: Fonts.bold,
+    color: '#fff', fontWeight: 'bold'
+  },
+  toastSuccess: {
+     backgroundColor: '#4ADE80' 
+  },
+  toastError: {
+     backgroundColor: '#F87171' 
+  },
+
 });
 
 export default ProductDetailBoxMiniMobile;

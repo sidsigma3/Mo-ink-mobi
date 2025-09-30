@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Toast from 'react-native-toast-message';
 import { FontAwesome } from '@expo/vector-icons';
 
+import { Fonts } from '../../Utils/Fonts';
 const Cta = () => {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
@@ -80,25 +81,35 @@ const Cta = () => {
 export default Cta;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     borderRadius: 12,
     margin: 16,
     overflow: 'hidden',
+  
   },
   background: {
+    
     minHeight: 200,
     justifyContent: 'center',
+  
   },
   keyboardContainer: {
+    
     flex: 1,
     justifyContent: 'center',
+  
   },
   overlay: {
+    
     padding: 20,
     margin: 16,
     borderRadius: 12,
+  
   },
   heading: {
+    fontFamily: Fonts.bold,
     fontSize: 28,
     fontWeight: '700',
     color: '#fff',
@@ -106,10 +117,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     // Add text shadow for better readability
     textShadowColor: 'rgba(0, 0, 0, 0.7)',
-    textShadowOffset: { width: 0, height: 2 },
+    textShadowOffset: { width: 0, height: 2
+  },
     textShadowRadius: 4,
   },
   subheading: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     color: '#f0f0f0',
     textAlign: 'center',
@@ -117,10 +130,12 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     // Add text shadow for better readability
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    textShadowOffset: { width: 0, height: 1 },
+    textShadowOffset: { width: 0, height: 1
+  },
     textShadowRadius: 2,
   },
   inputContainer: {
+    
     backgroundColor: '#fff',
     borderRadius: 25,
     flexDirection: 'row',
@@ -131,22 +146,27 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 2,
-    },
+    
+  },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
   },
   icon: {
+    
     marginRight: 12,
     opacity: 0.7,
+  
   },
   input: {
+    fontFamily: Fonts.regular,
     flex: 1,
     fontSize: 16,
     color: '#333',
     paddingVertical: 2,
   },
   button: {
+    
     backgroundColor: '#6B21A8',
     paddingVertical: 10,
     paddingHorizontal: 18,
@@ -156,23 +176,28 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 2,
-    },
+    
+  },
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 4,
   },
   buttonText: {
+    fontFamily: Fonts.semiBold,
     color: '#fff',
     fontWeight: '600',
     fontSize: 14,
   },
   modalOverlay: {
+    
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
   popup: {
+    
     backgroundColor: '#fff',
     padding: 28,
     borderRadius: 16,
@@ -183,12 +208,14 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 4,
-    },
+    
+  },
     shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 10,
   },
   popupTitle: {
+    fontFamily: Fonts.bold,
     fontSize: 20,
     fontWeight: '700',
     marginBottom: 12,
@@ -196,6 +223,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   popupText: {
+    fontFamily: Fonts.regular,
     fontSize: 15,
     color: '#666',
     textAlign: 'center',
@@ -203,6 +231,7 @@ const styles = StyleSheet.create({
     lineHeight: 21,
   },
   closeButton: {
+    
     backgroundColor: '#6B21A8',
     paddingVertical: 12,
     paddingHorizontal: 24,
@@ -211,14 +240,17 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 2,
-    },
+    
+  },
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 4,
   },
   closeButtonText: {
+    fontFamily: Fonts.semiBold,
     color: '#fff',
     fontWeight: '600',
     fontSize: 16,
   },
+
 });

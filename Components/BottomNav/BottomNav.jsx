@@ -7,6 +7,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { useAppContext } from '../../Utils/AppContext';
 // import { Badge } from 'react-native-elements';
 
+import { Fonts } from '../../Utils/Fonts';
 const BottomNav = () => {
   const navigation = useNavigation();
   const route = useRoute();
@@ -96,7 +97,9 @@ const BottomNav = () => {
 export default BottomNav;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flexDirection: 'row',
     backgroundColor: '#fff',
     borderTopWidth: 1,
@@ -108,41 +111,53 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 999,
+  
   },
   button: {
+    
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
     paddingVertical: 6,
+  
   },
   activeButton: {
+    
     backgroundColor: '#ede9fe',
     borderTopWidth: 3,
     borderTopColor: '#6D28D9',
     borderRadius: 6,
+  
   },
   homeIcon: {
+    
     width: 28,
     height: 28,
     // Alternative approach if still cropping:
     // width: 30,
     // height: 30,
     // borderRadius: 15, // if you want rounded corners
+  
   },
   label: {
+    fontFamily: Fonts.medium,
     fontSize: 12,
     fontWeight: '500',
     color: '#000',
     marginTop: 4,
   },
   activeLabel: {
+    fontFamily: Fonts.semiBold,
     color: '#6D28D9',
     fontWeight: '600',
   },
   badge: {
+    
     position: 'absolute',
     top: -2,
     right: 20,
     zIndex: 10,
+  
   },
+
 });

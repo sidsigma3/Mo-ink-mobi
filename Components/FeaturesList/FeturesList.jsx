@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { Fonts } from '../../Utils/Fonts';
 import {
   FontAwesome as Icon,
   FontAwesome5,
@@ -67,12 +68,16 @@ const FeaturesList = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     backgroundColor: '#fff',
     paddingVertical: 20,
     paddingHorizontal: 16,
+  
   },
   heading: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     fontWeight: '700',
     textAlign: 'center',
@@ -80,13 +85,18 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   grid: {
+    
     justifyContent: 'center',
+  
   },
   row: {
+    
     justifyContent: 'space-between',
     marginBottom: 20,
+  
   },
   card: {
+    
     flex: 1,
     backgroundColor: '#fff7ed',
     padding: 16,
@@ -95,8 +105,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginHorizontal: 8,
     alignItems: 'center',
+  
   },
   iconBox: {
+    
     width: 64,
     height: 64,
     backgroundColor: '#ffffff',
@@ -105,8 +117,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 12,
     elevation: 2,
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
@@ -114,10 +128,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   description: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     textAlign: 'center',
     color: '#6b7280',
   },
+
 });
 
 export default FeaturesList;

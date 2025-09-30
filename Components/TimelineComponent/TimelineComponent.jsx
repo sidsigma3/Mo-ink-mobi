@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
+import { Fonts } from '../../Utils/Fonts';
 const statusOptions = [
   { key: "NEW", label: "New Order" },
   { key: "CONFIRMED", label: "Confirmed" },
@@ -62,32 +63,47 @@ const TimelineComponent = ({ orderStatus }) => {
 };
 
 const styles = StyleSheet.create({
-  scroll: { marginVertical: 8 },
+  
+  scroll: {
+     marginVertical: 8 
+  },
   container: {
+    
     flexDirection: 'row',
     alignItems: 'flex-end',
     minWidth: 640,
     paddingHorizontal: 8,
+  
   },
   item: {
+    
     minWidth: 120,
     alignItems: 'center',
     justifyContent: 'flex-end',
+  
   },
   label: {
+    fontFamily: Fonts.bold,
     fontSize: 13,
     fontWeight: 'bold',
     marginBottom: 8,
     textAlign: 'center',
   },
-  labelCompleted: { color: '#22C55E' },
-  labelPending: { color: '#D1D5DB' },
+  labelCompleted: {
+     color: '#22C55E' 
+  },
+  labelPending: {
+     color: '#D1D5DB' 
+  },
   dotLineRow: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
+  
   },
   dot: {
+    
     width: 28,
     height: 28,
     borderRadius: 14,
@@ -98,24 +114,38 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: -1,
     zIndex: 1,
+  
   },
-  dotCompleted: { borderColor: '#22C55E' },
-  dotPending: { borderColor: '#D1D5DB' },
+  dotCompleted: {
+     borderColor: '#22C55E' 
+  },
+  dotPending: {
+     borderColor: '#D1D5DB' 
+  },
   innerDot: {
+    
     width: 12,
     height: 12,
     borderRadius: 6,
     backgroundColor: '#D1D5DB',
+  
   },
   line: {
+    
     height: 4,
     flex: 1,
     marginHorizontal: 2,
     borderRadius: 2,
     backgroundColor: '#D1D5DB',
+  
   },
-  lineCompleted: { backgroundColor: '#22C55E' },
-  linePending: { backgroundColor: '#D1D5DB' },
+  lineCompleted: {
+     backgroundColor: '#22C55E' 
+  },
+  linePending: {
+     backgroundColor: '#D1D5DB' 
+  },
+
 });
 
 export default TimelineComponent;

@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { loginCustomer } from '../../../Service/authService';
 
+import { Fonts } from '../../../Utils/Fonts';
 const LoginPage = ({ togglePage, setAuthStatus }) => {
   const { t } = useTranslation();
   const navigation = useNavigation();
@@ -126,7 +127,9 @@ const LoginPage = ({ togglePage, setAuthStatus }) => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     // flexGrow: 1,
     height:'100%',
     width:'100%',
@@ -136,25 +139,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+  
   },
   backgroundImage: {
+    
     position: 'absolute',
     top: 0, left: 0, right: 0, bottom: 0,
     width: '100%',
     height: '100%',
     zIndex: -1,
+  
   },
   logoContainer: {
+    
     position: 'absolute',
     top: Platform.OS === 'ios' ? 60 : 30,
     left: 20,
+  
   },
   logo: {
+    
     width: 60,
     height: 60,
     resizeMode: 'contain',
+  
   },
   formBox: {
+    
   // backgroundColor: 'rgba(255,255,255,0.9)', 
   padding: 24,
   width: '90%',
@@ -163,48 +174,60 @@ const styles = StyleSheet.create({
   borderWidth: 2,
   alignSelf: 'center', 
   // marginTop: 20, 
-},
+
+  },
   backLink: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#444',
     marginBottom: 10,
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 22,
     fontWeight: '700',
     textAlign: 'center',
     marginBottom: 16,
   },
   tabSwitch: {
+    
     flexDirection: 'row',
     marginBottom: 24,
     // backgroundColor: '#fff',
     borderRadius: 20,
     overflow: 'hidden',
     borderColor: '#6b21a8',
+  
   },
   activeTab: {
+    
     flex: 1,
     backgroundColor: '#6b21a8',
     paddingVertical: 10,
     alignItems: 'center',
+  
   },
   inactiveTab: {
+    
     flex: 1,
     paddingVertical: 10,
     alignItems: 'center',
     borderColor: '#6b21a8',
     borderWidth: 1,
+  
   },
   activeTabText: {
+    fontFamily: Fonts.semiBold,
     color: '#fff',
     fontWeight: '600',
   },
   inactiveTabText: {
+    fontFamily: Fonts.semiBold,
     color: '#6b21a8',
     fontWeight: '600',
   },
   input: {
+    fontFamily: Fonts.regular,
     backgroundColor: '#fff',
     borderColor: '#6b21a8',
     borderWidth: 1,
@@ -215,39 +238,52 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   passwordWrapper: {
+    
     position: 'relative',
+  
   },
   eyeIcon: {
+    
     position: 'absolute',
     right: 16,
     top: 12,
+  
   },
   error: {
+    fontFamily: Fonts.regular,
     color: 'red',
     fontSize: 14,
     marginBottom: 10,
   },
   options: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 12,
+  
   },
   link: {
+    
     color: '#6b21a8',
     textDecorationLine: 'underline',
+  
   },
   loginButton: {
+    
     backgroundColor: '#6b21a8',
     paddingVertical: 12,
     borderRadius: 30,
     alignItems: 'center',
     marginTop: 10,
+  
   },
   loginText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
   },
+
 });
 
 

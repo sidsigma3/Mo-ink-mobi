@@ -23,6 +23,7 @@ import IconFilter from 'react-native-vector-icons/Ionicons';
 import IconClose from 'react-native-vector-icons/Ionicons';
 import IconCheck from 'react-native-vector-icons/Ionicons';
 
+import { Fonts } from '../Utils/Fonts';
 const { height: screenHeight } = Dimensions.get('window');
 
 export default function Category() {
@@ -273,16 +274,22 @@ export default function Category() {
 }
 
 const styles = StyleSheet.create({
-  container: { 
+  
+  container: {
+     
     flex: 1, 
     backgroundColor: '#fff' 
+  
   },
   filterWrapper: {
+    
     alignItems: 'flex-end',
     marginHorizontal: 16,
     marginTop: 12,
+  
   },
   filterBtn: {
+    
     flexDirection: 'row',
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -291,85 +298,111 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     backgroundColor: '#fff',
+  
   },
   filterText: {
+    fontFamily: Fonts.medium,
     marginLeft: 6,
     color: '#6B21A8',
     fontSize: 14,
     fontWeight: '500',
   },
   grid: {
+    
     paddingHorizontal: 16,
     paddingBottom: 85,
     marginTop: 8,
+  
   },
-  loader: { 
+  loader: {
+     
     flex: 1, 
     justifyContent: 'center', 
     alignItems: 'center' 
+  
   },
   
   // Bottom Sheet Styles
   modalOverlay: {
+    
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'flex-end',
+  
   },
   bottomSheet: {
+    
     backgroundColor: '#fff',
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     maxHeight: screenHeight * 0.8,
     minHeight: screenHeight * 0.5,
+  
   },
   bottomSheetHeader: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#F3F4F6',
+  
   },
   bottomSheetTitle: {
+    fontFamily: Fonts.semiBold,
     fontSize: 18,
     fontWeight: '600',
     color: '#111827',
   },
   bottomSheetContent: {
+    
     flex: 1,
     padding: 16,
+  
   },
   filterSection: {
+    
     marginBottom: 24,
+  
   },
   filterSectionTitle: {
+    fontFamily: Fonts.semiBold,
     fontSize: 16,
     fontWeight: '600',
     color: '#111827',
     marginBottom: 12,
   },
   filterOption: {
+    
     paddingVertical: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#F3F4F6',
+  
   },
   filterOptionContent: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  
   },
   filterOptionText: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#374151',
   },
   bottomSheetActions: {
+    
     flexDirection: 'row',
     padding: 16,
     gap: 12,
     borderTopWidth: 1,
     borderTopColor: '#F3F4F6',
+  
   },
   clearAllBtn: {
+    
     flex: 1,
     paddingVertical: 12,
     borderRadius: 8,
@@ -377,22 +410,28 @@ const styles = StyleSheet.create({
     borderColor: '#D1D5DB',
     alignItems: 'center',
     backgroundColor: '#fff',
+  
   },
   clearAllText: {
+    fontFamily: Fonts.semiBold,
     fontSize: 14,
     fontWeight: '600',
     color: '#374151',
   },
   applyBtn: {
+    
     flex: 1,
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',
     backgroundColor: '#6B21A8',
+  
   },
   applyText: {
+    fontFamily: Fonts.semiBold,
     fontSize: 14,
     fontWeight: '600',
     color: '#fff',
   },
+
 });

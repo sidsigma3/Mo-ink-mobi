@@ -5,6 +5,7 @@ import * as Facebook from 'expo-facebook';
 import { GoogleAuthProvider, FacebookAuthProvider, signInWithCredential } from 'firebase/auth';
 import { auth } from './firebase';
 
+import { Fonts } from '../Utils/Fonts';
 // Google Config
 const googleDiscovery = {
   authorizationEndpoint: 'https://accounts.google.com/o/oauth2/v2/auth',

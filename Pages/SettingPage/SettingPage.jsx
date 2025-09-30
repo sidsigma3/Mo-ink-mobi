@@ -20,6 +20,7 @@ import Toast from '../../Components/Toast/Toast';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { Fonts } from '../Utils/Fonts';
 export default function SettingPage() {
   const navigation = useNavigation();
 
@@ -306,46 +307,90 @@ function LabelInput({ label, isHalf = false, style, ...props }) {
 
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
-  scrollContent: { paddingBottom: 100 },
-  formContainer: { paddingHorizontal: 16, paddingVertical: 8 },
+  
+  container: {
+     flex: 1, backgroundColor: '#fff' 
+  },
+  scrollContent: {
+     paddingBottom: 100 
+  },
+  formContainer: {
+     paddingHorizontal: 16, paddingVertical: 8 
+  },
   
   // Full width input group
-  inputGroup: { marginBottom: 12 },
+  inputGroup: {
+     marginBottom: 12 
+  },
   
   // Row container for 2 fields
 inputRow: {
+    
   flexDirection: "row",
   justifyContent: "space-between",
   marginBottom: 12,
-},
+
+  },
 
 // Half width inputs (always flex: 1)
 inputGroupHalf: {
+    
   flex: 1,
-},
+
+  },
 
 // Apply margin only to left item
 inputGroupHalfLeft: {
+    
   marginRight: 12,
-},
+
+  },
 
   
   // Special case for state dropdown to maintain consistent spacing
-  stateInputGroup: { marginBottom: 12 },
+  stateInputGroup: {
+     marginBottom: 12 
+  },
   
-  label: { fontSize: 14, fontWeight: 'bold', marginBottom: 4 },
-  input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 6, padding: 8, fontSize: 14 },
-  buttonRow: { flexDirection: 'row', justifyContent: 'space-between', padding: 16 },
-  button: { padding: 12, borderRadius: 6, width: '45%', alignItems: 'center' },
-  logoutBtn: { backgroundColor: '#FEE2E2' },
-  logoutText: { color: '#EF4444', fontWeight: 'bold' },
-  saveBtn: { backgroundColor: '#E9D5FF' },
-  saveText: { color: '#6B21A8', fontWeight: 'bold' },
-  disabledBtn: { backgroundColor: '#E5E7EB' },
-  disabledText: { color: '#9CA3AF' },
+  label: {
+    fontFamily: Fonts.bold,
+    fontSize: 14, fontWeight: 'bold', marginBottom: 4
+  },
+  input: {
+    fontFamily: Fonts.regular,
+    borderWidth: 1, borderColor: '#ccc', borderRadius: 6, padding: 8, fontSize: 14
+  },
+  buttonRow: {
+     flexDirection: 'row', justifyContent: 'space-between', padding: 16 
+  },
+  button: {
+     padding: 12, borderRadius: 6, width: '45%', alignItems: 'center' 
+  },
+  logoutBtn: {
+     backgroundColor: '#FEE2E2' 
+  },
+  logoutText: {
+    fontFamily: Fonts.bold,
+    color: '#EF4444', fontWeight: 'bold'
+  },
+  saveBtn: {
+     backgroundColor: '#E9D5FF' 
+  },
+  saveText: {
+    fontFamily: Fonts.bold,
+    color: '#6B21A8', fontWeight: 'bold'
+  },
+  disabledBtn: {
+     backgroundColor: '#E5E7EB' 
+  },
+  disabledText: {
+     color: '#9CA3AF' 
+  },
   bottomNavContainer: {
+    
     position: 'absolute', bottom: 0, left: 0, right: 0,
     backgroundColor: '#fff', elevation: 5
+  
   }
+
 });

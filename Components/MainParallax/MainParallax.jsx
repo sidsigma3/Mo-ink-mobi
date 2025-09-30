@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Fonts } from '../../Utils/Fonts';
 const MainParallax = () => {
   const { t } = useTranslation();
 
@@ -33,22 +34,30 @@ const MainParallax = () => {
 };
 
 const styles = StyleSheet.create({
+  
   background: {
+    
     height: 500,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+  
   },
   overlay: {
+    
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
+  
   },
   content: {
+    
     zIndex: 10,
     paddingHorizontal: 20,
     alignItems: 'center',
+  
   },
   title: {
+    fontFamily: Fonts.regular,
     color: '#ffffff',
     fontSize: 36,
     fontWeight: '900',
@@ -56,6 +65,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   description: {
+    fontFamily: Fonts.regular,
     color: '#ffffff',
     fontSize: 16,
     textAlign: 'center',
@@ -63,18 +73,22 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   button: {
+    
     backgroundColor: '#6b21a8',
     borderWidth: 1,
     borderColor: '#6b21a8',
     borderRadius: 999,
     paddingVertical: 10,
     paddingHorizontal: 32,
+  
   },
   buttonText: {
+    fontFamily: Fonts.semiBold,
     color: '#ffffff',
     fontWeight: '600',
     fontSize: 16,
   },
+
 });
 
 export default MainParallax;

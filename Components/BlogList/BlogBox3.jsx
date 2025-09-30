@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const BlogBox3 = () => {
   const { t } = useTranslation();
   const navigation = useNavigation();
@@ -43,40 +44,53 @@ const BlogBox3 = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     borderRadius: 16,
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#e5e7eb', // Tailwind's gray-100
     overflow: 'hidden',
     marginBottom: 16,
+  
   },
   image: {
+    
     width: '100%',
     height: 150,
+  
   },
   content: {
+    
     padding: 12,
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 18,
     fontWeight: '600',
     color: '#111827', // Tailwind's gray-900
     marginBottom: 8,
   },
   description: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#6b7280', // Tailwind's gray-500
     marginBottom: 12,
   },
   readMore: {
+    
     alignSelf: 'flex-start',
+  
   },
   readMoreText: {
+    fontFamily: Fonts.medium,
     color: '#6D28D9', // Tailwind's purple-800
     fontSize: 14,
     fontWeight: '500',
   },
+
 });
 
 export default BlogBox3;

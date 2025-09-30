@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import LoginPage from './Login/LoginPage';
 import SignupPage from './SignUp/SignupPage';
-
+import { Fonts } from '../../Utils/Fonts';
 const AuthPage = ({ setAuthStatus }) => {
   const [isLogin, setIsLogin] = useState(true);
 
@@ -26,14 +26,18 @@ const AuthPage = ({ setAuthStatus }) => {
 export default AuthPage;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#f3f4f6', // light gray background
     justifyContent: 'center',
     alignItems: 'center',
     // paddingHorizontal: 20,
+  
   },
   formWrapper: {
+    
     width: '100%',
     maxWidth: 400,
     backgroundColor: '#fff',
@@ -41,8 +45,10 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     shadowColor: '#000',
     shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 2 
+  },
     shadowRadius: 6,
     elevation: 5,
   },
+
 });

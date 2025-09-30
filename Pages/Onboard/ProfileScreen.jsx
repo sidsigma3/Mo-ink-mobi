@@ -10,6 +10,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateCustomerDetails } from '../../Service/authService';
 
+import { Fonts } from '../../Utils/Fonts';
 export default function ProfileScreen({ navigation, route }) {
   const { customer } = route.params || {};
 
@@ -115,24 +116,31 @@ export default function ProfileScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#FBFAF7',
     paddingHorizontal: 20,
     paddingTop: 120, // Add top padding for status bar
     paddingBottom: 40, // Add bottom padding
+  
   },
   content: {
+    
     flex: 1,
     justifyContent: 'flex-start',
+  
   },
   header: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     marginBottom: 4,
     fontWeight: 'bold',
     textAlign: 'start',
   },
   subheader: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     lineHeight: 24,
     marginBottom: 32,
@@ -140,6 +148,7 @@ const styles = StyleSheet.create({
     textAlign: 'start',
   },
   input: {
+    fontFamily: Fonts.regular,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
@@ -149,15 +158,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
+    
     backgroundColor: '#6B21A8', // Same purple color as CreateAccountScreen
     padding: 18,
     borderRadius: 12,
     marginTop: 'auto', // This pushes the button to the bottom
+  
   },
   buttonText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 16,
   },
+
 });

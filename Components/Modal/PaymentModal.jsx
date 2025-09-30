@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, View, Text, TouchableOpacity, TextInput, StyleSheet, ActivityIndicator, Alert, ScrollView } from 'react-native';
 
+import { Fonts } from '../../Utils/Fonts';
 const PaymentModal = ({
   isOpen,
   onClose,
@@ -214,14 +215,18 @@ const PaymentModal = ({
 };
 
 const styles = StyleSheet.create({
+  
   overlay: {
+    
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.6)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
+  
   },
   modal: {
+    
     backgroundColor: '#fff',
     borderRadius: 18,
     width: '100%',
@@ -229,17 +234,27 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
     elevation: 8,
     overflow: 'hidden',
+  
   },
   header: {
+    
     padding: 16,
     borderBottomWidth: 1,
     borderColor: '#eee',
     backgroundColor: '#F3F4F6',
     position: 'relative',
+  
   },
-  headerTitle: { fontSize: 20, fontWeight: 'bold', color: '#222' },
-  headerSubtitle: { fontSize: 14, color: '#888', marginTop: 2 },
+  headerTitle: {
+    fontFamily: Fonts.bold,
+    fontSize: 20, fontWeight: 'bold', color: '#222'
+  },
+  headerSubtitle: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, color: '#888', marginTop: 2
+  },
   closeBtn: {
+    
     position: 'absolute',
     top: 12,
     right: 12,
@@ -247,13 +262,28 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: '#fff',
     elevation: 2,
+  
   },
-  closeBtnText: { fontSize: 22, color: '#888', fontWeight: 'bold' },
-  formSection: { padding: 16 },
-  label: { fontSize: 15, fontWeight: 'bold', color: '#222', marginBottom: 8 },
-  inputRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
-  inputPrefix: { fontSize: 18, color: '#888', marginRight: 4 },
+  closeBtnText: {
+    fontFamily: Fonts.bold,
+    fontSize: 22, color: '#888', fontWeight: 'bold'
+  },
+  formSection: {
+     padding: 16 
+  },
+  label: {
+    fontFamily: Fonts.bold,
+    fontSize: 15, fontWeight: 'bold', color: '#222', marginBottom: 8
+  },
+  inputRow: {
+     flexDirection: 'row', alignItems: 'center', marginBottom: 8 
+  },
+  inputPrefix: {
+    fontFamily: Fonts.regular,
+    fontSize: 18, color: '#888', marginRight: 4
+  },
   input: {
+    fontFamily: Fonts.bold,
     flex: 1,
     fontSize: 18,
     fontWeight: 'bold',
@@ -265,9 +295,14 @@ const styles = StyleSheet.create({
     borderColor: '#eee',
     color: '#222',
   },
-  inputError: { borderColor: '#DC2626' },
-  quickRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
+  inputError: {
+     borderColor: '#DC2626' 
+  },
+  quickRow: {
+     flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 
+  },
   quickBtn: {
+    
     backgroundColor: '#F3F4F6',
     borderRadius: 8,
     paddingHorizontal: 12,
@@ -275,11 +310,20 @@ const styles = StyleSheet.create({
     marginRight: 6,
     borderWidth: 1,
     borderColor: '#eee',
+  
   },
-  quickBtnText: { fontWeight: 'bold', color: '#6D28D9', fontSize: 15 },
-  termsRow: { paddingHorizontal: 16, marginBottom: 8 },
-  checkbox: { flexDirection: 'row', alignItems: 'center', marginBottom: 4 },
+  quickBtnText: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', color: '#6D28D9', fontSize: 15
+  },
+  termsRow: {
+     paddingHorizontal: 16, marginBottom: 8 
+  },
+  checkbox: {
+     flexDirection: 'row', alignItems: 'center', marginBottom: 4 
+  },
   checkboxBox: {
+    
     width: 22,
     height: 22,
     borderRadius: 6,
@@ -289,25 +333,55 @@ const styles = StyleSheet.create({
     marginRight: 8,
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
-  checkboxChecked: { borderColor: '#6D28D9', backgroundColor: '#EDE9FE' },
-  checkboxError: { borderColor: '#DC2626' },
-  checkboxTick: { fontSize: 16, color: '#6D28D9', fontWeight: 'bold' },
-  checkboxLabel: { fontSize: 14, color: '#222', flex: 1 },
-  errorText: { color: '#DC2626', fontSize: 13, marginTop: 2, marginBottom: 2 },
+  checkboxChecked: {
+     borderColor: '#6D28D9', backgroundColor: '#EDE9FE' 
+  },
+  checkboxError: {
+     borderColor: '#DC2626' 
+  },
+  checkboxTick: {
+    fontFamily: Fonts.bold,
+    fontSize: 16, color: '#6D28D9', fontWeight: 'bold'
+  },
+  checkboxLabel: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, color: '#222', flex: 1
+  },
+  errorText: {
+    fontFamily: Fonts.regular,
+    color: '#DC2626', fontSize: 13, marginTop: 2, marginBottom: 2
+  },
   summaryBox: {
+    
     backgroundColor: '#F3F4F6',
     borderRadius: 14,
     padding: 12,
     margin: 16,
     marginTop: 8,
+  
   },
-  summaryTitle: { fontWeight: 'bold', fontSize: 16, color: '#222', marginBottom: 8 },
-  summaryRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
-  summaryLabel: { color: '#555', fontSize: 14 },
-  summaryValue: { fontWeight: 'bold', color: '#222', fontSize: 15 },
-  actionRow: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 16, marginTop: 8 },
+  summaryTitle: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', fontSize: 16, color: '#222', marginBottom: 8
+  },
+  summaryRow: {
+     flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 
+  },
+  summaryLabel: {
+    fontFamily: Fonts.regular,
+    color: '#555', fontSize: 14
+  },
+  summaryValue: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', color: '#222', fontSize: 15
+  },
+  actionRow: {
+     flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 16, marginTop: 8 
+  },
   cancelBtn: {
+    
     flex: 1,
     backgroundColor: '#fff',
     borderWidth: 2,
@@ -316,17 +390,29 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
     marginRight: 8,
+  
   },
-  cancelBtnText: { color: '#222', fontWeight: 'bold', fontSize: 16 },
+  cancelBtnText: {
+    fontFamily: Fonts.bold,
+    color: '#222', fontWeight: 'bold', fontSize: 16
+  },
   payBtn: {
+    
     flex: 1,
     backgroundColor: '#6D28D9',
     borderRadius: 8,
     paddingVertical: 10,
     alignItems: 'center',
+  
   },
-  payBtnDisabled: { backgroundColor: '#ccc' },
-  payBtnText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
+  payBtnDisabled: {
+     backgroundColor: '#ccc' 
+  },
+  payBtnText: {
+    fontFamily: Fonts.bold,
+    color: '#fff', fontWeight: 'bold', fontSize: 16
+  },
+
 });
 
 export default PaymentModal;

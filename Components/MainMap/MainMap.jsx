@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, Platform } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Fonts } from '../../Utils/Fonts';
 const { width } = Dimensions.get('window');
 
 const MainMap = () => {
@@ -53,17 +54,23 @@ const MainMap = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     backgroundColor: '#fff',
     paddingVertical: 48,
     alignItems: 'center',
+  
   },
   textWrapper: {
+    
     alignItems: 'center',
     paddingHorizontal: 16,
     maxWidth: 800,
+  
   },
   subtitle: {
+    fontFamily: Fonts.bold,
     color: '#6b21a8',
     fontSize: 16,
     fontWeight: 'bold',
@@ -72,12 +79,14 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 28,
     fontWeight: '600',
     color: '#111827',
     textAlign: 'center',
   },
   description: {
+    fontFamily: Fonts.regular,
     marginTop: 16,
     fontSize: 16,
     color: '#6B7280',
@@ -85,21 +94,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   mapWrapper: {
+    
     width: '100%',
     marginTop: 40,
     paddingHorizontal: 16,
+  
   },
   image: {
+    
     width: width - 32,
     height: width * 0.6,
     alignSelf: 'center',
+  
   },
   map: {
+    
     width: width - 32,
     height: width * 0.6,
     alignSelf: 'center',
     borderRadius: 12,
+  
   },
+
 });
 
 export default MainMap;

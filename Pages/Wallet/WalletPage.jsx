@@ -12,6 +12,7 @@ import { getWalletTransactions } from "../../Service/CustomerService";
 import { downloadCreditReceipt } from "../../Service/InvoiceService";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { Fonts } from '../Utils/Fonts';
 const WalletPage = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -176,16 +177,29 @@ const WalletPage = () => {
 };
 
 const styles = StyleSheet.create({
+  
   balanceBox: {
+    
     backgroundColor: "#ede9fe",
     padding: 12,
     alignItems: "center",
     marginTop: 15,
+  
   },
-  balanceLabel: { fontSize: 18, fontWeight: "bold" },
-  balanceAmount: { fontSize: 18, fontWeight: "bold", color: "green" },
-  sectionTitle: { fontSize: 20, fontWeight: "bold", marginVertical: 8 },
+  balanceLabel: {
+    fontFamily: Fonts.bold,
+    fontSize: 18, fontWeight: "bold"
+  },
+  balanceAmount: {
+    fontFamily: Fonts.bold,
+    fontSize: 18, fontWeight: "bold", color: "green"
+  },
+  sectionTitle: {
+    fontFamily: Fonts.bold,
+    fontSize: 20, fontWeight: "bold", marginVertical: 8
+  },
   transactionCard: {
+    
     flexDirection: "row",
     padding: 12,
     borderWidth: 1,
@@ -193,23 +207,37 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 12,
     alignItems: "center",
+  
   },
   transactionDate: {
+    
     backgroundColor: "#5b21b6",
     padding: 8,
     borderRadius: 8,
     alignItems: "center",
+  
   },
-  transactionDay: { color: "#fff", fontWeight: "bold", fontSize: 16 },
-  transactionMonth: { color: "#fff", fontSize: 12 },
+  transactionDay: {
+    fontFamily: Fonts.bold,
+    color: "#fff", fontWeight: "bold", fontSize: 16
+  },
+  transactionMonth: {
+    fontFamily: Fonts.regular,
+    color: "#fff", fontSize: 12
+  },
   downloadButton: {
+    
     marginTop: 4,
     backgroundColor: "#ede9fe",
     borderRadius: 50,
     padding: 4,
     alignSelf: "flex-end",
+  
   },
-  center: { alignItems: "center", justifyContent: "center", padding: 20 },
+  center: {
+     alignItems: "center", justifyContent: "center", padding: 20 
+  },
+
 });
 
 export default WalletPage;

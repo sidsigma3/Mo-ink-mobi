@@ -3,6 +3,7 @@ import { View, Text, ScrollView, FlatList, TouchableOpacity, StyleSheet } from '
 import ProductDetailBox from './ProductDetailBox'; // Use your RN version
 import { fetchProducts } from '../../Service/ProductService';
 
+import { Fonts } from '../../Utils/Fonts';
 const SliderCard = ({ title, data, onViewAll }) => {
   const flatListRef = useRef(null);
 
@@ -160,38 +161,54 @@ const ProductList = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAFC' },
-  productSection: { marginBottom: 24 },
-  sliderCard: { 
+  
+  container: {
+     flex: 1, backgroundColor: '#F8FAFC' 
+  },
+  productSection: {
+     marginBottom: 24 
+  },
+  sliderCard: {
+     
     marginHorizontal: 8, 
     marginBottom: 8 
+  
   },
   sliderHeader: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
     marginTop: 12,
     paddingHorizontal: 8, // Add padding for better spacing from edges
+  
   },
-  sliderTitle: { 
+  sliderTitle: {
+    fontFamily: Fonts.bold,
     fontSize: 20, 
     fontWeight: 'bold', 
     color: '#6D28D9',
     flex: 1, // Allow title to take available space
   },
-  viewAllBtn: { 
+  viewAllBtn: {
+    fontFamily: Fonts.bold,
     color: '#6D28D9', 
     fontWeight: 'bold', 
     fontSize: 15,
     paddingVertical: 4,
     paddingHorizontal: 8, // Add padding for better touch area
   },
-  sliderList: { paddingBottom: 8 },
-  sliderItem: { 
+  sliderList: {
+     paddingBottom: 8 
+  },
+  sliderItem: {
+     
     marginRight: 17, 
     width: 160
+  
   },
+
 });
 
 export default ProductList;

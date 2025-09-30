@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Picker } from "@react-native-picker/picker";
 
+import { Fonts } from '../../Utils/Fonts';
 const ProductDetailBoxMini = ({
   productName,
   price,
@@ -154,17 +155,25 @@ const ProductDetailBoxMini = ({
 };
 
 const styles = StyleSheet.create({
-  container: { margin: 10 },
+  
+  container: {
+     margin: 10 
+  },
   card: {
+    
     flexDirection: 'row',
     backgroundColor: '#fff',
     borderRadius: 12,
     elevation: 2,
     padding: 10,
     alignItems: 'center',
+  
   },
-  checkbox: { position: 'absolute', top: 10, left: 10, zIndex: 2 },
+  checkbox: {
+     position: 'absolute', top: 10, left: 10, zIndex: 2 
+  },
   imageContainer: {
+    
     width: 100,
     height: 100,
     borderRadius: 12,
@@ -173,27 +182,58 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
-  image: { width: '100%', height: '100%' },
-  details: { flex: 1 },
-  productName: { fontWeight: 'bold', fontSize: 16 },
-  dot: { fontSize: 18, color: '#888' },
-  colorText: { fontSize: 14, color: '#555', marginTop: 2 },
-  priceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 8 },
-  price: { color: '#6D28D9', fontWeight: 'bold', fontSize: 18 },
-  markupPrice: { color: '#aaa', textDecorationLine: 'line-through', marginLeft: 8 },
+  image: {
+     width: '100%', height: '100%' 
+  },
+  details: {
+     flex: 1 
+  },
+  productName: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', fontSize: 16
+  },
+  dot: {
+    fontFamily: Fonts.regular,
+    fontSize: 18, color: '#888'
+  },
+  colorText: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, color: '#555', marginTop: 2
+  },
+  priceRow: {
+     flexDirection: 'row', alignItems: 'center', marginTop: 8 
+  },
+  price: {
+    fontFamily: Fonts.bold,
+    color: '#6D28D9', fontWeight: 'bold', fontSize: 18
+  },
+  markupPrice: {
+     color: '#aaa', textDecorationLine: 'line-through', marginLeft: 8 
+  },
   rating: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FFF9C4',
     borderRadius: 8,
     paddingHorizontal: 6,
     marginLeft: 10,
+  
   },
-  ratingText: { marginLeft: 4, color: '#FFD700', fontWeight: 'bold' },
-  row: { flexDirection: 'row', alignItems: 'center', marginTop: 10 },
-  weightPicker: { flex: 1 },
+  ratingText: {
+    fontFamily: Fonts.bold,
+    marginLeft: 4, color: '#FFD700', fontWeight: 'bold'
+  },
+  row: {
+     flexDirection: 'row', alignItems: 'center', marginTop: 10 
+  },
+  weightPicker: {
+     flex: 1 
+  },
   quantityContainer: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
@@ -201,11 +241,21 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
     marginLeft: 10,
+  
   },
-  qtyBtn: { padding: 6 },
-  qtyBtnText: { fontSize: 18, color: '#555' },
-  qtyText: { fontSize: 16, marginHorizontal: 8 },
+  qtyBtn: {
+     padding: 6 
+  },
+  qtyBtnText: {
+    fontFamily: Fonts.regular,
+    fontSize: 18, color: '#555'
+  },
+  qtyText: {
+    fontFamily: Fonts.regular,
+    fontSize: 16, marginHorizontal: 8
+  },
   variantType: {
+    fontFamily: Fonts.bold,
     backgroundColor: '#EDE9FE',
     color: '#6D28D9',
     paddingHorizontal: 8,
@@ -215,8 +265,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginRight: 10,
   },
-  wishlistBtn: { marginLeft: 10 },
-  removeBtn: { marginLeft: 10 },
+  wishlistBtn: {
+     marginLeft: 10 
+  },
+  removeBtn: {
+     marginLeft: 10 
+  },
+
 });
 
 export default ProductDetailBoxMini;

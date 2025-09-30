@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const NavbarHeader = () => {
   const navigation = useNavigation();
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -106,7 +107,9 @@ const NavbarHeader = () => {
 export default NavbarHeader;
 
 const styles = StyleSheet.create({
+  
   header: {
+    
     backgroundColor: '#fff',
     paddingVertical: 10,
     paddingHorizontal: 16,
@@ -114,51 +117,68 @@ const styles = StyleSheet.create({
     justifyContent: 'space-start',
     alignItems: 'center',
     paddingTop:30,
+  
   },
   logo: {
+    
     width: 120,
     height: 40,
     resizeMode: 'contain',
+  
   },
   iconGroup: {
+    
     flexDirection: 'row',
     gap: 20,
+  
   },
   modalOverlay: {
+    
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.3)',
     justifyContent: 'flex-end',
+  
   },
   sidebar: {
+    
     height: '60%',
     backgroundColor: '#fff',
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     padding: 20,
+  
   },
   sidebarHeader: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  
   },
   sidebarTitle: {
+    fontFamily: Fonts.bold,
     fontSize: 20,
     fontWeight: 'bold',
   },
   sidebarItem: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     paddingVertical: 12,
     color: '#333',
   },
   logoutButton: {
+    
     marginTop: 20,
     backgroundColor: '#E53935',
     paddingVertical: 12,
     borderRadius: 8,
+  
   },
   logoutText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     textAlign: 'center',
     fontWeight: 'bold',
   },
+
 });

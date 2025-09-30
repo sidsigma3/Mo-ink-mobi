@@ -7,6 +7,7 @@ import ReturnModal from '../Modal/ReturnModal';
 import Toast from '../Toast/Toast'; 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { Fonts } from '../../Utils/Fonts';
 const statusOptions = {
   NEW: "New Order",
   CANCELLED: "Cancelled",
@@ -194,7 +195,9 @@ const OrderListBox = ({ item, status, orderId }) => {
 };
 
 const styles = StyleSheet.create({
+  
   box: {
+    
     flexDirection: 'row',
     backgroundColor: '#fff',
     borderRadius: 12,
@@ -204,8 +207,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     minHeight: 110,
     position: 'relative',
+  
   },
   imageSection: {
+    
     width: 80,
     height: 80,
     borderRadius: 10,
@@ -214,61 +219,77 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
   image: {
+    
     width: 64,
     height: 64,
     borderRadius: 10,
+  
   },
   infoSection: {
+    
     flex: 1,
     justifyContent: 'center',
+  
   },
   productTitle: {
+    fontFamily: Fonts.bold,
     fontWeight: 'bold',
     fontSize: 15,
     color: '#222',
     marginBottom: 2,
   },
   colorText: {
+    fontFamily: Fonts.bold,
     fontSize: 14,
     color: '#555',
     fontWeight: 'bold',
   },
   colorCode: {
+    fontFamily: Fonts.bold,
     fontSize: 13,
     color: '#888',
     fontWeight: 'bold',
     marginBottom: 2,
   },
   statusBadge: {
+    
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 8,
     marginTop: 6,
+  
   },
   statusText: {
+    fontFamily: Fonts.bold,
     fontSize: 13,
     fontWeight: 'bold',
   },
   priceSection: {
+    
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 80,
+  
   },
   price: {
+    fontFamily: Fonts.bold,
     fontWeight: 'bold',
     fontSize: 16,
     color: '#7C3AED',
   },
   weight: {
+    fontFamily: Fonts.medium,
     fontSize: 13,
     color: '#555',
     fontWeight: '500',
     marginBottom: 2,
   },
   returnRequestedBadge: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FEF3C7',
@@ -276,29 +297,38 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 2,
     marginTop: 6,
+  
   },
   returnDot: {
+    
     width: 8,
     height: 8,
     borderRadius: 4,
     backgroundColor: '#F59E42',
     marginRight: 6,
+  
   },
   returnRequestedText: {
+    fontFamily: Fonts.bold,
     fontSize: 13,
     color: '#CA8A04',
     fontWeight: 'bold',
   },
   returnBtn: {
+    
     marginTop: 8,
     padding: 6,
     borderRadius: 8,
     backgroundColor: '#EDE9FE',
+  
   },
   returnBtnDisabled: {
+    
     backgroundColor: '#f3f3f3',
+  
   },
   receiptBtn: {
+    
     position: 'absolute',
     right: 12,
     bottom: 12,
@@ -308,13 +338,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 6,
+  
   },
   receiptText: {
+    fontFamily: Fonts.bold,
     marginLeft: 6,
     color: '#16A34A',
     fontWeight: 'bold',
     fontSize: 14,
   },
+
 });
 
 export default OrderListBox;

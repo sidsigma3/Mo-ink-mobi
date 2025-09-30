@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { Fonts } from '../Utils/Fonts';
 const ReturnInfo = () => {
   return (
     <ScrollView style={styles.container}>
@@ -95,20 +96,28 @@ const NumberedList = ({ items }) => (
 );
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAFC' },
+  
+  container: {
+     flex: 1, backgroundColor: '#F8FAFC' 
+  },
   heroSection: {
+    
     alignItems: 'center',
     paddingVertical: 32,
     backgroundColor: '#fff',
     paddingHorizontal: 16,
+  
   },
   iconCircle: {
+    
     backgroundColor: '#F3F4F6',
     padding: 16,
     borderRadius: 50,
     marginBottom: 12,
+  
   },
   heroTitle: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     fontWeight: 'bold',
     color: '#6B21A8',
@@ -116,19 +125,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   heroSubtitle: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     color: '#555',
     textAlign: 'center',
     marginBottom: 16,
   },
   contentBox: {
+    
     backgroundColor: '#fff',
     margin: 16,
     borderRadius: 16,
     padding: 20,
     elevation: 2,
+  
   },
   sectionTitle: {
+    fontFamily: Fonts.semiBold,
     fontSize: 18,
     fontWeight: '600',
     color: '#222',
@@ -136,28 +149,49 @@ const styles = StyleSheet.create({
     marginTop: 18,
   },
   sectionContent: {
+    fontFamily: Fonts.regular,
     fontSize: 15,
     color: '#555',
     marginBottom: 8,
   },
-  list: { marginLeft: 12, marginBottom: 8 },
-  listItem: { fontSize: 15, color: '#555', marginBottom: 4 },
-  helpBox: { marginTop: 8, marginBottom: 8 },
-  helpText: { fontSize: 15, color: '#555', marginBottom: 4 },
-  bold: { fontWeight: 'bold', color: '#222' },
-  email: { color: '#2563EB', fontWeight: 'bold' },
+  list: {
+     marginLeft: 12, marginBottom: 8 
+  },
+  listItem: {
+    fontFamily: Fonts.regular,
+    fontSize: 15, color: '#555', marginBottom: 4
+  },
+  helpBox: {
+     marginTop: 8, marginBottom: 8 
+  },
+  helpText: {
+    fontFamily: Fonts.regular,
+    fontSize: 15, color: '#555', marginBottom: 4
+  },
+  bold: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', color: '#222'
+  },
+  email: {
+    fontFamily: Fonts.bold,
+    color: '#2563EB', fontWeight: 'bold'
+  },
   lastUpdated: {
+    
     borderTopWidth: 1,
     borderTopColor: '#eee',
     marginTop: 24,
     paddingTop: 12,
     alignItems: 'center',
+  
   },
   lastUpdatedText: {
+    fontFamily: Fonts.regular,
     fontSize: 13,
     color: '#888',
     textAlign: 'center',
   },
+
 });
 
 export default ReturnInfo;

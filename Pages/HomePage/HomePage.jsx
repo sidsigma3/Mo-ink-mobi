@@ -19,6 +19,7 @@ import Testimonial from '../../Components/Testimonial/Testimonial';
 import Cta from '../../Components/Cta/Cta';
 import Footer from '../../Components/Footer/Footer';
 
+// import { Fonts } from '../../Utils/Fonts';
 export default function HomePage() {
   return (
      <FlatList
@@ -54,9 +55,13 @@ export default function HomePage() {
 }
 
 const styles = StyleSheet.create({
+  
   contentContainer: {
+    
     paddingTop: 40,
     paddingBottom: 100,
     backgroundColor: '#fff',
+  
   },
+
 });

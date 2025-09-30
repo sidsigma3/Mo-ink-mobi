@@ -9,6 +9,7 @@ import Footer from "../../Components/Footer/Footer";
 import Inquiries from "../../Components/Inquiries/Inquiries";
 import BottomNav from "../../Components/BottomNav/BottomNav";
 
+import { Fonts } from '../Utils/Fonts';
 const ContactPage = () => {
   useEffect(() => {
     // In React Native there's no window.scrollTo
@@ -57,23 +58,35 @@ const ContactPage = () => {
 export default ContactPage;
 
 const styles = StyleSheet.create({
+  
   safeArea: {
+    
     flex: 1,
     backgroundColor: "#fff",
+  
   },
   container: {
+    
     flex: 1,
     position: "relative",
+  
   },
   scrollContainer: {
+    
     paddingHorizontal: 16,
     paddingTop: 8,
     paddingBottom: 80, // leave space for bottom nav
+  
   },
   section: {
+    
     marginBottom: 20,
+  
   },
   navbarWrapper: {
+    
     display: "none", // Hide if you don't want navbar on mobile
+  
   },
+
 });

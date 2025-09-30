@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Fonts } from '../../Utils/Fonts';
 const MainCone = () => {
   const { t } = useTranslation();
   const { width } = useWindowDimensions();
@@ -52,30 +53,44 @@ const MainCone = () => {
 };
 
 const styles = StyleSheet.create({
+  
   scrollContainer: {
+    
     backgroundColor: '#FFFBED',
     paddingVertical: 40,
     paddingHorizontal: 16,
+  
   },
   container: {
+    
     flexDirection: 'column',
     gap: 30,
+  
   },
   containerLarge: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
+  
   },
   column: {
+    
     flex: 1,
     gap: 16,
+  
   },
   reverseColumn: {
+    
     flexDirection: 'column-reverse',
+  
   },
   textBlock: {
+    
     paddingHorizontal: 10,
+  
   },
   subtitle: {
+    fontFamily: Fonts.bold,
     color: '#6b21a8',
     fontSize: 16,
     fontWeight: 'bold',
@@ -84,20 +99,25 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 26,
     fontWeight: '600',
     color: '#000',
     marginBottom: 10,
   },
   description: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#4B5563',
   },
   image: {
+    
     width: '100%',
     height: 200,
     borderRadius: 16,
+  
   },
+
 });
 
 export default MainCone;

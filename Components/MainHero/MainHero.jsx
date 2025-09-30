@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
+import { Fonts } from '../../Utils/Fonts';
 
 const { width } = Dimensions.get('window');
 const screenHeight = Dimensions.get('window').height;
@@ -112,13 +113,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   heading: {
+    fontFamily: Fonts.bold,
     fontSize: 26,
-    fontWeight: 'bold',
+    fontWeight: '700',
     textAlign: 'center',
     marginBottom: 12,
     color: '#000',
   },
   subtext: {
+    fontFamily: Fonts.regular,
     textAlign: 'center',
     color: '#4b5563', // gray-800
     marginBottom: 20,
@@ -132,8 +135,9 @@ const styles = StyleSheet.create({
     borderColor: '#6b21a8',
   },
   buttonText: {
+    fontFamily: Fonts.medium,
     color: '#fff',
-    fontWeight: '600',
+    fontWeight: '500',
   },
   desktopWrapper: {
     width: '100%',
@@ -143,13 +147,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   desktopHeading: {
+    fontFamily: Fonts.bold,
     fontSize: 34,
-    fontWeight: 'bold',
+    fontWeight: '700',
     color: '#000',
     textAlign: 'center',
     marginBottom: 12,
   },
   desktopSubtext: {
+    fontFamily: Fonts.regular,
     textAlign: 'center',
     color: '#4b5563',
     marginBottom: 20,

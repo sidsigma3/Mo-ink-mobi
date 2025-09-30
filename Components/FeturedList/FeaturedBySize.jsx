@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet } from 'react
 import { fetchProducts } from '../../Service/ProductService';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const CATEGORY_IMAGES = {
   'cotton': 'https://ik.imagekit.io/mediadata/Mo%20Ink%20n%20Dyes/Group%2017078565.png?updatedAt=1751277730814',
   'bamboo': 'https://ik.imagekit.io/mediadata/Mo%20Ink%20n%20Dyes/Group%201707478566.png?updatedAt=1751278205292',
@@ -145,11 +146,22 @@ const FeaturedBySize = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { marginTop: 24, marginBottom: 24, paddingHorizontal: 16 },
-  headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
-  header: { fontSize: 22, fontWeight: 'bold', color: '#6D28D9', paddingVertical: 8 },
-  flatList: { paddingBottom: 12 },
+  
+  container: {
+     marginTop: 24, marginBottom: 24, paddingHorizontal: 16 
+  },
+  headerRow: {
+     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 
+  },
+  header: {
+    fontFamily: Fonts.bold,
+    fontSize: 22, fontWeight: 'bold', color: '#6D28D9', paddingVertical: 8
+  },
+  flatList: {
+     paddingBottom: 12 
+  },
   card: {
+    
     backgroundColor: '#fff',
     borderRadius: 50,
     flexDirection: 'row',
@@ -159,20 +171,39 @@ const styles = StyleSheet.create({
     minWidth: 180,
     borderWidth: 1,
     borderColor: '#dbdbdbff',
+  
   },
   cardImage: {
+    
     width: 56,
     height: 56,
     borderRadius: 28,
     marginRight: 12,
     backgroundColor: '#eee',
+  
   },
-  cardContent: { flex: 1 },
-  cardTitle: { fontSize: 16, fontWeight: 'bold', color: '#6D28D9', marginBottom: 2 },
-  cardSubtitle: { fontSize: 13, color: '#555' },
-  bold: { fontWeight: 'bold', color: '#222' },
-  coneText: { color: '#D7263D' },
-  hankText: { color: '#F59E42' },
+  cardContent: {
+     flex: 1 
+  },
+  cardTitle: {
+    fontFamily: Fonts.bold,
+    fontSize: 16, fontWeight: 'bold', color: '#6D28D9', marginBottom: 2
+  },
+  cardSubtitle: {
+    fontFamily: Fonts.regular,
+    fontSize: 13, color: '#555'
+  },
+  bold: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', color: '#222'
+  },
+  coneText: {
+     color: '#D7263D' 
+  },
+  hankText: {
+     color: '#F59E42' 
+  },
+
 });
 
 export default FeaturedBySize;

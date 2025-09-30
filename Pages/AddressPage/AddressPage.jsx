@@ -22,6 +22,7 @@ import BottomNav from '../../Components/BottomNav/BottomNav';
 import { getCustomerDetails, deleteCustomerAddress } from '../../Service/CustomerService';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import { Fonts } from '../Utils/Fonts';
 export default function AddressPage() {
   const [showModal, setShowModal] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -221,55 +222,77 @@ export default function AddressPage() {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#fff',
+  
   },
   scrollContent: {
+    
     padding: 16,
     paddingBottom: 80,
+  
   },
   addButtonWrapper: {
+    
     alignItems: 'flex-end',
     marginBottom: 12,
+  
   },
   addButton: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#E9D5FF',
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 8,
+  
   },
   addButtonDisabled: {
+    
     backgroundColor: '#f3f3f3',
+  
   },
   addButtonText: {
+    fontFamily: Fonts.bold,
     color: '#6B21A8',
     fontWeight: 'bold',
     marginRight: 6,
   },
   addButtonTextDisabled: {
+    
     color: '#ccc',
+  
   },
   emptyState: {
+    
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 40,
+  
   },
   emptyText: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     color: '#888',
     marginTop: 8,
   },
   loader: {
+    
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
   toastWrapper: {
+    
     position: 'absolute',
     top: 40,
     right: 10,
+  
   },
+
 });

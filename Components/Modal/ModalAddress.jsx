@@ -1,5 +1,6 @@
 // ModalAddress.native.js
 import React, { useState, useEffect } from "react";
+import { Fonts } from '../../Utils/Fonts';
 import {
   Modal,
   View,
@@ -250,29 +251,45 @@ const ModalAddress = ({
 };
 
 const styles = StyleSheet.create({
+  
   overlay: {
+    
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "center",
     padding: 20,
+  
   },
   container: {
+    
     backgroundColor: "#fff",
     borderRadius: 10,
     padding: 15,
     maxHeight: "90%",
+  
   },
-  title: { fontSize: 18, fontWeight: "bold", marginBottom: 10 },
+  title: {
+    fontFamily: Fonts.bold,
+    fontSize: 18, fontWeight: "bold", marginBottom: 10
+  },
   input: {
+    
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 8,
     padding: 8,
     marginBottom: 10,
+  
   },
-  label: { fontWeight: "bold", marginTop: 10 },
-  typeContainer: { flexDirection: "row", gap: 10, marginTop: 5 },
+  label: {
+    fontFamily: Fonts.bold,
+    fontWeight: "bold", marginTop: 10
+  },
+  typeContainer: {
+     flexDirection: "row", gap: 10, marginTop: 5 
+  },
   typeButton: {
+    
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
@@ -281,19 +298,38 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     marginRight: 10,
+  
   },
-  typeButtonActive: { backgroundColor: "#6b21a8", borderColor: "#6b21a8" },
-  typeButtonDisabled: { backgroundColor: "#f0f0f0", borderColor: "#ddd" },
-  typeText: { marginLeft: 5 },
+  typeButtonActive: {
+     backgroundColor: "#6b21a8", borderColor: "#6b21a8" 
+  },
+  typeButtonDisabled: {
+     backgroundColor: "#f0f0f0", borderColor: "#ddd" 
+  },
+  typeText: {
+     marginLeft: 5 
+  },
   footer: {
+    
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 15,
+  
   },
-  button: { flex: 1, marginHorizontal: 5, padding: 10, borderRadius: 8 },
-  cancelButton: { backgroundColor: "#6b7280" },
-  saveButton: { backgroundColor: "#6b21a8" },
-  buttonText: { color: "#fff", textAlign: "center", fontWeight: "bold" },
+  button: {
+     flex: 1, marginHorizontal: 5, padding: 10, borderRadius: 8 
+  },
+  cancelButton: {
+     backgroundColor: "#6b7280" 
+  },
+  saveButton: {
+     backgroundColor: "#6b21a8" 
+  },
+  buttonText: {
+    fontFamily: Fonts.bold,
+    color: "#fff", textAlign: "center", fontWeight: "bold"
+  },
+
 });
 
 export default ModalAddress;

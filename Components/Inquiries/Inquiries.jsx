@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import MapView, { Marker } from 'react-native-maps';
 
+import { Fonts } from '../../Utils/Fonts';
 const { width } = Dimensions.get('window');
 
 const Inquiries = () => {
@@ -141,21 +142,57 @@ const Inquiries = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 16, backgroundColor: '#fff' },
-  title: { fontSize: 28, fontWeight: 'bold', textAlign: 'center' },
-  highlight: { color: 'purple' },
-  inputGroup: { marginTop: 16 },
-  input: { borderColor: '#ccc', borderWidth: 1, padding: 10, borderRadius: 6, marginBottom: 12 },
-  textArea: { height: 100 },
-  button: { backgroundColor: 'purple', padding: 12, borderRadius: 8, alignItems: 'center' },
-  buttonText: { color: 'white', fontWeight: '600' },
-  contactRow: { flexDirection: 'row', alignItems: 'center', marginTop: 16 },
-  contactText: { marginLeft: 12 },
-  label: { fontWeight: 'bold', fontSize: 14 },
-  value: { color: 'purple', fontWeight: '500', fontSize: 14 },
-  mapContainer: { height: 200, marginTop: 20, borderRadius: 12, overflow: 'hidden' },
-  map: { flex: 1 },
-  mapImage: { width: width - 32, height: 200, borderRadius: 12 },
+  
+  container: {
+     padding: 16, backgroundColor: '#fff' 
+  },
+  title: {
+    fontFamily: Fonts.bold,
+    fontSize: 28, fontWeight: 'bold', textAlign: 'center'
+  },
+  highlight: {
+     color: 'purple' 
+  },
+  inputGroup: {
+     marginTop: 16 
+  },
+  input: {
+     borderColor: '#ccc', borderWidth: 1, padding: 10, borderRadius: 6, marginBottom: 12 
+  },
+  textArea: {
+     height: 100 
+  },
+  button: {
+     backgroundColor: 'purple', padding: 12, borderRadius: 8, alignItems: 'center' 
+  },
+  buttonText: {
+    fontFamily: Fonts.semiBold,
+    color: 'white', fontWeight: '600'
+  },
+  contactRow: {
+     flexDirection: 'row', alignItems: 'center', marginTop: 16 
+  },
+  contactText: {
+     marginLeft: 12 
+  },
+  label: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', fontSize: 14
+  },
+  value: {
+    fontFamily: Fonts.medium,
+    color: 'purple', fontWeight: '500', fontSize: 14
+  },
+  mapContainer: {
+     height: 200, marginTop: 20, borderRadius: 12, overflow: 'hidden' 
+  },
+  map: {
+     flex: 1 
+  },
+  mapImage: {
+     width: width - 32, height: 200, borderRadius: 12 
+  },
+
 });
 
 export default Inquiries;

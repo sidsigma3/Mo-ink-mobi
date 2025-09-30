@@ -10,6 +10,7 @@ import FeaturedBox from "./FeaturedBox";
 import { fetchProducts } from "../../Service/ProductService";
 import { useNavigation } from "@react-navigation/native";
 
+import { Fonts } from '../../Utils/Fonts';
 // -- SliderCard component -----------------------------------------------
 const SliderCard = ({ title, children }) => {
   const scrollRef = useRef(null);
@@ -146,34 +147,47 @@ const FeturedList = () => {
 export default FeturedList;
 
 const styles = StyleSheet.create({
+  
   root: {
+    
     marginTop: 8,
     paddingLeft: 16,
     paddingBottom: 30,
     backgroundColor: "#faf5ff",
+  
   },
   header: {
+    
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingRight: 16,
+  
   },
   headerTitle: {
+    fontFamily: Fonts.semiBold,
     fontSize: 22,
     fontWeight: "600",
     paddingVertical: 12,
   },
   headerBtns: {
+    
     flexDirection: "row",
     gap: 8,
+  
   },
   navBtn: {
+    
     borderWidth: 1,
     borderColor: "#6B21A8",
     padding: 8,
     borderRadius: 20,
+  
   },
   sliderContainer: {
+    
     flexDirection: "row",
+  
   },
+
 });

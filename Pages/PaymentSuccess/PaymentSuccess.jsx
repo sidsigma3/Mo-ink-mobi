@@ -15,6 +15,7 @@ import BottomNav from "../../Components/BottomNav/BottomNav";
 import Cta from "../../Components/Cta/Cta";
 import Footer from "../../Components/Footer/Footer";
 
+import { Fonts } from '../Utils/Fonts';
 const PaymentSuccess = () => {
   const navigation = useNavigation();
 
@@ -83,24 +84,34 @@ const PaymentSuccess = () => {
 export default PaymentSuccess;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: "#f9fafb",
+  
   },
   scrollContent: {
+    
     flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+  
   },
   imageWrapper: {
+    
     marginBottom: 20,
+  
   },
   image: {
+    
     width: 150,
     height: 150,
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 22,
     fontWeight: "600",
     color: "#111827",
@@ -108,6 +119,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   subtitle: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: "#4b5563",
     marginBottom: 20,
@@ -115,12 +127,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   buttonRow: {
+    
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
     marginTop: 10,
+  
   },
   button: {
+    
     flex: 1,
     paddingVertical: 12,
     borderRadius: 8,
@@ -128,20 +143,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginHorizontal: 5,
+  
   },
   primaryButton: {
+    
     backgroundColor: "#6d28d9",
+  
   },
   primaryButtonText: {
+    fontFamily: Fonts.semiBold,
     color: "#fff",
     fontWeight: "600",
     marginHorizontal: 6,
   },
   secondaryButton: {
+    
     backgroundColor: "#f3f4f6",
+  
   },
   secondaryButtonText: {
+    fontFamily: Fonts.semiBold,
     color: "#374151",
     fontWeight: "600",
   },
+
 });

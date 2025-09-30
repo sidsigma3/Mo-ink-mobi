@@ -13,6 +13,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../../Utils/Fonts';
 const SignupPage = ({ togglePage }) => {
   const { t } = useTranslation();
   const navigation = useNavigation();
@@ -232,7 +233,9 @@ const SignupPage = ({ togglePage }) => {
 export default SignupPage;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     // flexGrow: 1,
     height:'100%',
     width:'100%',
@@ -241,25 +244,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+  
   },
   backgroundImage: {
+    
     position: 'absolute',
     top: 0, left: 0, right: 0, bottom: 0,
     width: '100%',
     height: '100%',
     zIndex: -1,
+  
   },
   logoContainer: {
+    
     position: 'absolute',
     top: Platform.OS === 'ios' ? 60 : 30,
     left: 20,
+  
   },
   logo: {
+    
     width: 60,
     height: 60,
     resizeMode: 'contain',
+  
   },
   formBox: {
+    
   // backgroundColor: 'rgba(255,255,255,0.9)', 
   padding: 24,
   width: '90%',
@@ -268,41 +279,52 @@ const styles = StyleSheet.create({
   borderWidth: 2,
   alignSelf: 'center', 
   // marginTop: 20, 
-},
+
+  },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 22,
     fontWeight: '700',
     textAlign: 'center',
     marginBottom: 16,
   },
   tabSwitch: {
+    
     flexDirection: 'row',
     marginBottom: 24,
     borderRadius: 20,
     overflow: 'hidden',
+  
   },
   activeTab: {
+    
     flex: 1,
     backgroundColor: '#6b21a8',
     paddingVertical: 10,
     alignItems: 'center',
+  
   },
   inactiveTab: {
+    
     flex: 1,
     borderColor: '#6b21a8',
     borderWidth: 1,
     paddingVertical: 10,
     alignItems: 'center',
+  
   },
   activeTabText: {
+    fontFamily: Fonts.semiBold,
     color: '#fff',
     fontWeight: '600',
   },
   inactiveTabText: {
+    fontFamily: Fonts.semiBold,
     color: '#6b21a8',
     fontWeight: '600',
   },
   input: {
+    fontFamily: Fonts.regular,
     borderWidth: 1,
     borderColor: '#6b21a8',
     borderRadius: 20,
@@ -315,22 +337,30 @@ const styles = StyleSheet.create({
     flexGrow:1,
   },
   row: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: 5,
+  
   },
   checkboxRow: {
+    
     marginBottom: 16,
+  
   },
   submitButton: {
+    
     backgroundColor: '#6b21a8',
     paddingVertical: 12,
     borderRadius: 30,
     alignItems: 'center',
+  
   },
   submitText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
   },
+
 });

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Fonts } from '../../Utils/Fonts';
 // Enable layout animation for Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -88,31 +89,45 @@ const MainFAQ = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     padding: 16,
     paddingBottom: 40,
+  
   },
   faqSection: {
+    
     marginBottom: 30,
+  
   },
   card: {
+    
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
+  
   },
   cardOpen: {
+    
     backgroundColor: '#6b21a8',
+  
   },
   cardClosed: {
+    
     backgroundColor: '#f3e8ff',
     borderWidth: 1,
     borderColor: '#d8b4fe',
+  
   },
   cardHeader: {
+    
     flexDirection: 'row',
     alignItems: 'center',
+  
   },
   toggleIcon: {
+    
     width: 32,
     height: 32,
     borderRadius: 16,
@@ -120,38 +135,51 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 12,
     borderWidth: 1,
+  
   },
   iconOpen: {
+    
     backgroundColor: '#fff',
     borderColor: '#fff',
+  
   },
   iconClosed: {
+    
     backgroundColor: '#000',
     borderColor: '#000',
+  
   },
   iconText: {
+    fontFamily: Fonts.bold,
     fontSize: 18,
     fontWeight: 'bold',
     color: '#000',
   },
   questionText: {
+    fontFamily: Fonts.semiBold,
     fontSize: 16,
     fontWeight: '600',
     color: '#000',
     flexShrink: 1,
   },
   answerWrapper: {
+    
     marginTop: 10,
+  
   },
   answerText: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#f3f4f6',
     lineHeight: 20,
   },
   infoSection: {
+    
     marginTop: 20,
+  
   },
   subtitle: {
+    fontFamily: Fonts.bold,
     color: '#6b21a8',
     fontSize: 16,
     fontWeight: 'bold',
@@ -159,37 +187,47 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     fontWeight: '700',
     marginBottom: 8,
   },
   description: {
+    fontFamily: Fonts.regular,
     color: '#4b5563',
     fontSize: 15,
     marginBottom: 16,
   },
   pointsAndImage: {
+    
     flexDirection: 'row',
     gap: 16,
     flexWrap: 'wrap',
     alignItems: 'flex-start',
+  
   },
   pointsList: {
+    
     flex: 1,
     gap: 8,
+  
   },
   pointItem: {
+    fontFamily: Fonts.semiBold,
     fontSize: 15,
     fontWeight: '600',
     color: '#111',
     marginBottom: 8,
   },
   image: {
+    
     width: 160,
     height: 160,
     borderRadius: 100,
     overflow: 'hidden',
+  
   },
+
 });
 
 export default MainFAQ;

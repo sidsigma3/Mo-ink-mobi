@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 // import { FcCheckmark } from "react-icons/fc"; 
 
+import { Fonts } from '../../Utils/Fonts';
 const CtaCard = () => {
   const { t } = useTranslation();
   const navigation = useNavigation();
@@ -65,50 +66,65 @@ const CtaCard = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     paddingHorizontal: 10,
     gap: 16,
     flexDirection: 'column',
     paddingVertical: 10,
     width:'100%'
+  
   },
   card: {
+    
     width: '100%',
     height: 230,
     borderRadius: 12,
     padding: 16,
     position: 'relative',
     justifyContent: 'space-between',
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 20,
     fontWeight: '600',
   },
   list: {
+    
     marginTop: 10,
+  
   },
   listItem: {
+    fontFamily: Fonts.medium,
     fontSize: 16,
     fontWeight: '500',
     marginVertical: 2,
   },
   button: {
+    
     position: 'absolute',
     bottom: 20,
     left: 16,
+  
   },
   buttonText: {
+    fontFamily: Fonts.medium,
     fontSize: 16,
     fontWeight: '500',
     color: '#000',
   },
   cardImage: {
+    
     position: 'absolute',
     width: 100,
     height: 100,
     bottom: 0,
     right: 0,
+  
   },
+
 });
 
 export default CtaCard;

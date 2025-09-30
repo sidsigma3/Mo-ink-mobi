@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Platform } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
+import { Fonts } from '../../Utils/Fonts';
 import Icon from 'react-native-vector-icons/Feather'; // Menu and X icons
 
 const MainHeader = () => {
@@ -69,7 +70,9 @@ const MainHeader = () => {
 };
 
 const styles = StyleSheet.create({
+  
   header: {
+    
     paddingHorizontal: 20,
     paddingVertical: Platform.OS === 'ios' ? 60 : 20,
     backgroundColor: '#fff',
@@ -79,15 +82,21 @@ const styles = StyleSheet.create({
     elevation: 4,
     shadowColor: '#000',
     shadowOpacity: 0.1,
+  
   },
   logo: {
+    
     height: 40,
     width: 100,
+  
   },
   languageSwitch: {
+    
     // Placeholder if needed
+  
   },
  mobileMenu: {
+    
   position: 'absolute',
   top: Platform.OS === 'ios' ? 100 : 80,
   right: 0,
@@ -98,16 +107,19 @@ const styles = StyleSheet.create({
   zIndex: 999,   // for iOS
   borderRadius: 10,
   shadowColor: '#000',
-  shadowOffset: { width: 0, height: 4 },
+  shadowOffset: { width: 0, height: 4 
+  },
   shadowOpacity: 0.2,
   shadowRadius: 8,
 },
   menuItem: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     paddingVertical: 10,
     color: '#333',
   },
   signupButton: {
+    
     marginTop: 20,
     borderColor: '#6b21a8',
     borderWidth: 1,
@@ -115,11 +127,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     alignSelf: 'flex-start',
+  
   },
   signupText: {
+    fontFamily: Fonts.bold,
     color: '#6b21a8',
     fontWeight: 'bold',
   },
+
 });
 
 export default MainHeader;

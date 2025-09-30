@@ -36,6 +36,7 @@ import IconSettings from "react-native-vector-icons/Feather";
 import IconShield from "react-native-vector-icons/Feather";
 
 
+import { Fonts } from '../Utils/Fonts';
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
@@ -403,9 +404,15 @@ const loadColors = async () => {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
-  centered: { flex: 1, justifyContent: "center", alignItems: "center" },
+  
+  container: {
+     flex: 1, backgroundColor: "#fff" 
+  },
+  centered: {
+     flex: 1, justifyContent: "center", alignItems: "center" 
+  },
   backBtn: {
+    
     margin: 16,
     marginLeft: 16,
     padding: 6,
@@ -413,22 +420,40 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     width: 32,
     alignItems: "center",
+  
   },
-  productImg: { width: "100%", height: 450, backgroundColor: "#eee" },
-  info: { padding: 16 },
-  productTitle: { fontSize: 20, fontWeight: "700", color: "#111" },
-  price: { fontSize: 22, fontWeight: "700", color: "#6B21A8", marginTop: 8 },
-  ratingRow: { flexDirection: "row", alignItems: "center", marginTop: 6 },
+  productImg: {
+     width: "100%", height: 450, backgroundColor: "#eee" 
+  },
+  info: {
+     padding: 16 
+  },
+  productTitle: {
+    fontFamily: Fonts.bold,
+    fontSize: 20, fontWeight: "700", color: "#111"
+  },
+  price: {
+    fontFamily: Fonts.bold,
+    fontSize: 22, fontWeight: "700", color: "#6B21A8", marginTop: 8
+  },
+  ratingRow: {
+     flexDirection: "row", alignItems: "center", marginTop: 6 
+  },
   ratingBox: {
+    
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#FDE68A",
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 4,
+  
   },
-  reviewsLabel: { marginLeft: 6, color: "#888" },
+  reviewsLabel: {
+     marginLeft: 6, color: "#888" 
+  },
   colorSelectBtn: {
+    
     paddingVertical: 8,
     marginTop: 12,
     alignItems: "center",
@@ -436,13 +461,26 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 10,
+  
   },
-  colorPaletteIcon: { width: 30, height: 30, resizeMode: "contain" },
-  selectedWrapper: { flexDirection: "row", flexWrap: "wrap", marginTop: 12 },
-  selectedItem: { alignItems: "center", marginRight: 8, marginBottom: 8 },
-  selectedImg: { width: 48, height: 48, borderRadius: 4 },
-  selectedLabel: { fontSize: 10, marginTop: 2 },
+  colorPaletteIcon: {
+     width: 30, height: 30, resizeMode: "contain" 
+  },
+  selectedWrapper: {
+     flexDirection: "row", flexWrap: "wrap", marginTop: 12 
+  },
+  selectedItem: {
+     alignItems: "center", marginRight: 8, marginBottom: 8 
+  },
+  selectedImg: {
+     width: 48, height: 48, borderRadius: 4 
+  },
+  selectedLabel: {
+    fontFamily: Fonts.regular,
+    fontSize: 10, marginTop: 2
+  },
   addBtn: {
+    
     marginTop: 20,
     flexDirection: "row",
     justifyContent: "center",
@@ -452,21 +490,32 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     backgroundColor: '#6B21A8',
+  
   },
 
   // Modal
-  modal: { flex: 1, padding: 16, backgroundColor: "#fff" },
-  modalClose: { alignSelf: "flex-end" },
-  modalTitle: { fontSize: 18, fontWeight: "600", marginBottom: 10 },
+  modal: {
+     flex: 1, padding: 16, backgroundColor: "#fff" 
+  },
+  modalClose: {
+     alignSelf: "flex-end" 
+  },
+  modalTitle: {
+    fontFamily: Fonts.semiBold,
+    fontSize: 18, fontWeight: "600", marginBottom: 10
+  },
   searchInput: {
+    
     borderWidth: 1,
     borderColor: "#ccc",
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 6,
     marginBottom: 12,
+  
   },
   colorItem: {
+    
     width: "30%",
     aspectRatio: 0.78,
     margin: "1.5%",
@@ -477,8 +526,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between", // Changed from flex-start
     backgroundColor: "#fff",
+  
   },
-  colorImg: { 
+  colorImg: {
+     
     width: "95%", // Reduced from 80% to give more equal padding
     height: "69%", // Reduced from 65% to give more equal padding
     borderRadius: 6,
@@ -486,8 +537,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
     marginTop: 5, 
     marginBottom: 6,
+  
   },
-  colorName: { 
+  colorName: {
+    fontFamily: Fonts.bold,
     fontSize: 12,
     fontWeight: "bold",
     textAlign: "center",
@@ -496,110 +549,138 @@ const styles = StyleSheet.create({
   },
 
   submitBtn: {
+    
       backgroundColor: "#6B21A8",
       paddingVertical: 12,
       paddingHorizontal: 48,
       alignItems: 'center',
       borderRadius: 8,
-    },
-// colorCode: { 
-//   fontSize: 10, 
+    
+  },
+// colorCode: {
+    fontFamily: Fonts.regular,
+    //   fontSize: 10, 
 //   color: "#666",
 //   textAlign: "center",
 //   marginTop: 2,
-// },
+//
+  },
 
   // Accordion
 accordionWrapper: {
+    
   marginTop: 24,
   borderRadius: 12,
   backgroundColor: "#fff",
 
-},
+
+  },
 
 sectionHeaderTitle: {
-  fontSize: 18,
+    fontFamily: Fonts.bold,
+    fontSize: 18,
   fontWeight: "700",
   color: "#121313ff",
   marginBottom: 16,
   letterSpacing: 0.5,
   marginHorizontal: 16,
-
-},
+  },
 
 section: {
+    
   borderBottomWidth: 1,
   borderBottomColor: "#F3F4F6",
     marginHorizontal: 16,
 
-},
-header: { 
+
+  },
+header: {
+     
   flexDirection: "row", 
   justifyContent: "space-between", 
   alignItems: "center",
   paddingVertical: 16,
   paddingHorizontal: 16,
-},
+
+  },
 headerLeft: {
+    
   flexDirection: "row",
   alignItems: "center",
   flex: 1,
-},
+
+  },
 iconContainer: {
+    
   width: 36,
   height: 36,
   borderRadius: 18,
   justifyContent: "center",
   alignItems: "center",
   marginRight: 12,
-},
-accordionTitle: { 
-  fontSize: 16, 
+
+  },
+accordionTitle: {
+    fontFamily: Fonts.semiBold,
+    fontSize: 16, 
   fontWeight: "600", 
   color: "#1F2937",
   flex: 1,
-},
+  },
 chevronContainer: {
+    
   width: 28,
   height: 28,
   borderRadius: 20,
   backgroundColor: "#F9FAFB",
   justifyContent: "center",
   alignItems: "center",
-  transform: [{ rotate: "0deg" }],
+  transform: [{ rotate: "0deg" 
+  }],
 },
 chevronActive: {
-  transform: [{ rotate: "180deg" }],
+    
+  transform: [{ rotate: "180deg" 
+  }],
   backgroundColor: "#EDE9FE",
 },
-content: { 
+content: {
+     
   paddingHorizontal: 16,
   paddingBottom: 16,
   paddingTop: 4,
-},
-accordionText: { 
-  fontSize: 14, 
+
+  },
+accordionText: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, 
   color: "#6B7280", 
   lineHeight: 20,
   marginBottom: 8,
-},
+  },
 listItemRow: {
+    
   flexDirection: "row",
   alignItems: "flex-start",
   marginBottom: 8,
-},
+
+  },
 bulletPoint: {
+    
   width: 6,
   height: 6,
   borderRadius: 3,
   backgroundColor: "#6B21A8",
   marginTop: 7,
   marginRight: 12,
-},
-listItem: { 
-  fontSize: 14, 
+
+  },
+listItem: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, 
   color: "#6B7280", 
   lineHeight: 20,
   flex: 1,
-},
+  },
+
 });

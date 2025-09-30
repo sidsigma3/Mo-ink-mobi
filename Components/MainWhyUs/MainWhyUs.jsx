@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, ScrollView
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const { width } = Dimensions.get('window');
 
 const MainWhyUs = () => {
@@ -67,34 +68,48 @@ const MainWhyUs = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flexGrow: 1,
+  
   },
   background: {
+    
     paddingVertical: 40,
     paddingHorizontal: 20,
     backgroundColor: '#21133a',
+  
   },
   contentWrapper: {
+    
     flexDirection: 'column',
     alignItems: 'center',
+  
   },
   imageWrapper: {
+    
     width: '100%',
     alignItems: 'center',
     marginBottom: 20,
+  
   },
   image: {
+    
     width: width * 0.9,
     height: 300,
     borderRadius: 20,
     borderWidth: 2,
     borderColor: '#ccc',
+  
   },
   textWrapper: {
+    
     width: '100%',
+  
   },
   heading: {
+    fontFamily: Fonts.bold,
     color: '#FFEE9A',
     fontWeight: 'bold',
     textTransform: 'uppercase',
@@ -102,37 +117,46 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     fontWeight: 'bold',
     color: '#fff',
     marginBottom: 10,
   },
   description: {
+    fontFamily: Fonts.regular,
     color: '#ccc',
     fontSize: 14,
     marginBottom: 8,
   },
   metricsRow: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: 20,
+  
   },
   metricBox: {
+    
     alignItems: 'center',
     flex: 1,
+  
   },
   metricValue: {
+    fontFamily: Fonts.bold,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#FFEE9A',
   },
   metricLabel: {
+    fontFamily: Fonts.regular,
     color: '#fff',
     marginTop: 4,
     textAlign: 'center',
     fontSize: 12,
   },
   button: {
+    
     backgroundColor: '#FFEE9A',
     paddingVertical: 12,
     paddingHorizontal: 20,
@@ -140,11 +164,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#FFEE9A',
     alignItems: 'center',
+  
   },
   buttonText: {
+    fontFamily: Fonts.bold,
     color: '#21133a',
     fontWeight: 'bold',
   },
+
 });
 
 

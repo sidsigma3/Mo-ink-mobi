@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 
+import { Fonts } from '../../Utils/Fonts';
 const FeaturedBox = ({ productName, number, color, imageUrl , onPress }) => {
   const categoryImages = {
   Cotton: require("../../assets/Images/Yarn3.jpg"),
@@ -56,21 +57,29 @@ const FeaturedBox = ({ productName, number, color, imageUrl , onPress }) => {
 };
 
 const styles = StyleSheet.create({
+  
   mobileBox: {
+    
     width: 115,
     height: 120,
     borderRadius: 12,
     overflow: 'hidden',
+  
   },
   bgImage: {
+    
     flex: 1,
     justifyContent: 'flex-start',
+  
   },
   overlay: {
+    
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0,0,0,0.1)',
+  
   },
   labelWrapper: {
+    
     position: 'absolute',
     top: 0,
     left: 0,
@@ -78,12 +87,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderBottomRightRadius: 8,
+  
   },
   labelText: {
+    fontFamily: Fonts.bold,
     color: 'white',
     fontSize: 10,
     fontWeight: '700',
   },
+
 });
 
 export default FeaturedBox;

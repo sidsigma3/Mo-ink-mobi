@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const BlogBox2 = () => {
   const { t } = useTranslation();
   const navigation = useNavigation();
@@ -41,7 +42,9 @@ const BlogBox2 = () => {
 };
 
 const styles = StyleSheet.create({
+  
   card: {
+    
     borderRadius: 16,
     backgroundColor: '#fff',
     overflow: 'hidden',
@@ -49,33 +52,43 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderWidth: 1,
     borderColor: '#ddd',
+  
   },
   image: {
+    
     width: '100%',
     height: 160,
+  
   },
   content: {
+    
     padding: 12,
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 18,
     fontWeight: '600',
     color: '#111',
     marginBottom: 8,
   },
   description: {
+    fontFamily: Fonts.regular,
     color: '#555',
     fontSize: 14,
     marginBottom: 10,
   },
   readMore: {
+    fontFamily: Fonts.medium,
     color: '#6B21A8', // purple-800
     fontWeight: '500',
     fontSize: 14,
   },
   arrow: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
   },
+
 });
 
 export default BlogBox2;

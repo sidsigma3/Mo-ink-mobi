@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import { Fonts } from '../../Utils/Fonts';
 export default function OnboardingScreen3() {
   const navigation = useNavigation();
 
@@ -81,24 +82,32 @@ export default function OnboardingScreen3() {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#FBFAF7',
+  
   },
   content: {
+    
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: 0,
+  
   },
   topSection: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 40,
     paddingBottom: 0,
     paddingHorizontal: 0,
+  
   },
   backBtn: {
+    
     width: 44,
     height: 44,
     borderRadius: 22,
@@ -107,37 +116,49 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: '#F0F0F0',
+  
   },
   backText: {
+    fontFamily: Fonts.regular,
     color: '#6B21A8',
     fontSize: 20,
     fontWeight: '900',
   },
   skipBtnTop: {
+    
     paddingVertical: 8,
     paddingHorizontal: 16,
+  
   },
   skipText: {
+    fontFamily: Fonts.medium,
     color: '#6B21A8',
     fontSize: 16,
     fontWeight: '500',
   },
   mainContent: {
+    
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  
   },
   image: {
+    
     width: 360,
     height: 480,
     resizeMode: 'contain',
     marginBottom: 40,
+  
   },
   textContainer: {
+    
     alignItems: 'center',
     paddingHorizontal: 20,
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 26,
     fontWeight: '600',
     textAlign: 'center',
@@ -146,14 +167,17 @@ const styles = StyleSheet.create({
     lineHeight: 32,
   },
   highlight: {
+    fontFamily: Fonts.bold,
     fontWeight: 'bold',
     color: '#6B21A8',
   },
   bold: {
+    fontFamily: Fonts.bold,
     fontWeight: 'bold',
     color: '#1A1A1A',
   },
   description: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     color: '#666666',
     textAlign: 'center',
@@ -161,25 +185,34 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   bottomSection: {
+    
     paddingBottom: 40,
     alignItems: 'center',
+  
   },
   pagination: {
+    
     flexDirection: 'row',
     marginBottom: 32,
+  
   },
   dot: {
+    
     width: 8,
     height: 8,
     borderRadius: 4,
     backgroundColor: '#E0E0E0',
     marginHorizontal: 4,
+  
   },
   activeDot: {
+    
     backgroundColor: '#6B21A8',
     width: 20,
+  
   },
   getStartedButton: {
+    
     backgroundColor: '#6B21A8',
     paddingVertical: 16,
     width: '100%',
@@ -188,24 +221,30 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 4,
-    },
+    
+  },
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 6,
   },
   getStartedButtonText: {
+    fontFamily: Fonts.semiBold,
     color: '#FFFFFF',
     fontSize: 16,
     textAlign: 'center',
     fontWeight: '600',
   },
   skipBtn: {
+    
     paddingVertical: 12,
+  
   },
   skipBottomText: {
+    fontFamily: Fonts.medium,
     color: '#6B21A8',
     fontSize: 14,
     textAlign: 'center',
     fontWeight: '500',
   },
+
 });

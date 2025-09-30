@@ -5,6 +5,7 @@ import Toast from "../Toast/Toast"; // needs to be a React Native Toast
 
 import { downloadCreditReceipt ,downloadInvoice } from "../../Service/InvoiceService";
 
+import { Fonts } from '../../Utils/Fonts';
 const OrderBox = ({ order }) => {
   const [toasts, setToasts] = useState([]);
 
@@ -186,65 +187,86 @@ const OrderBox = ({ order }) => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     borderWidth: 1,
     borderRadius: 8,
     padding: 12,
     marginBottom: 12,
     backgroundColor: "#fff",
+  
   },
   image: {
+    
     width: 100,
     height: 100,
     borderRadius: 6,
+  
   },
   info: {
+    
     marginTop: 8,
+  
   },
   bold: {
+    fontFamily: Fonts.bold,
     fontWeight: "bold",
   },
   ratingRow: {
+    
     flexDirection: "row",
     marginTop: 4,
+  
   },
   statusReturned: {
+    
     backgroundColor: "#FEF3C7",
     color: "#92400E",
     padding: 6,
     borderRadius: 6,
     marginTop: 6,
+  
   },
   statusCancelled: {
+    
     backgroundColor: "#FEE2E2",
     color: "#B91C1C",
     padding: 6,
     borderRadius: 6,
     marginTop: 6,
+  
   },
   statusRefunded: {
+    
     backgroundColor: "#E5E7EB",
     color: "#374151",
     padding: 6,
     borderRadius: 6,
     marginTop: 6,
+  
   },
   invoiceButton: {
+    
     flexDirection: "row",
     alignItems: "center",
     padding: 6,
     backgroundColor: "#EDE9FE",
     borderRadius: 6,
     marginTop: 8,
+  
   },
   cancelButton: {
+    
     flexDirection: "row",
     alignItems: "center",
     padding: 6,
     backgroundColor: "#FEE2E2",
     borderRadius: 6,
     marginTop: 8,
+  
   },
+
 });
 
 export default OrderBox;

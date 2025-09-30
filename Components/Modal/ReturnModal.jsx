@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, View, Text, TouchableOpacity, TextInput, StyleSheet, Alert } from "react-native";
+import { Fonts } from '../../Utils/Fonts';
 import Toast from '../Toast/Toast'; // You must implement/adapt this for RN
 
 const ReturnModal = ({ visible, onClose, onConfirm, weight }) => {
@@ -149,22 +150,28 @@ const ReturnModal = ({ visible, onClose, onConfirm, weight }) => {
 };
 
 const styles = StyleSheet.create({
+  
   overlay: {
+    
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
+  
   },
   box: {
+    
     backgroundColor: "#fff",
     borderRadius: 16,
     padding: 20,
     width: "100%",
     maxWidth: 350,
     elevation: 8,
+  
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 20,
     fontWeight: "bold",
     color: "#6D28D9",
@@ -172,16 +179,27 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   desc: {
+    fontFamily: Fonts.regular,
     fontSize: 15,
     color: "#222",
     marginBottom: 12,
     textAlign: "center",
   },
-  section: { marginBottom: 14 },
-  label: { fontWeight: "bold", color: "#222", marginBottom: 6 },
-  radioRow: { flexDirection: "row", gap: 18 },
-  radioBtn: { flexDirection: "row", alignItems: "center", marginRight: 18 },
+  section: {
+     marginBottom: 14 
+  },
+  label: {
+    fontFamily: Fonts.bold,
+    fontWeight: "bold", color: "#222", marginBottom: 6
+  },
+  radioRow: {
+     flexDirection: "row", gap: 18 
+  },
+  radioBtn: {
+     flexDirection: "row", alignItems: "center", marginRight: 18 
+  },
   radioCircle: {
+    
     width: 22,
     height: 22,
     borderRadius: 11,
@@ -190,16 +208,25 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginRight: 6,
+  
   },
-  radioSelected: { borderColor: "#6D28D9" },
+  radioSelected: {
+     borderColor: "#6D28D9" 
+  },
   radioDot: {
+    
     width: 12,
     height: 12,
     borderRadius: 6,
     backgroundColor: "#6D28D9",
+  
   },
-  radioLabel: { fontSize: 15, color: "#222" },
+  radioLabel: {
+    fontFamily: Fonts.regular,
+    fontSize: 15, color: "#222"
+  },
   input: {
+    fontFamily: Fonts.regular,
     backgroundColor: "#F3F4F6",
     borderRadius: 8,
     paddingHorizontal: 12,
@@ -210,37 +237,57 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginTop: 2,
   },
-  errorText: { color: "#DC2626", fontSize: 13, marginTop: 2 },
+  errorText: {
+    fontFamily: Fonts.regular,
+    color: "#DC2626", fontSize: 13, marginTop: 2
+  },
   actions: {
+    
     flexDirection: "row",
     justifyContent: "flex-end",
     gap: 12,
     marginTop: 10,
+  
   },
   cancelBtn: {
+    
     backgroundColor: "#eee",
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 18,
     marginRight: 8,
+  
   },
-  cancelBtnText: { color: "#222", fontWeight: "bold", fontSize: 16 },
+  cancelBtnText: {
+    fontFamily: Fonts.bold,
+    color: "#222", fontWeight: "bold", fontSize: 16
+  },
   confirmBtn: {
+    
     backgroundColor: "#6D28D9",
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 18,
+  
   },
-  confirmBtnDisabled: { backgroundColor: "#ccc" },
-  confirmBtnText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
+  confirmBtnDisabled: {
+     backgroundColor: "#ccc" 
+  },
+  confirmBtnText: {
+    fontFamily: Fonts.bold,
+    color: "#fff", fontWeight: "bold", fontSize: 16
+  },
   toastContainer: {
+    
     position: "absolute",
     top: 30,
     right: 0,
     left: 0,
     alignItems: "center",
     zIndex: 99,
+  
   },
+
 });
 
 export default ReturnModal;

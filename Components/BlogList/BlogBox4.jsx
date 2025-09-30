@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Fonts } from '../../Utils/Fonts';
 const BlogBox4 = () => {
   const { t } = useTranslation();
 
@@ -42,38 +43,49 @@ const BlogBox4 = () => {
 };
 
 const styles = StyleSheet.create({
+  
   card: {
+    
     backgroundColor: 'white',
     borderColor: '#e5e7eb',
     borderWidth: 1,
     borderRadius: 16,
     overflow: 'hidden',
     marginBottom: 16,
+  
   },
   image: {
+    
     width: '100%',
     height: 180,
+  
   },
   content: {
+    
     padding: 12,
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 18,
     fontWeight: '600',
     color: '#111827',
     marginBottom: 6,
   },
   description: {
+    fontFamily: Fonts.regular,
     color: '#6b7280',
     fontSize: 14,
     lineHeight: 20,
     marginBottom: 10,
   },
   readMore: {
+    fontFamily: Fonts.medium,
     fontSize: 14,
     fontWeight: '500',
     color: '#6D28D9',
   },
+
 });
 
 export default BlogBox4;

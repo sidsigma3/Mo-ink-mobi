@@ -17,6 +17,7 @@ import BottomNav from '../../Components/BottomNav/BottomNav';
 
 
 
+import { Fonts } from '../Utils/Fonts';
 export default function LandingPage() {
   return (
     <View style={styles.container}>
@@ -54,14 +55,20 @@ export default function LandingPage() {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#fff'
+  
   },
   contentContainer: {
+    
     paddingBottom: 120, // space for bottom nav
+  
   },
   bottomNavContainer: {
+    
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -69,8 +76,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     elevation: 5, // shadow for Android
     shadowColor: '#000', // shadow for iOS
-    shadowOffset: { width: 0, height: -2 },
+    shadowOffset: { width: 0, height: -2 
+  },
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
+
 });

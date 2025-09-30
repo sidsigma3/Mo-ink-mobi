@@ -11,6 +11,7 @@ import Footer from '../../Components/Footer/Footer';
 import HeroSection from '../../Components/HeroSection/HeroSection';
 import BottomNav from '../../Components/BottomNav/BottomNav';
 
+import { Fonts } from '../Utils/Fonts';
 const About = () => {
   const { t } = useTranslation();
 
@@ -107,18 +108,54 @@ const About = () => {
 export default About;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
-  scrollContent: { paddingBottom: 70 },
-  section: { padding: 16, backgroundColor: '#fff' },
-  sectionTitle: { fontSize: 20, fontWeight: 'bold', color: '#111', marginBottom: 8 },
-  paragraph: { fontSize: 16, color: '#555', marginBottom: 8 },
-  ceoContainer: { alignItems: 'center', padding: 16 },
-  ceoImage: { width: 200, height: 200, borderRadius: 12, marginBottom: 8 },
-  socialIcons: { flexDirection: 'row', gap: 12, marginBottom: 8 },
-  ceoName: { fontSize: 22, fontWeight: 'bold', color: '#111', marginTop: 8 },
-  ceoTitle: { fontSize: 18, color: '#6b21a8', marginBottom: 8 },
-  statsRow: { flexDirection: 'row', justifyContent: 'space-around', padding: 16, borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#ddd' },
-  statBox: { alignItems: 'center' },
-  statNumber: { fontSize: 24, fontWeight: 'bold', color: '#6b21a8' },
-  statLabel: { fontSize: 14, color: '#555' },
+  
+  container: {
+     flex: 1, backgroundColor: '#fff' 
+  },
+  scrollContent: {
+     paddingBottom: 70 
+  },
+  section: {
+     padding: 16, backgroundColor: '#fff' 
+  },
+  sectionTitle: {
+    fontFamily: Fonts.bold,
+    fontSize: 20, fontWeight: 'bold', color: '#111', marginBottom: 8
+  },
+  paragraph: {
+    fontFamily: Fonts.regular,
+    fontSize: 16, color: '#555', marginBottom: 8
+  },
+  ceoContainer: {
+     alignItems: 'center', padding: 16 
+  },
+  ceoImage: {
+     width: 200, height: 200, borderRadius: 12, marginBottom: 8 
+  },
+  socialIcons: {
+     flexDirection: 'row', gap: 12, marginBottom: 8 
+  },
+  ceoName: {
+    fontFamily: Fonts.bold,
+    fontSize: 22, fontWeight: 'bold', color: '#111', marginTop: 8
+  },
+  ceoTitle: {
+    fontFamily: Fonts.regular,
+    fontSize: 18, color: '#6b21a8', marginBottom: 8
+  },
+  statsRow: {
+     flexDirection: 'row', justifyContent: 'space-around', padding: 16, borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#ddd' 
+  },
+  statBox: {
+     alignItems: 'center' 
+  },
+  statNumber: {
+    fontFamily: Fonts.bold,
+    fontSize: 24, fontWeight: 'bold', color: '#6b21a8'
+  },
+  statLabel: {
+    fontFamily: Fonts.regular,
+    fontSize: 14, color: '#555'
+  },
+
 });

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
+import { Fonts } from '../../Utils/Fonts';
 import { FontAwesome } from '@expo/vector-icons'; // Expo uses this for icons
 
 const testimonials = [
@@ -130,117 +131,152 @@ const Testimonial = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     backgroundColor: '#F3F4F6',
     paddingVertical: 40,
     paddingHorizontal: 16,
+  
   },
   header: {
+    
     alignItems: 'center',
     marginBottom: 32,
+  
   },
   bigTitle: {
+    fontFamily: Fonts.regular,
     fontSize: 40,
     fontWeight: '800',
     color: '#6b21a8',
   },
   subtitle: {
+    fontFamily: Fonts.semiBold,
     fontSize: 18,
     fontWeight: '600',
     marginTop: 4,
     color: '#111827',
   },
   avatarGroup: {
+    
     flexDirection: 'row',
     marginTop: 12,
     flexWrap: 'wrap',
     gap: 4,
     justifyContent: 'center',
+  
   },
   avatarSmall: {
+    
     width: 36,
     height: 36,
     borderRadius: 18,
     marginHorizontal: 2,
     borderWidth: 2,
     borderColor: '#fff',
+  
   },
   totalUsers: {
+    fontFamily: Fonts.semiBold,
     marginTop: 12,
     color: '#374151',
     fontSize: 14,
     fontWeight: '600',
   },
   button: {
+    
     marginTop: 16,
     backgroundColor: '#6b21a8',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 8,
+  
   },
   buttonText: {
+    fontFamily: Fonts.semiBold,
     color: 'white',
     fontWeight: '600',
   },
   cardContainer: {
+    
     gap: 20,
+  
   },
   card: {
+    
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 16,
     borderWidth: 1,
     borderColor: '#e5e7eb',
+  
   },
   cardHeader: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+  
   },
   stars: {
+    
     flexDirection: 'row',
     marginRight: 4,
+  
   },
   star: {
+    
     marginHorizontal: 1,
+  
   },
   ratingText: {
+    fontFamily: Fonts.regular,
     fontSize: 12,
     color: '#6b7280',
   },
   dateText: {
+    fontFamily: Fonts.regular,
     marginLeft: 'auto',
     fontSize: 12,
     color: '#9ca3af',
   },
   quote: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#374151',
     marginBottom: 12,
     lineHeight: 20,
   },
   profile: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: '#f3f4f6',
     paddingTop: 10,
     gap: 10,
+  
   },
   avatar: {
+    
     width: 40,
     height: 40,
     borderRadius: 20,
+  
   },
   name: {
+    fontFamily: Fonts.semiBold,
     fontSize: 14,
     fontWeight: '600',
     color: '#111827',
   },
   role: {
+    fontFamily: Fonts.regular,
     fontSize: 12,
     color: '#6b7280',
   },
+
 });
 
 export default Testimonial;

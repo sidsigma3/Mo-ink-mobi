@@ -11,6 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const { width } = Dimensions.get('window');
 
 // Base + random palette
@@ -81,17 +82,23 @@ const MainColors = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     paddingVertical: 40,
     paddingHorizontal: 16,
     backgroundColor: '#fff',
+  
   },
   textContainer: {
+    
     alignItems: 'center',
     marginBottom: 24,
     paddingHorizontal: 10,
+  
   },
   subtitle: {
+    fontFamily: Fonts.bold,
     color: '#6b21a8',
     textTransform: 'uppercase',
     fontWeight: 'bold',
@@ -100,14 +107,18 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   gradientText: {
+    
     color: '#f59e0b',
+  
   },
   description: {
+    fontFamily: Fonts.regular,
     color: '#4b5563',
     fontSize: 14,
     textAlign: 'center',
@@ -115,45 +126,57 @@ const styles = StyleSheet.create({
     maxWidth: 300,
   },
   scrollContent: {
+    
     flexDirection: 'row',
     gap: 12,
     paddingVertical: 20,
+  
   },
   colorWrapper: {
+    
     width: 60,
     aspectRatio: 1,
     borderRadius: 12,
     overflow: 'visible',
     alignItems: 'center',
     justifyContent: 'center',
+  
   },
   colorBox: {
+    
     width: '100%',
     height: '100%',
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
+  
   },
   innerCircle: {
+    
     width: '70%',
     height: '70%',
     borderRadius: 999,
     borderWidth: 1,
     borderColor: '#fff',
+  
   },
   button: {
+    
     backgroundColor: '#6b21a8',
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 999,
     alignSelf: 'center',
     marginTop: 20,
+  
   },
   buttonText: {
+    fontFamily: Fonts.semiBold,
     color: '#fff',
     fontWeight: '600',
     fontSize: 16,
   },
+
 });
 
 export default MainColors;

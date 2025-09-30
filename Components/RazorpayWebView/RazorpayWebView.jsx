@@ -7,6 +7,7 @@ import { removeFromCart } from "../../Service/CartService";
 import { useAppContext } from "../../Utils/AppContext";
 import Toast from "../Toast/Toast";
 
+import { Fonts } from '../../Utils/Fonts';
 const RazorpayWebView = () => {
   const route = useRoute();
   const navigation = useNavigation();
@@ -140,9 +141,13 @@ const RazorpayWebView = () => {
 export default RazorpayWebView;
 
 const styles = StyleSheet.create({
+  
   loader: {
+    
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  
   },
+
 });

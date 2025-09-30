@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Animated, View, Text, StyleSheet, Dimensions, Image } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Fonts } from '../../Utils/Fonts';
 const MarqueeText = () => {
   const { t } = useTranslation();
 
@@ -52,28 +53,38 @@ const MarqueeText = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     overflow: 'hidden',
     backgroundColor: '#fff',
     paddingVertical: 12
+  
   },
   marqueeContainer: {
+    
     flexDirection: 'row'
+  
   },
   item: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     marginHorizontal: 16
+  
   },
   star: {
+    fontFamily: Fonts.regular,
     fontSize: 20,
     marginRight: 8
   },
   text: {
+    fontFamily: Fonts.semiBold,
     fontSize: 16,
     fontWeight: '600',
     color: '#111'
   }
+
 });
 
 export default MarqueeText;

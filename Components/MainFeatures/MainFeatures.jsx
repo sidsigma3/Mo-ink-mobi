@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Fonts } from '../../Utils/Fonts';
 const features = [
   {
     img: 'services.png',
@@ -80,16 +81,22 @@ const MainFeatures = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     paddingHorizontal: 20,
     paddingVertical: 30,
     backgroundColor: '#fff',
+  
   },
   header: {
+    
     alignItems: 'center',
     marginBottom: 40,
+  
   },
   subtitle: {
+    fontFamily: Fonts.bold,
     fontSize: 16,
     color: '#6b21a8', // purple-800
     fontWeight: 'bold',
@@ -98,17 +105,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 28,
     fontWeight: '600',
     color: '#000',
     textAlign: 'center',
   },
   grid: {
+    
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+  
   },
   card: {
+    
     width: '48%',
     backgroundColor: '#f3e8ff',
     padding: 20,
@@ -116,8 +127,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: 'center',
     position: 'relative',
+  
   },
   iconWrapper: {
+    
     backgroundColor: '#f9fafb',
     borderRadius: 50,
     padding: 10,
@@ -128,12 +141,16 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#6b21a8',
     marginBottom: 20,
+  
   },
   icon: {
+    
     width: 50,
     height: 50,
+  
   },
   cardTitle: {
+    fontFamily: Fonts.semiBold,
     fontSize: 16,
     fontWeight: '600',
     color: '#000',
@@ -141,10 +158,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   cardText: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#555',
     textAlign: 'center',
   },
+
 });
 
 

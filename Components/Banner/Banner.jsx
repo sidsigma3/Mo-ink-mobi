@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
 import Swiper from 'react-native-swiper';
 
+import { Fonts } from '../../Utils/Fonts';
 const { width } = Dimensions.get('window');
 
 // Translation dictionary
@@ -93,11 +94,15 @@ const Banner = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { 
+  
+  container: {
+     
     flex: 1, 
     backgroundColor: '#F8FAFC' 
+  
   },
   bannerSection: {
+    
     width: '100%',
     height: 220,
     marginTop: 12,
@@ -105,60 +110,75 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     borderRadius: 16,
     overflow: 'hidden',
+  
   },
   bannerImage: {
+    
     width: '100%',
     height: 220,
     justifyContent: 'flex-end',
     paddingHorizontal: 16,
     paddingVertical: 20,
     borderRadius: 16,
+  
   },
   bannerOverlay: {
+    
     // backgroundColor: 'rgba(255,255,255,0.7)',
     borderRadius: 12,
     padding: 2,
     marginHorizontal: 2,
     marginBottom: 40,
     maxWidth: '80%',
+  
   },
   bannerTitle: {
+    fontFamily: Fonts.bold,
     fontSize: 22,
     fontWeight: 'bold',
     color: '#6D28D9',
     marginBottom: 6,
   },
   bannerDesc: {
+    fontFamily: Fonts.regular,
     fontSize: 15,
     color: '#222',
     marginBottom: 12,
   },
   shopBtn: {
+    
     backgroundColor: '#6D28D9',
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 24,
     alignSelf: 'flex-start',
+  
   },
   shopBtnText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
   },
   dot: {
+    
     backgroundColor: '#ddd',
     width: 8,
     height: 8,
     borderRadius: 4,
     marginHorizontal: 2,
+  
   },
   activeDot: {
+    
     backgroundColor: '#6D28D9',
     width: 10,
     height: 10,
     borderRadius: 5,
     marginHorizontal: 2,
+  
   },
+
 });
 
 export default Banner;

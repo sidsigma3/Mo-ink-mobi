@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, Linking, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Fonts } from '../../Utils/Fonts';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons'; // or 'react-native-vector-icons'
 
 const Navbar = () => {
@@ -67,42 +68,57 @@ const Navbar = () => {
 export default Navbar;
 
 const styles = StyleSheet.create({
+  
   navbar: {
+    
     flexDirection: 'column',
     padding: 12,
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
+  
   },
   navLinks: {
+    
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 12,
+  
   },
   linkText: {
+    fontFamily: Fonts.medium,
     fontSize: 16,
     color: '#333',
     fontWeight: '500',
   },
   socialAndContact: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  
   },
   socialIcons: {
+    
     flexDirection: 'row',
     gap: 12,
+  
   },
   contact: {
+    
     flexDirection: 'row',
     alignItems: 'center',
+  
   },
   phone: {
+    fontFamily: Fonts.bold,
     color: '#6B21A8',
     fontWeight: 'bold',
   },
   subText: {
+    fontFamily: Fonts.regular,
     color: '#888',
     fontSize: 12,
   },
+
 });

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, Text, StyleSheet, Animated, Easing } from "react-native";
+import { Fonts } from '../../Utils/Fonts';
 import { FontAwesome } from "@expo/vector-icons"; // or react-native-vector-icons
 
 const Toast = ({ message, onClose, type = "success" }) => {
@@ -106,7 +107,9 @@ const Toast = ({ message, onClose, type = "success" }) => {
 };
 
 const styles = StyleSheet.create({
+  
   toast: {
+    
     flexDirection: "row",
     alignItems: "center",
     padding: 12,
@@ -118,15 +121,19 @@ const styles = StyleSheet.create({
     minWidth: 250,
     maxWidth: "90%",
     overflow: "hidden"
+  
   },
   progressBar: {
+    
     position: "absolute",
     bottom: 0,
     left: 0,
     height: 3,
     width: "100%",
     transformOrigin: "left"
+  
   }
+
 });
 
 export default Toast;

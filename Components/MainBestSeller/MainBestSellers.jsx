@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity, Dimensions }
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const screenWidth = Dimensions.get('window').width;
 const itemWidth = screenWidth / 2 - 20;
 
@@ -49,13 +50,17 @@ const MainBestsellers = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     paddingTop: 30,
     paddingBottom: 20,
     paddingHorizontal: 12,
     backgroundColor: '#fff',
+  
   },
   subtitle: {
+    fontFamily: Fonts.bold,
     textAlign: 'center',
     color: '#6B21A8',
     fontWeight: 'bold',
@@ -64,6 +69,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   heading: {
+    fontFamily: Fonts.semiBold,
     textAlign: 'center',
     fontSize: 24,
     fontWeight: '600',
@@ -71,13 +77,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   row: {
+    
     justifyContent: 'space-between',
     marginBottom: 20,
+  
   },
   list: {
+    
     paddingBottom: 20,
+  
   },
   card: {
+    
     width: itemWidth,
     backgroundColor: '#fff',
     borderRadius: 16,
@@ -87,16 +98,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowColor: '#000',
     shadowOpacity: 0.05,
-    shadowOffset: { width: 0, height: 1 },
+    shadowOffset: { width: 0, height: 1 
+  },
     shadowRadius: 3,
     elevation: 2,
   },
   image: {
+    
     width: '100%',
     height: 120,
     borderRadius: 12,
+  
   },
   title: {
+    fontFamily: Fonts.semiBold,
     marginTop: 8,
     fontSize: 16,
     fontWeight: '600',
@@ -104,6 +119,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   variant: {
+    fontFamily: Fonts.medium,
     marginTop: 6,
     paddingVertical: 4,
     paddingHorizontal: 10,
@@ -114,12 +130,14 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   link: {
+    fontFamily: Fonts.bold,
     marginTop: 10,
     color: '#6B21A8',
     fontWeight: 'bold',
     fontSize: 14,
     textDecorationLine: 'underline',
   },
+
 });
 
 export default MainBestsellers;

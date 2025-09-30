@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
+import { Fonts } from '../../Utils/Fonts';
 const ModalConfirmReplaceCart = ({ isOpen, onCancel, onConfirm }) => {
   return (
     <Modal
@@ -36,14 +37,18 @@ const ModalConfirmReplaceCart = ({ isOpen, onCancel, onConfirm }) => {
 };
 
 const styles = StyleSheet.create({
+  
   overlay: {
+    
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
+  
   },
   box: {
+    
     backgroundColor: "#fff",
     borderRadius: 16,
     padding: 24,
@@ -52,8 +57,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     elevation: 8,
     position: "relative",
+  
   },
   closeBtn: {
+    
     position: "absolute",
     top: 12,
     right: 12,
@@ -61,13 +68,16 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: "#F3F4F6",
     elevation: 2,
+  
   },
   closeBtnText: {
+    fontFamily: Fonts.bold,
     fontSize: 22,
     color: "#888",
     fontWeight: "bold",
   },
   iconCircle: {
+    
     backgroundColor: "#EDE9FE",
     borderRadius: 32,
     width: 48,
@@ -75,13 +85,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 16,
+  
   },
   iconText: {
+    fontFamily: Fonts.bold,
     color: "#6D28D9",
     fontSize: 28,
     fontWeight: "bold",
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 20,
     fontWeight: "bold",
     color: "#6D28D9",
@@ -89,17 +102,21 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   message: {
+    fontFamily: Fonts.regular,
     fontSize: 15,
     color: "#222",
     marginBottom: 18,
     textAlign: "center",
   },
   actions: {
+    
     flexDirection: "row",
     justifyContent: "center",
     gap: 12,
+  
   },
   btnOutline: {
+    
     borderWidth: 2,
     borderColor: "#6D28D9",
     borderRadius: 8,
@@ -107,23 +124,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     backgroundColor: "#fff",
     marginRight: 8,
+  
   },
   btnOutlineText: {
+    fontFamily: Fonts.bold,
     color: "#6D28D9",
     fontWeight: "bold",
     fontSize: 16,
   },
   btnPrimary: {
+    
     backgroundColor: "#6D28D9",
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 18,
+  
   },
   btnPrimaryText: {
+    fontFamily: Fonts.bold,
     color: "#fff",
     fontWeight: "bold",
     fontSize: 16,
   },
+
 });
 
 export default ModalConfirmReplaceCart;

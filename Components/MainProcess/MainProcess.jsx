@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Fonts } from '../../Utils/Fonts';
 const steps = [
   {
     titleKey: 'mainProcess.step1.title',
@@ -71,16 +72,22 @@ export default function MainProcess() {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     paddingVertical: 40,
     paddingHorizontal: 16,
     backgroundColor: '#fff',
+  
   },
   header: {
+    
     alignItems: 'center',
     marginBottom: 24,
+  
   },
   subtitle: {
+    fontFamily: Fonts.bold,
     color: '#6b21a8',
     fontSize: 16,
     fontWeight: 'bold',
@@ -89,12 +96,14 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 26,
     fontWeight: '600',
     color: '#111827',
     textAlign: 'center',
   },
   description: {
+    fontFamily: Fonts.regular,
     marginTop: 10,
     fontSize: 14,
     color: '#6B7280',
@@ -102,15 +111,20 @@ const styles = StyleSheet.create({
     maxWidth: 500,
   },
   grid: {
+    
     flexDirection: 'column',
     gap: 16,
+  
   },
   gridLarge: {
+    
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+  
   },
   card: {
+    
     backgroundColor: '#fff',
     borderRadius: 12,
     padding: 16,
@@ -119,13 +133,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 16,
     width: '100%',
+  
   },
   image: {
+    
     height: 80,
     width: 80,
     marginBottom: 12,
+  
   },
   cardTitle: {
+    fontFamily: Fonts.semiBold,
     fontSize: 18,
     fontWeight: '600',
     color: '#111827',
@@ -133,8 +151,10 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   cardDescription: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#6B7280',
     textAlign: 'center',
   },
+
 });

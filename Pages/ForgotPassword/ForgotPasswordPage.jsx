@@ -15,6 +15,7 @@ import { forgotPassword } from '../../Service/authService';
 // import Toast from '../../components/Toast';
 // import { forgotPassword } from '../../services/customerService';
 
+import { Fonts } from '../../Utils/Fonts';
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
   const accountType = 'CUSTOMER';
@@ -102,26 +103,34 @@ export default ForgotPasswordPage;
 
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#fff',
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
   background: {
+    
     ...StyleSheet.absoluteFillObject,
     opacity: 0.4,
+  
   },
   logo: {
+    
     position: 'absolute',
     top: 40,
     left: 20,
     width: 100,
     height: 30,
     resizeMode: 'contain',
+  
   },
   card: {
+    
     // backgroundColor: 'rgba(255,255,255,0.85)',
     borderColor: '#ffffff',
     borderRadius: 20,
@@ -129,23 +138,29 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: '90%',
     zIndex: 2,
+  
   },
   backText: {
+    
     color: '#555',
     marginBottom: 10,
+  
   },
   heading: {
+    fontFamily: Fonts.bold,
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 6,
     color: '#222',
   },
   subheading: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#666',
     marginBottom: 16,
   },
   input: {
+    
     backgroundColor: '#fff',
     padding: 12,
     borderRadius: 25,
@@ -153,21 +168,28 @@ const styles = StyleSheet.create({
     borderColor: '#6b21a8',
     color: '#000',
     marginBottom: 16,
+  
   },
   button: {
+    
     backgroundColor: '#6b21a8',
     paddingVertical: 12,
     borderRadius: 25,
     alignItems: 'center',
+  
   },
   buttonText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
   },
   toastContainer: {
+    
     position: 'absolute',
     top: 50,
     right: 20,
     zIndex: 100,
+  
   },
+
 });

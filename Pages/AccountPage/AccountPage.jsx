@@ -20,6 +20,7 @@ import BottomNav from "../../Components/BottomNav/BottomNav";
 // If you're using React Navigation
 import { useNavigation } from "@react-navigation/native";
 
+import { Fonts } from '../Utils/Fonts';
 const AccountPage = () => {
   const navigation = useNavigation();
   const [expandedDropdowns, setExpandedDropdowns] = useState({});
@@ -212,66 +213,92 @@ const AccountPage = () => {
 export default AccountPage;
 
 const styles = StyleSheet.create({
+  
   safeArea: {
+    
     flex: 1,
     backgroundColor: "#fff",
+  
   },
   container: {
+    
     flex: 1,
     position: "relative",
+  
   },
   scrollContent: {
+    
     paddingHorizontal: 16,
     paddingBottom: 80, // leave space for bottom nav
+  
   },
   section: {
+    
     marginBottom: 20,
+  
   },
   menuGrid: {
+    
     flexDirection: "column",
     gap: 12,
+  
   },
   menuItemContainer: {
+    
     marginBottom: 10,
+  
   },
   menuItem: {
+    
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
     borderColor: "#e5e7eb",
     borderRadius: 8,
     padding: 12,
+  
   },
   iconWrapper: {
+    
     padding: 10,
     borderRadius: 50,
+  
   },
   menuTextWrapper: {
+    
     flex: 1,
     marginLeft: 10,
+  
   },
   menuTitle: {
+    fontFamily: Fonts.semiBold,
     fontSize: 16,
     fontWeight: "600",
   },
   menuSubtitleRow: {
+    
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 4,
+  
   },
   menuSubtitle: {
+    fontFamily: Fonts.regular,
     fontSize: 13,
     color: "#6b7280",
     flex: 1,
   },
   arrowWrapper: {
+    
     padding: 6,
     backgroundColor: "#e5e7eb",
     borderRadius: 50,
     marginLeft: 8,
+  
   },
   dropdownContainer: {
+    
     backgroundColor: "#f9fafb",
     borderLeftWidth: 1,
     borderRightWidth: 1,
@@ -280,28 +307,37 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
     marginTop: -3, // Overlap with main menu item border
+  
   },
   dropdownItem: {
+    
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: "#e5e7eb",
+  
   },
   lastDropdownItem: {
+    
     borderBottomWidth: 0,
+  
   },
   dropdownBullet: {
+    
     width: 4,
     height: 4,
     borderRadius: 2,
     backgroundColor: "#6b21a8",
     marginRight: 12,
+  
   },
   dropdownText: {
+    fontFamily: Fonts.regular,
     flex: 1,
     fontSize: 14,
     color: "#374151",
   },
+
 });

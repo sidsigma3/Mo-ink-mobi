@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { Fonts } from '../Utils/Fonts';
 if (Platform.OS === 'android') {
   UIManager.setLayoutAnimationEnabledExperimental &&
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -104,19 +105,27 @@ const FAQs = ({ t }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAFC' },
+  
+  container: {
+     flex: 1, backgroundColor: '#F8FAFC' 
+  },
   heroSection: {
+    
     alignItems: 'center',
     paddingVertical: 32,
     backgroundColor: '#fff',
+  
   },
   iconCircle: {
+    
     backgroundColor: '#F3F4F6',
     padding: 16,
     borderRadius: 50,
     marginBottom: 12,
+  
   },
   heroTitle: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     fontWeight: 'bold',
     color: '#6B21A8',
@@ -124,19 +133,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   breadcrumbs: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#888',
     marginBottom: 8,
     textAlign: 'center',
   },
   contentBox: {
+    
     backgroundColor: '#fff',
     margin: 16,
     borderRadius: 16,
     padding: 20,
     elevation: 2,
+  
   },
   mainTitle: {
+    fontFamily: Fonts.bold,
     fontSize: 22,
     fontWeight: 'bold',
     color: '#222',
@@ -144,27 +157,35 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   introText: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     color: '#555',
     textAlign: 'center',
     marginBottom: 16,
   },
-  faqSection: { marginTop: 8 },
+  faqSection: {
+     marginTop: 8 
+  },
   faqItem: {
+    
     borderWidth: 1,
     borderColor: '#eee',
     borderRadius: 10,
     marginBottom: 10,
     backgroundColor: '#F9FAFB',
     overflow: 'hidden',
+  
   },
   faqQuestion: {
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 14,
+  
   },
   faqQuestionText: {
+    fontFamily: Fonts.bold,
     fontWeight: 'bold',
     fontSize: 16,
     color: '#222',
@@ -172,27 +193,34 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   faqAnswerBox: {
+    
     borderTopWidth: 1,
     borderTopColor: '#eee',
     padding: 14,
     backgroundColor: '#fff',
+  
   },
   faqAnswer: {
+    fontFamily: Fonts.regular,
     fontSize: 15,
     color: '#555',
   },
   lastUpdated: {
+    
     borderTopWidth: 1,
     borderTopColor: '#eee',
     marginTop: 24,
     paddingTop: 12,
     alignItems: 'center',
+  
   },
   lastUpdatedText: {
+    fontFamily: Fonts.regular,
     fontSize: 13,
     color: '#888',
     textAlign: 'center',
   },
+
 });
 
 export default FAQs;

@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'rea
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
+import { Fonts } from '../../Utils/Fonts';
 const MainNews = () => {
   const { t } = useTranslation();
   const navigation = useNavigation();
@@ -70,64 +71,84 @@ const MainNews = () => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     backgroundColor: '#FFFBED',
     paddingVertical: 40,
     paddingHorizontal: 20,
+  
   },
   innerContainer: {
+    
     flexDirection: 'column',
     gap: 30,
+  
   },
   imageContainer: {
+    
     alignItems: 'center',
+  
   },
   image: {
+    
     width: '100%',
     height: 300,
     borderRadius: 24,
     borderWidth: 4,
     borderColor: '#ffe382',
+  
   },
   textContainer: {
+    
     marginTop: 20,
+  
   },
   subtitle: {
+    fontFamily: Fonts.bold,
     color: '#6b21a8',
     fontWeight: 'bold',
     textTransform: 'uppercase',
     marginBottom: 8,
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 26,
     fontWeight: 'bold',
     color: '#111827',
     marginBottom: 12,
   },
   description: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     color: '#4b5563',
     marginBottom: 20,
   },
   listItem: {
+    
     flexDirection: 'row',
     alignItems: 'flex-start',
     marginBottom: 12,
     gap: 8,
+  
   },
   bullet: {
+    fontFamily: Fonts.regular,
     color: '#6b21a8',
     fontSize: 18,
   },
   pointText: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     color: '#1f2937',
     flex: 1,
   },
   pointTitle: {
+    fontFamily: Fonts.bold,
     fontWeight: 'bold',
   },
   button: {
+    
     marginTop: 30,
     backgroundColor: '#6b21a8',
     paddingVertical: 12,
@@ -136,12 +157,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#6b21a8',
     alignSelf: 'center',
+  
   },
   buttonText: {
+    fontFamily: Fonts.semiBold,
     color: '#FFEE9A',
     fontWeight: '600',
     fontSize: 16,
   },
+
 });
 
 export default MainNews;

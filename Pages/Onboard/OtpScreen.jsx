@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Fonts } from '../../Utils/Fonts';
 import {
   View,
   Text,
@@ -116,24 +117,31 @@ export default function OtpScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#FBFAF7',
     paddingHorizontal: 20,
     paddingTop: 120, // Add top padding for status bar
     paddingBottom: 40, // Add bottom padding
+  
   },
   content: {
+    
     flex: 1,
     justifyContent: 'flex-start',
+  
   },
   header: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     marginBottom: 4,
     fontWeight: 'bold',
     textAlign: 'start',
   },
   subheader: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     lineHeight: 24,
     marginBottom: 32,
@@ -141,11 +149,14 @@ const styles = StyleSheet.create({
     textAlign: 'start',
   },
   otpContainer: {
+    
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 24,
+  
   },
   otpInput: {
+    fontFamily: Fonts.semiBold,
     borderWidth: 1,
     borderColor: "#ddd",
     borderRadius: 8,
@@ -158,6 +169,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   timer: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     textAlign: "center",
     marginBottom: 20,
@@ -165,20 +177,25 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   resendText: {
+    fontFamily: Fonts.medium,
     color: "#6B21A8",
     fontWeight: '500',
     textDecorationLine: 'underline',
   },
   button: {
+    
     backgroundColor: '#6B21A8',
     padding: 18,
     borderRadius: 12,
     marginTop: 'auto', // This pushes the button to the bottom
+  
   },
   buttonText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 16,
   },
+
 });

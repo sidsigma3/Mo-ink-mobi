@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather'; 
 
+import { Fonts } from '../../Utils/Fonts';
 const HeroSection = ({ productName, breadcrumbs = [] }) => {
   return (
     <View style={styles.container}>
@@ -53,7 +54,9 @@ const HeroSection = ({ productName, breadcrumbs = [] }) => {
 export default HeroSection;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     margin: 10,
     borderRadius: 22,
     overflow: 'hidden',
@@ -62,26 +65,32 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 2,
-    },
+    
+  },
     shadowOpacity: 0.1,
     shadowRadius: 3.84,
     elevation: 5,
   },
   background: {
+    
     height: 150,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+  
   },
   overlay: {
+    
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
     paddingVertical: 20,
     flex: 1,
     width: '100%',
+  
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     fontWeight: '700',
     color: '#fff',
@@ -90,40 +99,54 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
     // Add text shadow for better readability
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 0, height: 1 },
+    textShadowOffset: { width: 0, height: 1
+  },
     textShadowRadius: 2,
   },
   breadcrumbWrapper: {
+    
     width: '100%',
     alignItems: 'center',
+  
   },
   breadcrumbScrollContainer: {
+    
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: '100%',
+  
   },
   breadcrumbContainer: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 10,
+  
   },
   breadcrumbButton: {
+    
     paddingVertical: 2,
     paddingHorizontal: 4,
+  
   },
   breadcrumbText: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: 'rgba(255, 255, 255, 0.9)',
     fontWeight: '400',
     textAlign: 'center',
     // Add text shadow for better readability
     textShadowColor: 'rgba(0, 0, 0, 0.2)',
-    textShadowOffset: { width: 0, height: 1 },
+    textShadowOffset: { width: 0, height: 1
+  },
     textShadowRadius: 1,
   },
   icon: {
+    
     marginHorizontal: 8,
     marginTop: 1, // Slight adjustment for better vertical alignment
+  
   },
+
 });

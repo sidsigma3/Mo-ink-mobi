@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, TextInput, FlatList, Text, TouchableOpacity, StyleSheet } from "react-native";
 
+import { Fonts } from '../../Utils/Fonts';
 const SelectState = ({ value, onChange }) => {
   const states = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -59,18 +60,24 @@ const SelectState = ({ value, onChange }) => {
 };
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     width: "100%",
     position: "relative",
+  
   },
   input: {
+    
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 8,
+  
   },
   dropdown: {
+    
     position: "absolute",
     top: 45,
     left: 0,
@@ -80,12 +87,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     zIndex: 9999,
+  
   },
   item: {
+    
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#eee",
+  
   },
+
 });
 
 export default SelectState;

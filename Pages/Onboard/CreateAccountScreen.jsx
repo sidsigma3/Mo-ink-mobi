@@ -15,6 +15,7 @@ import { auth } from '../../firebase';
 import * as AuthSession from 'expo-auth-session';
 import * as Facebook from 'expo-facebook';
 
+import { Fonts } from '../../Utils/Fonts';
 export default function CreateAccountScreen({ navigation, route }) {
   const { customerData: phoneData } = route.params || {}; // ✅ Get phone/whatsapp from OTP screen
 
@@ -216,24 +217,31 @@ const handleFacebookLogin = async () => {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     backgroundColor: '#FBFAF7',
     paddingHorizontal: 20,
     paddingTop: 120, // Add top padding for status bar
     paddingBottom: 40, // Add bottom padding
+  
   },
   content: {
+    
     flex: 1,
     justifyContent: 'flex-start',
+  
   },
   header: {
+    fontFamily: Fonts.bold,
     fontSize: 24,
     marginBottom: 4,
     fontWeight: 'bold',
     textAlign: 'start',
   },
   subheader: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     lineHeight: 24,
     marginBottom: 32,
@@ -241,6 +249,7 @@ const styles = StyleSheet.create({
     textAlign: 'start',
   },
   input: {
+    fontFamily: Fonts.regular,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
@@ -250,6 +259,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   inputWrapper: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
@@ -258,35 +268,46 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginBottom: 16,
     paddingRight: 16,
+  
   },
   inputField: {
+    fontFamily: Fonts.regular,
     flex: 1,
     padding: 16,
     fontSize: 16,
   },
   eyeIcon: {
+    
     padding: 6,
+  
   },
   signInContainer: {
+    
     alignItems: 'center',
     marginBottom: 24,
+  
   },
   signin: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#444',
     textAlign: 'center',
   },
   signInLink: {
+    fontFamily: Fonts.medium,
     color: '#6B21A8', // Changed to match PhoneNumberScreen color
     fontWeight: '500',
   },
   socialContainer: {
+    
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 12,
     marginBottom: 20,
+  
   },
   socialButton: {
+    
   flexDirection: 'row',
   alignItems: 'center',
   backgroundColor: '#f2f2f2',
@@ -299,29 +320,37 @@ const styles = StyleSheet.create({
   borderWidth: 1,        // 🔹 border added
   borderColor: '#ccc',   // 🔹 light gray border
    justifyContent: 'center', 
-},
+
+  },
 socialIcon: {
+    
   width: 20,
   height: 20,
   marginRight: 8,
   resizeMode: 'contain',
-},
+
+  },
 socialButtonText: {
-  fontSize: 16,
+    fontFamily: Fonts.medium,
+    fontSize: 16,
   fontWeight: '500',
   color: '#333',
-},
+  },
 
   button: {
+    
     backgroundColor: '#6B21A8', // Changed to match PhoneNumberScreen color
     padding: 18,
     borderRadius: 12,
     marginTop: 'auto', // This pushes the button to the bottom
+  
   },
   buttonText: {
+    fontFamily: Fonts.bold,
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 16,
   },
+
 });

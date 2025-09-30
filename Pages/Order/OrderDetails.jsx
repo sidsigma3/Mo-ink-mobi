@@ -14,6 +14,7 @@ import NavbarHeader from '../../Components/NavBarHeader/NavbarHeader';
 import HeroSection from '../../Components/HeroSection/HeroSection';
 import BottomNav from '../../Components/BottomNav/BottomNav';
 
+import { Fonts } from '../../Utils/Fonts';
 const paymentDescriptions = {
   "100%": "100% Online Payment",
   "50%": "50% Online + 50% COD",
@@ -532,32 +533,69 @@ const OrderDetails = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAFC', padding: 16 ,marginBottom:100},
-  loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  loadingText: { marginTop: 12, fontSize: 16, color: '#6D28D9' },
-  section: { marginBottom: 24 },
-  title: { fontSize: 22, fontWeight: 'bold', color: '#6D28D9', marginBottom: 8 },
-  subtitle: { fontSize: 16, color: '#555', marginBottom: 4 },
-  bold: { fontWeight: 'bold', color: '#222' },
-  sectionTitle: { fontSize: 18, fontWeight: 'bold', color: '#222', marginBottom: 6 },
-  summaryRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
-  paymentRow: { padding: 8, backgroundColor: '#fff', borderRadius: 8, marginBottom: 8 },
+  
+  container: {
+     flex: 1, backgroundColor: '#F8FAFC', padding: 16 ,marginBottom:100
+  },
+  loadingContainer: {
+     flex: 1, justifyContent: 'center', alignItems: 'center' 
+  },
+  loadingText: {
+    fontFamily: Fonts.regular,
+    marginTop: 12, fontSize: 16, color: '#6D28D9'
+  },
+  section: {
+     marginBottom: 24 
+  },
+  title: {
+    fontFamily: Fonts.bold,
+    fontSize: 22, fontWeight: 'bold', color: '#6D28D9', marginBottom: 8
+  },
+  subtitle: {
+    fontFamily: Fonts.regular,
+    fontSize: 16, color: '#555', marginBottom: 4
+  },
+  bold: {
+    fontFamily: Fonts.bold,
+    fontWeight: 'bold', color: '#222'
+  },
+  sectionTitle: {
+    fontFamily: Fonts.bold,
+    fontSize: 18, fontWeight: 'bold', color: '#222', marginBottom: 6
+  },
+  summaryRow: {
+     flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 
+  },
+  paymentRow: {
+     padding: 8, backgroundColor: '#fff', borderRadius: 8, marginBottom: 8 
+  },
   payBtn: {
+    
     backgroundColor: '#F59E42',
     borderRadius: 8,
     paddingVertical: 12,
     alignItems: 'center',
     marginVertical: 12,
+  
   },
-  payBtnText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
+  payBtnText: {
+    fontFamily: Fonts.bold,
+    color: '#fff', fontWeight: 'bold', fontSize: 16
+  },
   buyAgainBtn: {
+    
     backgroundColor: '#6D28D9',
     borderRadius: 8,
     paddingVertical: 12,
     alignItems: 'center',
     marginVertical: 12,
+  
   },
-  buyAgainText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
+  buyAgainText: {
+    fontFamily: Fonts.bold,
+    color: '#fff', fontWeight: 'bold', fontSize: 16
+  },
+
 });
 
 export default OrderDetails;

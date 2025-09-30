@@ -4,6 +4,7 @@ import { View, Text, ActivityIndicator, FlatList, StyleSheet } from "react-nativ
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getWishlist } from "../../Service/WishlistService";
 import { fetchProducts } from "../../Service/ProductService";
+import { Fonts } from '../../Utils/Fonts';
 import ProductDetailBox from "../../Components/ProductList/ProductDetailBox"; // Must be RN compatible
 
 const Wishlist = () => {
@@ -117,18 +118,25 @@ const Wishlist = () => {
 export default Wishlist;
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     marginTop: 16,
     flex: 1,
+  
   },
   list: {
+    
     paddingHorizontal: 8,
     gap: 12, // Only works in RN >= 0.71, else use marginRight
+  
   },
   emptyText: {
+    fontFamily: Fonts.regular,
     textAlign: "center",
     fontSize: 16,
     color: "#666",
     marginTop: 20,
   },
+
 });

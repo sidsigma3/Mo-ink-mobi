@@ -5,6 +5,7 @@ import Toast from 'react-native-toast-message';
 import { otpSend , otpVerify } from '../../Service/authService';
 import { createCustomer } from '../../Service/CustomerService';
 
+import { Fonts } from '../Utils/Fonts';
 const Otp = () => {
   const navigation = useNavigation();
   const route = useRoute();
@@ -207,25 +208,35 @@ export default Otp;
 
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
+  
   },
   backgroundImage: {
+    
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
   overlay: {
+    
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(255,255,255,0.4)',
+  
   },
   logo: {
+    
     width: 60,
     height: 60,
     marginBottom: 20,
     zIndex: 2,
+  
   },
   formBox: {
+    
     // backgroundColor: 'rgba(255,255,255,0.9)',
     padding: 24,
     width: '90%',
@@ -233,33 +244,41 @@ const styles = StyleSheet.create({
     borderColor: '#ffffff',
     borderWidth: 2,
     zIndex: 2,
+  
   },
   backLink: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#333',
     marginBottom: 10,
   },
   title: {
+    fontFamily: Fonts.bold,
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   subtitle: {
+    fontFamily: Fonts.regular,
     textAlign: 'center',
     color: 'gray',
     marginBottom: 20,
   },
   label: {
+    fontFamily: Fonts.semiBold,
     marginTop: 16,
     fontWeight: '600',
     color: '#333',
   },
   inputContainer: {
+    
     flexDirection: 'row',
     alignItems: 'center',
     position: 'relative',
+  
   },
   input: {
+    
     flex: 1,
     borderColor: '#6D28D9',
     borderWidth: 1,
@@ -269,28 +288,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginTop: 6,
     color: '#000',
+  
   },
   disabledInput: {
+    
     backgroundColor: '#e5e7eb',
     borderColor: '#d1d5db',
     color: '#999',
+  
   },
   checkIcon: {
+    
     width: 18,
     height: 18,
     position: 'absolute',
     right: 10,
     top: 18,
+  
   },
   resend: {
+    fontFamily: Fonts.regular,
     color: '#6D28D9',
     fontSize: 14,
     marginTop: 6,
     textAlign: 'right',
   },
   successText: {
+    fontFamily: Fonts.regular,
     textAlign: 'center',
     color: 'green',
     marginTop: 20,
   },
+
 });

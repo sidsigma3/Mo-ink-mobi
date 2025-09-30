@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import LottieView from 'lottie-react-native';
 
+import { Fonts } from '../../Utils/Fonts';
 export default function AccountCreatedScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -37,26 +38,34 @@ export default function AccountCreatedScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
+    
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FBFAF7',
     paddingBottom: 40,
     paddingHorizontal: 20,
+  
   },
   animationContainer: {
+    
     width: 440,
     height: 440,
     marginBottom: -100,
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
   animation: {
+    
     width: '100%',
     height: '100%',
+  
   },
   header: {
+    fontFamily: Fonts.bold,
     fontSize: 32,
     fontWeight: 'bold',
     color: '#212529',
@@ -64,6 +73,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   subheader: {
+    fontFamily: Fonts.regular,
     fontSize: 16,
     lineHeight: 24,
     marginBottom: 32,
@@ -71,16 +81,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
+    
     backgroundColor: '#6B21A8',
     paddingVertical: 16,
     width: '100%',
     borderRadius: 12,
      marginTop: 'auto',
+  
   },
   buttonText: {
+    fontFamily: Fonts.semiBold,
     color: '#FFFFFF',
     fontSize: 16,
     textAlign: 'center',
     fontWeight: '600',
   },
+
 });

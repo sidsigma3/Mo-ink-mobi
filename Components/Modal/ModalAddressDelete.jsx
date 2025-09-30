@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
+import { Fonts } from '../../Utils/Fonts';
 const ModalAddressDelete = ({ isOpen, onCancel, onConfirm }) => {
   return (
     <Modal
@@ -41,19 +42,25 @@ const ModalAddressDelete = ({ isOpen, onCancel, onConfirm }) => {
 };
 
 const styles = StyleSheet.create({
+  
   overlay: {
+    
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
     paddingHorizontal: 24,
+  
   },
   modalContainer: {
+    
     backgroundColor: 'white',
     borderRadius: 16,
     padding: 20,
     alignItems: 'center',
+  
   },
   iconCircle: {
+    
     width: 48,
     height: 48,
     borderRadius: 24,
@@ -61,13 +68,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 12,
+  
   },
   iconText: {
+    fontFamily: Fonts.bold,
     color: '#DC2626',
     fontSize: 20,
     fontWeight: 'bold',
   },
   title: {
+    fontFamily: Fonts.semiBold,
     fontSize: 18,
     fontWeight: '600',
     color: '#111827',
@@ -75,35 +85,45 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   description: {
+    fontFamily: Fonts.regular,
     fontSize: 14,
     color: '#4B5563',
     textAlign: 'center',
     marginBottom: 20,
   },
   buttonRow: {
+    
     flexDirection: 'row',
     gap: 12,
+  
   },
   cancelButton: {
+    
     backgroundColor: '#E5E7EB',
     paddingVertical: 8,
     paddingHorizontal: 20,
     borderRadius: 8,
+  
   },
   cancelText: {
+    fontFamily: Fonts.medium,
     color: '#374151',
     fontWeight: '500',
   },
   deleteButton: {
+    
     backgroundColor: '#DC2626',
     paddingVertical: 8,
     paddingHorizontal: 20,
     borderRadius: 8,
+  
   },
   deleteText: {
+    fontFamily: Fonts.medium,
     color: 'white',
     fontWeight: '500',
   },
+
 });
 
 export default ModalAddressDelete;
