@@ -17,6 +17,7 @@ import { useAppContext } from "../../Utils/AppContext";
 import Cta from "../../Components/Cta/Cta";
 import Footer from "../../Components/Footer/Footer";
 import BottomNav from "../../Components/BottomNav/BottomNav";
+import NavbarHeader from "../../Components/NavBarHeader/NavbarHeader";
 
 const PaymentFailure = () => {
   const navigation = useNavigation();
@@ -111,7 +112,7 @@ const PaymentFailure = () => {
   const handleCloseOrder = async () => {
     try {
       await updateOrderStatuses(orderId, { status: "FAILED" });
-      navigation.navigate("Home");
+      navigation.navigate("Landing");
     } catch (err) {
       console.error(err);
       showToast("Failed to close order", "error");
@@ -123,8 +124,11 @@ const PaymentFailure = () => {
       {/* Scrollable container */}
       <ScrollView contentContainerStyle={styles.container}>
         {/* Image */}
+        <View>
+        <NavbarHeader></NavbarHeader>
+        </View>
         <Image
-          source={require("../../assets/Images/Card-Declined.png")}
+          source={require("../../assets/images/card_declined.png")}
           style={styles.image}
           resizeMode="contain"
         />
@@ -172,7 +176,10 @@ const PaymentFailure = () => {
             <Text style={styles.closeText}>Close</Text>
           </TouchableOpacity>
         </View>
-        <Cta></Cta>
+        <View  style={{marginTop:20, width:'100%'}}>
+          <Cta></Cta>
+        </View>
+        
         <Footer></Footer>
       </ScrollView>
 

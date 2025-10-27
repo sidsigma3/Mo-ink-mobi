@@ -40,7 +40,7 @@ export default function OnboardingScreen2() {
 
         {/* Main content */}
         <View style={styles.mainContent}>
-          <Image source={require('../../assets/Images/onboarding-2.png')} style={styles.image} />
+          <Image source={require('../../assets/images/onboarding_2.png')} style={styles.image} />
           
           <View style={styles.textContainer}>
             <Text style={styles.title}>

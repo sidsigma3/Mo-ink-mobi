@@ -1,14 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View , ActivityIndicator } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import './Utils/i18n';
 import HomePage from './Pages/HomePage/HomePage';
 import AuthPage from './Pages/Authenticate/AuthPage';
 import ForgotPasswordPage from './Pages/ForgotPassword/ForgotPasswordPage';
 import Otp from './Pages/Otp/Otp';
 import LandingPage from './Pages/LandingPage/LandingPage';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import About from './Pages/About/About';
 import Blogs from './Pages/Blogs/Blogs';
 import ContactPage from './Pages/ContactPage/ContactPage';
@@ -46,13 +47,69 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
 
+  const [isFirstLaunch, setIsFirstLaunch] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAppState = async () => {
+      try {
+        // Check if onboarding has run
+        const hasLaunched = await AsyncStorage.getItem('hasLaunched');
+        if (hasLaunched === null) {
+          await AsyncStorage.setItem('hasLaunched', 'true');
+          setIsFirstLaunch(true);
+        } else {
+          setIsFirstLaunch(false);
+        }
+
+        // Check if user is authenticated
+        const authStatus = await AsyncStorage.getItem('isAuthenticated');
+        if (authStatus === 'true') {
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
+
+      } catch (err) {
+        console.log('Error checking app state:', err);
+        setIsFirstLaunch(false);
+        setIsAuthenticated(false);
+      }
+    };
+
+    checkAppState();
+  }, []);
+
+
+  if (isFirstLaunch === null) {
+    // App is still checking AsyncStorage
+    return (
+      <View style={styles.loader}>
+        <ActivityIndicator size="large" color="#000" />
+      </View>
+    );
+  }
 
   return (
     <AppProvider>
       <NavigationContainer>
       <StatusBar style="auto" />
-      <Stack.Navigator initialRouteName="AccountCreatedScreen" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+          initialRouteName={
+            isFirstLaunch
+              ? 'SplashScreen'
+              : isAuthenticated
+                ? 'Landing'
+                : 'Auth'
+          }
+          screenOptions={{ headerShown: false }}
+        >
+        <Stack.Screen name="SplashScreen" component={SplashScreen} screenOptions={{ headerShown: false }} />
+        <Stack.Screen name="OnboardingScreen1" component={OnboardingScreen1} options={{ gestureEnabled: true  }} />
+        <Stack.Screen name="OnboardingScreen2" component={OnboardingScreen2} options={{ gestureEnabled: true  }} />
+        <Stack.Screen name="OnboardingScreen3" component={OnboardingScreen3} options={{ gestureEnabled: true  }} />
+
+
         <Stack.Screen name="Auth">
           {(props) => (
             <AuthPage
@@ -62,11 +119,7 @@ export default function App() {
             />
           )}
         </Stack.Screen>
-        <Stack.Screen name="SplashScreen" component={SplashScreen} screenOptions={{ headerShown: false }} />
-        <Stack.Screen name="OnboardingScreen1" component={OnboardingScreen1} options={{ gestureEnabled: true  }} />
-        <Stack.Screen name="OnboardingScreen2" component={OnboardingScreen2} options={{ gestureEnabled: true  }} />
-        <Stack.Screen name="OnboardingScreen3" component={OnboardingScreen3} options={{ gestureEnabled: true  }} />
-
+       
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordPage} />
         <Stack.Screen name="Otp" component={Otp} />

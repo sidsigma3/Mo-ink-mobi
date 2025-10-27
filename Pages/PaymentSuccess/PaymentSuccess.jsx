@@ -39,7 +39,7 @@ const PaymentSuccess = () => {
         {/* Image */}
         <View style={styles.imageWrapper}>
           <Image
-            source={require("../../assets/Images/Payment-Success.png")}
+            source={require("../../assets/images/payment_success.png")}
             style={styles.image}
             resizeMode="contain"
           />

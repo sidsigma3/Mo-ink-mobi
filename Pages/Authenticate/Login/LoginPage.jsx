@@ -30,7 +30,7 @@ const LoginPage = ({ togglePage, setAuthStatus }) => {
     setError('Fill all Fields');
     return;
   }
-
+  console.log(username,password)
   try {
     const response = await loginCustomer(username, password);
   
@@ -62,7 +62,7 @@ const LoginPage = ({ togglePage, setAuthStatus }) => {
 
       {/* Logo */}
       <View style={styles.logoContainer}>
-        <Image source={{uri:'../../../assets/Images/logo.png'}} style={styles.logo} />
+        <Image source={{uri:'../../../assets/images/logo.png'}} style={styles.logo} />
       </View>
 
       <View style={styles.formBox}>

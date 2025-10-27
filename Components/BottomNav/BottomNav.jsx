@@ -5,17 +5,16 @@ import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useAppContext } from '../../Utils/AppContext';
-// import { Badge } from 'react-native-elements';
 
 const BottomNav = () => {
   const navigation = useNavigation();
   const route = useRoute();
-//   const { cartCount, wishlistCount } = useAppContext();
+  const { cartCount, wishlistCount } = useAppContext();
 
   const [selected, setSelected] = useState('');
 
   useEffect(() => {
-    if (route.name === 'Home') setSelected('home');
+    if (route.name === 'Landing') setSelected('home');
     else if (route.name === 'Wishlist') setSelected('wishlist');
     else if (route.name === 'Cart') setSelected('cart');
     else if (route.name === 'Account') setSelected('profile');
@@ -34,7 +33,7 @@ const BottomNav = () => {
         onPress={() => handleClick('home', 'Landing')}
       >
         <Image
-          source={require('../../assets/Images/NavLogo.png')}
+          source={require('../../assets/images/nav_logo.png')}
           style={styles.homeIcon}
           resizeMode="contain"
         />
@@ -46,11 +45,11 @@ const BottomNav = () => {
         style={[styles.button, selected === 'wishlist' && styles.activeButton]}
         onPress={() => handleClick('wishlist', 'Wishlist')}
       >
-        {/* <Badge
-          value={wishlistCount}
-          status="primary"
-          containerStyle={styles.badge}
-        /> */}
+       {wishlistCount > 0 && (
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{wishlistCount}</Text>
+          </View>
+        )}
         <Feather
           name={selected === 'wishlist' ? 'heart' : 'heart'}
           size={22}
@@ -64,11 +63,11 @@ const BottomNav = () => {
         style={[styles.button, selected === 'cart' && styles.activeButton]}
         onPress={() => handleClick('cart', 'Cart')}
       >
-        {/* <Badge
-          value={cartCount}
-          status="primary"
-          containerStyle={styles.badge}
-        /> */}
+       {cartCount > 0 && (
+           <View style={styles.badge}>
+             <Text style={styles.badgeText}>{cartCount}</Text>
+           </View>
+        )}
         <MaterialIcons
           name={selected === 'cart' ? 'cart' : 'cart-outline'}
           size={24}
@@ -109,6 +108,25 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 999,
   },
+  badge: {
+  position: 'absolute',
+  top: -4,
+  right: 28, // adjust to align with icon
+  backgroundColor: '#6D28D9',
+  borderRadius: 10,
+  minWidth: 18,
+  height: 18,
+  paddingHorizontal: 4,
+  justifyContent: 'center',
+  alignItems: 'center',
+  zIndex: 10,
+},
+badgeText: {
+  color: '#fff',
+  fontSize: 10,
+  fontWeight: 'bold',
+  textAlign: 'center',
+},
   button: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -138,11 +156,5 @@ const styles = StyleSheet.create({
   activeLabel: {
     color: '#6D28D9',
     fontWeight: '600',
-  },
-  badge: {
-    position: 'absolute',
-    top: -2,
-    right: 20,
-    zIndex: 10,
   },
 });

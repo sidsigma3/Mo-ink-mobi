@@ -22,7 +22,7 @@ const MainCone = () => {
         {/* Left Column: Yarn in Cone */}
         <View style={[styles.column, isLargeScreen && styles.reverseColumn]}>
           <Image
-            source={{uri:'../../assets/Images/Yarn_Cone.png'}}
+            source={{uri:'../../assets/images/yarn_cone.png'}}
             style={styles.image}
             resizeMode="cover"
           />
@@ -36,7 +36,7 @@ const MainCone = () => {
         {/* Right Column: Yarn in Hank */}
         <View style={styles.column}>
           <Image
-            source={{uri:'../../assets/Images/Yarn_Hank.png'}}
+            source={{uri:'../../assets/images/yarn_hank.png'}}
             style={styles.image}
             resizeMode="cover"
           />

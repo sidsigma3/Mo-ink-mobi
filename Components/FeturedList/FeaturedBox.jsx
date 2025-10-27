@@ -3,10 +3,10 @@ import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react
 
 const FeaturedBox = ({ productName, number, color, imageUrl , onPress }) => {
   const categoryImages = {
-  Cotton: require("../../assets/Images/Yarn3.jpg"),
-  Excel: require("../../assets/Images/Yarn2.jpg"),
-  "Micro Modal": require("../../assets/Images/Yarn5.jpg"),
-  Bamboo: require("../../assets/Images/Yarn4.jpg"),
+  Cotton: require("../../assets/images/yarn3.jpg"),
+  Excel: require("../../assets/images/yarn2.jpg"),
+  "Micro Modal": require("../../assets/images/yarn5.jpg"),
+  Bamboo: require("../../assets/images/yarn4.jpg"),
   "Lenzing Micro Modal": {
     uri: "https://ik.imagekit.io/mediadata/Mo%20Ink%20n%20Dyes/Yarn1.png?updatedAt=1754928796191",
   },

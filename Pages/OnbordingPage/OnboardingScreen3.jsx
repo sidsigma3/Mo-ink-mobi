@@ -46,7 +46,7 @@ export default function OnboardingScreen3() {
 
         {/* Main content */}
         <View style={styles.mainContent}>
-          <Image source={require('../../assets/Images/onboarding-3.png')} style={styles.image} />
+          <Image source={require('../../assets/images/onboarding_3.png')} style={styles.image} />
           
           <View style={styles.textContainer}>
             <Text style={styles.title}>

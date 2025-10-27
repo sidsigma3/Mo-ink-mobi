@@ -13,7 +13,7 @@ const MainParallax = () => {
 
   return (
     <ImageBackground
-      source={{uri:'../../assets/Images/ParallaxPic.jpg'}}
+      source={{uri:'../../assets/images/parallax_pic.jpg'}}
       style={styles.background}
       resizeMode="cover"
     >

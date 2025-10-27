@@ -6,7 +6,7 @@ const HeroSection = ({ productName, breadcrumbs = [] }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../assets/Images/cta-bg.png')}
+        source={require('../../assets/images/cta_bg.png')}
         style={styles.background}
         resizeMode="cover"
       >

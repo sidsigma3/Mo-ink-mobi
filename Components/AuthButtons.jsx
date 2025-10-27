@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, Alert } from 'react-native';
 import * as AuthSession from 'expo-auth-session';
-import * as Facebook from 'expo-facebook';
+// import * as Facebook from 'expo-facebook';
 import { GoogleAuthProvider, FacebookAuthProvider, signInWithCredential } from 'firebase/auth';
 import { auth } from './firebase';
 
@@ -36,27 +36,27 @@ export default function AuthButtons() {
   }, [response]);
 
   // Facebook Sign-In
-  const handleFacebookLogin = async () => {
-    try {
-      await Facebook.initializeAsync({ appId: fbAppId });
-      const { type, token } = await Facebook.logInWithReadPermissionsAsync({ permissions: ['public_profile','email'] });
+  // const handleFacebookLogin = async () => {
+  //   try {
+  //     await Facebook.initializeAsync({ appId: fbAppId });
+  //     const { type, token } = await Facebook.logInWithReadPermissionsAsync({ permissions: ['public_profile','email'] });
 
-      if (type === 'success' && token) {
-        const credential = FacebookAuthProvider.credential(token);
-        signInWithCredential(auth, credential).catch(err => console.error(err));
-      } else {
-        Alert.alert('Facebook login cancelled');
-      }
-    } catch (err) {
-      console.error(err);
-      Alert.alert('Facebook login error', err.message);
-    }
-  };
+  //     if (type === 'success' && token) {
+  //       const credential = FacebookAuthProvider.credential(token);
+  //       signInWithCredential(auth, credential).catch(err => console.error(err));
+  //     } else {
+  //       Alert.alert('Facebook login cancelled');
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //     Alert.alert('Facebook login error', err.message);
+  //   }
+  // };
 
   return (
     <>
       <Button disabled={!request} title="Sign in with Google" onPress={() => promptAsync()} />
-      <Button title="Sign in with Facebook" onPress={handleFacebookLogin} />
+      {/* <Button title="Sign in with Facebook" onPress={handleFacebookLogin} /> */}
     </>
   );
 }

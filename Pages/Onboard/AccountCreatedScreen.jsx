@@ -20,13 +20,13 @@ export default function AccountCreatedScreen({ navigation }) {
       <Text style={styles.header}>Account Created!</Text>
       <Text style={styles.subheader}>
             Welcome to Mo-Ink! Your account has been{'\n'}successfully created and you're ready to{'\n'}start your journey with us.
-          </Text>
+      </Text>
       
       <TouchableOpacity 
         style={styles.button} 
         onPress={() => {
           // Navigate to home screen
-          navigation.navigate('Landing'); // Replace 'Home' with your actual home screen name
+          navigation.navigate('Auth'); // Replace 'Home' with your actual home screen name
         }}
         activeOpacity={0.8}
       >

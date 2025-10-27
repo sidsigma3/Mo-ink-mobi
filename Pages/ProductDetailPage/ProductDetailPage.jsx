@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation, useRoute } from "@react-navigation/native";
-
+import { REACT_APP_IMAGE_URL } from '@env';
 import { addToCart, getCart } from "../../Service/CartService";
 import { getUnusedActiveColors } from "../../Service/ColorService";
 import Toast from "../../Components/Toast/Toast";
@@ -34,6 +34,7 @@ import IconInfo from "react-native-vector-icons/Feather";
 import IconPackage from "react-native-vector-icons/Feather";
 import IconSettings from "react-native-vector-icons/Feather";
 import IconShield from "react-native-vector-icons/Feather";
+import IconPlus from "react-native-vector-icons/Feather";
 
 
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -58,7 +59,7 @@ export default function ProductDetailPage() {
     selectedCounters,
   } = route.params || {};
 
-  const backendUrl = process.env.REACT_APP_IMAGE_URL;
+  const backendUrl = REACT_APP_IMAGE_URL;
   const [toast, setToast] = useState(null);
   const [filteredColors, setFilteredColors] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
@@ -66,6 +67,10 @@ export default function ProductDetailPage() {
   const [searchColor, setSearchColor] = useState("");
   const [isInCart, setIsInCart] = useState(false);
   const [customer, setCustomer] = useState(null);
+  const [isAddingColor, setIsAddingColor] = useState(false);
+  const [newColorName, setNewColorName] = useState("");
+  const [newColorCode, setNewColorCode] = useState("");
+  const [customColors, setCustomColors] = useState([]);
 
   // Accordion state
   const [activeIndex, setActiveIndex] = useState(null);
@@ -166,21 +171,43 @@ export default function ProductDetailPage() {
 useEffect(() => {
   if (product?.id) {
     loadColors();
+    loadUnusedColors();
   }
 }, [product, size, variantType]); // ✅ also re-run when size/type changes
 
-const loadColors = async () => {
+const loadColors = () => {
   try {
-    if (!product?.id) {
-      console.warn("⚠️ No product.id available, skipping fetch");
+    if (!product?.variants?.length) {
+      setFilteredColors([]);
       return;
     }
-    const colors = await getUnusedActiveColors(product.id, size, variantType);
-    setFilteredColors(colors || []);
+
+    const filtered = product.variants.filter(
+      (variant) =>
+        variant.availableStatus === "ACTIVE" &&
+        variant.size === size &&
+        variant.variantType === variantType
+    );
+    setFilteredColors(filtered);
   } catch (err) {
-    setFilteredColors([]); // fallback to empty
+    console.error("Error filtering colors:", err);
+    setFilteredColors([]);
   }
 };
+
+const loadUnusedColors = async () => {
+  try {
+    if (!product?.id) {
+      console.warn("No product ID available");
+    }
+    const colors = await getUnusedActiveColors(product.id,size,variantType);
+    setCustomColors(colors);
+  } catch (err) {
+    setCustomColors([]);
+    console.error("Error loading custom colors:", err);
+  }
+}
+
 
 
   const showToast = (message, type = "success") => {
@@ -226,10 +253,25 @@ const loadColors = async () => {
   };
 
   const filteredList = filteredColors.filter(
-    (c) => c.colorName.toLowerCase().includes(searchColor) || c.colorCode.toLowerCase().includes(searchColor)
+    (c) => c.color.colorName.toLowerCase().includes(searchColor) || c.color.colorCode.toLowerCase().includes(searchColor)
   );
 
   const renderColorItem = ({ item }) => {
+    const selected = selectedColors.some((c) => c.id === item.id);
+    return (
+      <TouchableOpacity
+        onPress={() => handleColorSelect(item)}
+        style={[styles.colorItem, selected && { borderColor: "#6B21A8" }]}
+      >
+        <Image source={{ uri: backendUrl + item.color.colorImage }} style={styles.colorImg} />
+        <Text style={styles.colorName}>{item.color.colorName}</Text>
+        <Text style={styles.colorCode}>{item.color.hexCode}</Text>
+      </TouchableOpacity>
+    );
+  };
+
+
+  const renderUnusedColorItem = ({ item }) => {
     const selected = selectedColors.some((c) => c.id === item.id);
     return (
       <TouchableOpacity
@@ -298,18 +340,34 @@ const loadColors = async () => {
 
           {/* Color Selector */}
           <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.colorSelectBtn}>
-            <Image source={require("../../assets/Images/select-color.png")} style={styles.colorPaletteIcon} />
+            <Image source={require("../../assets/images/select_color.png")} style={styles.colorPaletteIcon} />
             <Text style={{ color: "#2563eb", fontWeight: "600" }}>Click here for color catalogue</Text>
           </TouchableOpacity>
 
           {/* Selected Colors */}
+
           <View style={styles.selectedWrapper}>
-            {selectedColors.map((c) => (
-              <View key={c.id} style={styles.selectedItem}>
-                <Image source={{ uri: backendUrl + c.colorImage }} style={styles.selectedImg} />
-                <Text style={styles.selectedLabel}>{c.colorName}</Text>
-              </View>
-            ))}
+            {selectedColors.map((c) => {
+              const colorImage = c.color?.colorImage || c.colorImage;
+              const colorName = c.color?.colorName || c.colorName;
+
+              return (
+                <View key={c.id} style={styles.selectedItem}>
+                  <TouchableOpacity
+                    style={styles.removeBtn}
+                    onPress={() => setSelectedColors((prev) => prev.filter((x) => x.id !== c.id))}
+                  >
+                    <Text style={styles.removeText}>✕</Text>
+                  </TouchableOpacity>
+
+                  <Image
+                    source={{ uri: backendUrl + colorImage }}
+                    style={styles.selectedImg}
+                  />
+                  <Text style={styles.selectedLabel}>{colorName}</Text>
+                </View>
+              );
+            })}
           </View>
 
           <TouchableOpacity
@@ -368,31 +426,107 @@ const loadColors = async () => {
       </ScrollView>
 
       {/* ----- Color Modal ----- */}
-      <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)} animationType="slide">
+     <Modal
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+        animationType="slide"
+      >
         <View style={styles.modal}>
-          <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalClose}>
+          {/* Close Button */}
+          <TouchableOpacity
+            onPress={() => {
+              setModalVisible(false)
+              setIsAddingColor(false);
+            }}
+            style={styles.modalClose}
+          >
             <IconClose name="close" size={22} />
           </TouchableOpacity>
+
           <Text style={styles.modalTitle}>Select Colors</Text>
-          <TextInput
-            placeholder="Search..."
-            style={styles.searchInput}
-            onChangeText={(v) => setSearchColor(v.toLowerCase())}
-          />
-          <FlatList
-            data={filteredList}
-            numColumns={3}
-            keyExtractor={(item) => String(item.id)}
-            renderItem={renderColorItem}
-            contentContainerStyle={{ paddingVertical: 4 }}
-          />
-          <View style={{ marginTop: 20, alignItems: "flex-end" }}>
-            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.submitBtn}>
-              <Text style={{ fontSize: 14, fontWeight: '600', color: "#fff" }}>DONE</Text>
-            </TouchableOpacity>
-          </View>
+
+          {!isAddingColor ? (
+            <>
+              {/* 🔹 Search + Custom Color Header */}
+              <TextInput
+                placeholder="Search..."
+                style={styles.searchInput}
+                onChangeText={(v) => setSearchColor(v.toLowerCase())}
+              />
+
+              <View style={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 10}}>
+                <Text style={{ fontSize: 17, fontWeight: "600", color: "#444" }}>Custom Colors</Text>
+                <TouchableOpacity
+                  style={styles.submitBtn}
+                  onPress={() => setIsAddingColor(true)}
+                >
+                  <IconPlus name="plus" size={16} color="#fff" />
+                  <Text style={{ fontSize: 14, fontWeight: "600", color: "#fff" }}>New color</Text>
+                </TouchableOpacity>
+              </View>
+
+               <Text style={{ fontSize: 17, fontWeight: "600", color: "#444" }} >Available Colors</Text>
+
+              {/* 🔹 Show Available Colors */}
+              <FlatList
+                data={filteredList}
+                numColumns={3}
+                keyExtractor={(item) => String(item.id)}
+                renderItem={renderColorItem}
+                contentContainerStyle={{ paddingVertical: 4 }}
+              />
+
+              {/* Done Button */}
+              <View style={{ marginTop: 20, alignItems: "flex-end" }}>
+                <TouchableOpacity
+                  onPress={() => setModalVisible(false)}
+                  style={styles.submitBtn}
+                >
+                  <Text style={{ fontSize: 14, fontWeight: "600", color: "#fff" }}>
+                    DONE
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </>
+          ) : (
+            <>
+              {/* 🔹 Add Custom Color Section */}
+              <View style={styles.sectionHeader}>
+                <Text style={{ fontSize: 17, fontWeight: "600", color: "#444" }}>Add Custom Color</Text>
+              </View>
+
+              {/* Add Color Inputs */}
+              {/* <TextInput
+                placeholder="Color Name"
+                style={styles.input}
+                value={newColorName}
+                onChangeText={setNewColorName}
+              /> */}
+
+              {/* Show Unused Colors from API */}
+              <FlatList
+                data={customColors}
+                numColumns={3}
+                keyExtractor={(item) => String(item.id)}
+                renderItem={renderUnusedColorItem}
+                contentContainerStyle={{ paddingVertical: 4 }}
+              />
+
+              {/* Add Button */}
+              <TouchableOpacity
+                style={styles.submitBtn}
+                onPress={() => {
+                  setModalVisible(false)
+                  setIsAddingColor(false);
+                }}
+              >
+                <Text style={{ fontSize: 14, fontWeight: "600", color: "#fff" }}>Add Color</Text>
+              </TouchableOpacity>
+            </>
+          )}
         </View>
       </Modal>
+
 
       {/* Toast */}
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
@@ -442,6 +576,20 @@ const styles = StyleSheet.create({
   selectedItem: { alignItems: "center", marginRight: 8, marginBottom: 8 },
   selectedImg: { width: 48, height: 48, borderRadius: 4 },
   selectedLabel: { fontSize: 10, marginTop: 2 },
+  removeBtn: {
+  position: "absolute",
+  top: -5,
+  right: -1,
+  zIndex: 2,
+  backgroundColor: "rgba(207, 190, 190, 0.6)",
+  borderRadius: 10,
+  paddingHorizontal: 4,
+  },
+  removeText: {
+    color: "#e63737ff",
+    fontSize: 12,
+    fontWeight: "bold",
+  },
   addBtn: {
     marginTop: 20,
     flexDirection: "row",
@@ -501,6 +649,11 @@ const styles = StyleSheet.create({
       paddingHorizontal: 48,
       alignItems: 'center',
       borderRadius: 8,
+      display: "flex",
+      flexDirection: "row",
+      gap: 6,
+      alignContent: "center",
+      justifyContent: "center",
     },
 // colorCode: { 
 //   fontSize: 10, 

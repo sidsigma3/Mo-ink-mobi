@@ -9,38 +9,38 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-const steps = [
-  {
-    titleKey: 'mainProcess.step1.title',
-    descriptionKey: 'mainProcess.step1.description',
-    image: require('../../assets/Images/step1.png'),
-  },
-  {
-    titleKey: 'mainProcess.step2.title',
-    descriptionKey: 'mainProcess.step2.description',
-    image: require('../../assets/Images/Step2.png'),
-  },
-  {
-    titleKey: 'mainProcess.step3.title',
-    descriptionKey: 'mainProcess.step3.description',
-    image: require('../../assets/Images/Step3.png'),
-  },
-  {
-    titleKey: 'mainProcess.step4.title',
-    descriptionKey: 'mainProcess.step4.description',
-    image: require('../../assets/Images/Step4.png'),
-  },
-  {
-    titleKey: 'mainProcess.step5.title',
-    descriptionKey: 'mainProcess.step5.description',
-    image: require('../../assets/Images/step5.png'),
-  },
-  {
-    titleKey: 'mainProcess.step6.title',
-    descriptionKey: 'mainProcess.step6.description',
-    image: require('../../assets/Images/step6.png'),
-  },
-];
+// const steps = [
+//   {
+//     titleKey: 'mainProcess.step1.title',
+//     descriptionKey: 'mainProcess.step1.description',
+//     image: require('../../assets/images/step1.png'),
+//   },
+//   {
+//     titleKey: 'mainProcess.step2.title',
+//     descriptionKey: 'mainProcess.step2.description',
+//     image: require('../../assets/images/step2.png'),
+//   },
+//   {
+//     titleKey: 'mainProcess.step3.title',
+//     descriptionKey: 'mainProcess.step3.description',
+//     image: require('../../assets/images/step3.png'),
+//   },
+//   {
+//     titleKey: 'mainProcess.step4.title',
+//     descriptionKey: 'mainProcess.step4.description',
+//     image: require('../../assets/images/step4.png'),
+//   },
+//   {
+//     titleKey: 'mainProcess.step5.title',
+//     descriptionKey: 'mainProcess.step5.description',
+//     image: require('../../assets/images/step5.png'),
+//   },
+//   {
+//     titleKey: 'mainProcess.step6.title',
+//     descriptionKey: 'mainProcess.step6.description',
+//     image: require('../../assets/images/step6.png'),
+//   },
+// ];
 
 export default function MainProcess() {
   const { t } = useTranslation();
@@ -57,7 +57,7 @@ export default function MainProcess() {
       </View>
 
       {/* Steps Grid */}
-      <View style={[styles.grid, isLargeScreen && styles.gridLarge]}>
+      {/* <View style={[styles.grid, isLargeScreen && styles.gridLarge]}>
         {steps.map((step, index) => (
           <View key={index} style={styles.card}>
             <Image source={step.image} style={styles.image} resizeMode="contain" />
@@ -65,7 +65,7 @@ export default function MainProcess() {
             <Text style={styles.cardDescription}>{t(step.descriptionKey)}</Text>
           </View>
         ))}
-      </View>
+      </View> */}
     </ScrollView>
   );
 }

@@ -112,14 +112,19 @@ const OrderBox = ({ order }) => {
         style={styles.image}
       />
 
+      <View>
+
       {/* Order Info */}
       <View style={styles.info}>
         <Text>Order ID: <Text style={styles.bold}>{order.orderId}</Text></Text>
         <Text>Total: ₹{calculatedAmounts.adjustedNetPay}</Text>
         <Text>Weight: {calculatedAmounts.activeWeight} Kg</Text>
-        <Text style={{ color: "green" }}>
-          Delivery expected before {estimatedDeliveryDate}
-        </Text>
+       <View>
+        <Text style={{ color: "green", }}>Delivery expected</Text>
+        <Text style={{ color: "black",}}>before {estimatedDeliveryDate}</Text>
+      </View>
+
+
 
         {/* Rating placeholder */}
         <View style={styles.ratingRow}>
@@ -171,6 +176,7 @@ const OrderBox = ({ order }) => {
           </TouchableOpacity>
         )}
       </View>
+      </View>
 
       {/* Toast */}
       {toasts.map((toast, index) => (
@@ -191,7 +197,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     marginBottom: 12,
-    backgroundColor: "#fff",
+    borderColor: "#ddd",
+    display: "flex",
+    flexDirection: "row",
+    gap: 12,
+    // backgroundColor: "#fff",
   },
   image: {
     width: 100,

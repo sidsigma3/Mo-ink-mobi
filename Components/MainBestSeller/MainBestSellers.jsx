@@ -11,14 +11,14 @@ const MainBestsellers = () => {
   const navigation = useNavigation();
 
   const products = [
-    { titleKey: 'Bamboo Yarn', price: '₹142.00/kg', img: require('../../assets/Images/Yarn1.jpg'), count: '2/80', type: 'Cone/Hank' },
-    { titleKey: 'Modal Yarn', price: '₹256.00/kg', img: require('../../assets/Images/Yarn2.jpg'), count: '2/100', type: 'Cone/Hank' },
-    { titleKey: 'Cotton Yarn', price: '₹327.00/kg', img: require('../../assets/Images/Yarn3.jpg'), count: '1/40', type: 'Cone/Hank' },
-    { titleKey: 'Excel Yarn', price: '₹169.00/kg', img: require('../../assets/Images/Yarn4.jpg'), count: '2/60', type: 'Cone/Hank' },
-    { titleKey: 'Viscose Yarn', price: '₹142.00/kg', img: require('../../assets/Images/Yarn5.jpg'), count: '2/90', type: 'Cone/Hank' },
-    { titleKey: 'Spandex Yarn', price: '₹256.00/kg', img: require('../../assets/Images/Yarn6.jpg'), count: '1/60', type: 'Cone/Hank' },
-    { titleKey: 'Linen Yarn', price: '₹327.00/kg', img: require('../../assets/Images/Yarn7.jpg'), count: '1/92', type: 'Cone/Hank' },
-    { titleKey: 'Silk Yarn', price: '₹169.00/kg', img: require('../../assets/Images/Yarn8.jpg'), count: '2/80', type: 'Cone/Hank' },
+    { titleKey: 'Bamboo Yarn', price: '₹142.00/kg', img: require('../../assets/images/yarn1.jpg'), count: '2/80', type: 'Cone/Hank' },
+    { titleKey: 'Modal Yarn', price: '₹256.00/kg', img: require('../../assets/images/yarn2.jpg'), count: '2/100', type: 'Cone/Hank' },
+    { titleKey: 'Cotton Yarn', price: '₹327.00/kg', img: require('../../assets/images/yarn3.jpg'), count: '1/40', type: 'Cone/Hank' },
+    { titleKey: 'Excel Yarn', price: '₹169.00/kg', img: require('../../assets/images/yarn4.jpg'), count: '2/60', type: 'Cone/Hank' },
+    { titleKey: 'Viscose Yarn', price: '₹142.00/kg', img: require('../../assets/images/yarn5.jpg'), count: '2/90', type: 'Cone/Hank' },
+    { titleKey: 'Spandex Yarn', price: '₹256.00/kg', img: require('../../assets/images/yarn6.jpg'), count: '1/60', type: 'Cone/Hank' },
+    { titleKey: 'Linen Yarn', price: '₹327.00/kg', img: require('../../assets/images/yarn7.jpg'), count: '1/92', type: 'Cone/Hank' },
+    { titleKey: 'Silk Yarn', price: '₹169.00/kg', img: require('../../assets/images/yarn8.jpg'), count: '2/80', type: 'Cone/Hank' },
   ];
 
   const renderItem = ({ item }) => (

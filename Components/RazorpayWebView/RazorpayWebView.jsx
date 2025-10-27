@@ -6,6 +6,7 @@ import { updateOrderStatuses } from "../../Service/OrderService";
 import { removeFromCart } from "../../Service/CartService";
 import { useAppContext } from "../../Utils/AppContext";
 import Toast from "../Toast/Toast";
+import {RAZORPAY_CLIENT_KEY} from '@env';
 
 const RazorpayWebView = () => {
   const route = useRoute();
@@ -26,7 +27,7 @@ const RazorpayWebView = () => {
   const { updateCartAndWishlistCounts } = useAppContext();
 
   // ✅ your Razorpay key (must be defined in app config/env)
-  const razorpayKey = process.env.RAZORPAY_CLIENT_KEY;
+  const razorpayKey = RAZORPAY_CLIENT_KEY;
 
 
   useEffect(() => {

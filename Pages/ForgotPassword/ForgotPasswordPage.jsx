@@ -56,7 +56,7 @@ const ForgotPasswordPage = () => {
       />
 
       {/* Logo */}
-      <Image source={{uri:'../../assets/Images/logo.png'}} style={styles.logo} />
+      <Image source={{uri:'../../assets/images/logo.png'}} style={styles.logo} />
 
       {/* Main Card */}
       <View style={styles.card}>
