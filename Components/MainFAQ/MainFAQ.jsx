@@ -77,7 +77,7 @@ const MainFAQ = () => {
 
           {/* Image */}
           <Image
-            source={{uri:'../../assets/Images/FAQYarn.jpg'}}
+            source={{uri:'../../assets/images/faqyarn.jpg'}}
             style={styles.image}
             resizeMode="cover"
           />

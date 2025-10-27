@@ -328,54 +328,68 @@ const OrderDetails = () => {
     }
   };
 
-  const handleBuyAgain = async (orderToBuy) => {
-    const customerId = customer?.customerId;
-    if (!customerId || !orderToBuy?.orderVariantResponse?.length) return;
-    try {
-      const cartResponse = await getCart(customerId);
-      const cartItems = cartResponse?.cartItems || cartResponse?.data?.cartItems || [];
-      if (cartItems.length > 0) {
-        setPendingOrder(orderToBuy);
-        setShowConfirmModal(true);
-        return;
-      }
-      await proceedWithBuyAgain(orderToBuy);
-    } catch (err) {
-      Alert.alert("Error", "Something went wrong.");
-    }
-  };
+const handleBuyAgain = async (orderToBuy) => {
+  const customerId = customer?.customerId;
+  if (!customerId || !orderToBuy?.orderVariantResponse?.length) return;
 
-  const proceedWithBuyAgain = async (orderToBuy) => {
-    const customerId = customer?.customerId;
-    try {
-      const cartResponse = await getCart(customerId);
-      const cartItems = cartResponse?.cartItems || cartResponse?.data?.cartItems || [];
-      if (Array.isArray(cartItems) && cartItems.length > 0) {
-        await Promise.all(
-          cartItems.map((item) =>
-            removeFromCart(customerId, item.variantId)
-          )
-        );
-      }
-      for (const item of orderToBuy.orderVariantResponse) {
-        const { productId, size, color, variantType, orderWeight } = item;
-        const res = await fetchProductsById(productId);
-        if (!res.success) continue;
-        const product = res.data;
-        const matchedVariant = product.variants.find(
-          (v) =>
-            v.size === size &&
-            v.color?.id === color?.id &&
-            (!variantType || v.variantType === variantType)
-        );
-        if (!matchedVariant) continue;
-        await addToCart(customerId, matchedVariant.id, 1);
-      }
-      Alert.alert("Success", "All items added to cart!");
-    } catch (err) {
-      Alert.alert("Error", "Failed to add items to cart.");
+  try {
+    const cartResponse = await getCart(customerId);
+    const cartItems = cartResponse?.cartItems || cartResponse?.data?.cartItems || [];
+
+    // If cart already has items, show confirmation modal
+    if (cartItems.length > 0) {
+      setPendingOrder(orderToBuy);
+      setShowConfirmModal(true);
+      return;
     }
-  };
+
+    await proceedWithBuyAgain(orderToBuy);
+  } catch (err) {
+    console.error("Error fetching cart:", err);
+    Alert.alert("Error", "Something went wrong.");
+  }
+};
+
+const proceedWithBuyAgain = async (orderToBuy) => {
+  const customerId = customer?.customerId;
+  if (!customerId) return;
+
+  try {
+    // Clear existing cart items
+    const cartResponse = await getCart(customerId);
+    const cartItems = cartResponse?.cartItems || cartResponse?.data?.cartItems || [];
+    if (Array.isArray(cartItems) && cartItems.length > 0) {
+      await Promise.all(
+        cartItems.map((item) => removeFromCart(customerId, item.variantId))
+      );
+    }
+
+    // Add previous order items to cart
+    for (const item of orderToBuy.orderVariantResponse) {
+      const { productId, size, color, variantType } = item;
+      const res = await fetchProductsById(productId);
+      if (!res?.success) continue;
+
+      const product = res.data;
+      const matchedVariant = product.variants.find(
+        (v) =>
+          v.size === size &&
+          v.color?.id === color?.id &&
+          (!variantType || v.variantType === variantType)
+      );
+
+      if (!matchedVariant) continue;
+
+      await addToCart(customerId, matchedVariant.id, 1);
+    }
+
+    Alert.alert("Success", "All items added to cart!");
+  } catch (err) {
+    console.error("Buy again failed:", err);
+    Alert.alert("Error", "Failed to add items to cart.");
+  }
+};
+
 
   const handleModalConfirm = () => {
     setShowConfirmModal(false);

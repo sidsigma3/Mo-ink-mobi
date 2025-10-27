@@ -112,7 +112,7 @@ const Otp = () => {
       >
         <View style={styles.overlay} />
 
-        <Image source={{uri:'../../assets/Images/logo.png'}} style={styles.logo} />
+        <Image source={{uri:'../../assets/images/logo.png'}} style={styles.logo} />
 
         <View style={styles.formBox}>
           <TouchableOpacity onPress={() => navigation.navigate('Auth')}>

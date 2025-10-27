@@ -6,6 +6,7 @@ const BASE_URL = `${APP_BASE_URL}/customer`
 export const createCustomer = async (customerData) => {
   try {
     const response = await axios.post(BASE_URL, customerData);
+    console.log(customerData,'customerData')
     return response.data;
   } catch (error) {
     console.error("Error creating customer:", error);

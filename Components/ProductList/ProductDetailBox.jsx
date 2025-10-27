@@ -8,6 +8,7 @@ import { getCustomerDetails } from '../../Service/CustomerService';
 import { addToWishlist ,getWishlist ,removeFromWishlist } from '../../Service/WishlistService';
 import { addToCart,getCart ,removeFromCart } from '../../Service/CartService';
 import { useNavigation } from '@react-navigation/native';
+import { REACT_APP_IMAGE_URL } from '@env';
 
 const ProductDetailBox = ({
   productName,
@@ -34,7 +35,7 @@ const ProductDetailBox = ({
   const [quantity, setQuantity] = useState(itemQuantity || 1);
   const [cartItems, setCartItems] = useState([]);
   const [selectedWeight, setSelectedWeight] = useState(10);
-  const backendUrl = process.env.REACT_APP_IMAGE_URL
+  const backendUrl = REACT_APP_IMAGE_URL
   const [customer, setCustomer] = useState({});
 
 

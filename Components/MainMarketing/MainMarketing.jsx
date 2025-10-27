@@ -6,7 +6,7 @@ const MainMarketing = () => {
     <View style={styles.section}>
       <View style={styles.imageWrapper}>
         <Image
-          source={{uri:'../../assets/Images/MainMarketing.png'}} // adjust path if needed
+          source={{uri:'../../assets/images/main_marketing.png'}} // adjust path if needed
           style={styles.image}
           resizeMode="contain"
         />

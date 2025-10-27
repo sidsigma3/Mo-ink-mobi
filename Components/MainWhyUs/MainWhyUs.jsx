@@ -12,7 +12,7 @@ const MainWhyUs = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <ImageBackground
-        // source={require('../../assets/images/pattern-bg.png')} // update this to your local asset
+        // source={require('../../assets/images/pattern_bg.png')} // update this to your local asset
         style={styles.background}
         resizeMode="cover"
       >

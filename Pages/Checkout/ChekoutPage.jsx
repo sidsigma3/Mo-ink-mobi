@@ -27,8 +27,8 @@ import { getWalletTransactions , getCustomerDetails } from "../../Service/Custom
 import { createOrder , updateOrderStatuses } from "../../Service/OrderService";
 import { initiatePayment } from "../../Service/PaymentService";
 import { useAppContext } from "../../Utils/AppContext";
-import RazorpayCheckout from 'react-native-razorpay';
-const razorpayKey = process.env.RAZORPAY_CLIENT_KEY;
+
+// const razorpayKey = process.env.RAZORPAY_CLIENT_KEY;
 
 // --- Utility Functions ---
 const getOrderItemDiscountDetails = ({
@@ -585,35 +585,31 @@ const breadcrumbs = [
   };
 }, [selectedCartItems, selectedPayment, appliedCoupon, walletUsed, platformFees, online, cod, selectedAddress]);
 
-   const handleWalletChange = (e) => {
-        const value = e.target.value;
+   const handleWalletChange = (value) => {
+  if (value === '') {
+    setWalletUsed(0);
+    setWalletError('');
+    return;
+  }
 
-        if (value === '') {
-            setWalletUsed(0);
-            setWalletError('');
-            return;
-        }
+  if (!/^\d+$/.test(value)) {
+    setWalletError('Please enter a valid number');
+    return;
+  }
 
-        if (/^\d+$/.test(value)) {
-            const numericValue = Number(value);
+  const numericValue = Number(value);
+  const maxUsable = Math.min(walletBalance, netPayable);
 
-            if (numericValue > walletBalance) {
-                setWalletError('Please enter value less than wallet balance');
-            } else {
-                setWalletError('');
-                setWalletUsed(numericValue);
-            }
-        }
+  if (numericValue > walletBalance) {
+    setWalletError('Please enter value less than wallet balance');
+  } else if (numericValue > maxUsable) {
+    setWalletError(`Amount should not exceed ₹${Math.round(maxUsable).toLocaleString()}`);
+  } else {
+    setWalletUsed(numericValue);
+    setWalletError('');
+  }
+};
 
-         const maxUsable = Math.min(walletBalance, netPayable);
-
-        if (value > maxUsable) {
-            setWalletError(`Amount should not exceed ₹${Math.round(maxUsable).toLocaleString()}`);
-        } else {
-            setWalletUsed(value);
-            setWalletError('');
-        }
-        };
 
 const handleCouponClick = (discount) => {
         const now = Date.now();
@@ -1347,6 +1343,8 @@ return (
           value={walletUsed === 0 ? "" : String(walletUsed)}
           onChangeText={handleWalletChange}
         />
+
+
         {walletError && <Text style={styles.errorText}>{walletError}</Text>}
       </View>
 

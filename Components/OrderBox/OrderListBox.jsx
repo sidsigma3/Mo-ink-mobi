@@ -6,6 +6,7 @@ import { downloadCreditReceipt } from '../../Service/InvoiceService';
 import ReturnModal from '../Modal/ReturnModal';
 import Toast from '../Toast/Toast'; 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { REACT_APP_IMAGE_URL } from '@env';
 
 const statusOptions = {
   NEW: "New Order",
@@ -40,7 +41,7 @@ const OrderListBox = ({ item, status, orderId }) => {
   const [productImage, setProductImage] = useState();
   const [toasts, setToasts] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const backendUrl = process.env.REACT_APP_IMAGE_URL
+  const backendUrl = REACT_APP_IMAGE_URL;
   const weight = parseFloat(item.orderWeight) || 0;
 
   useEffect(() => {

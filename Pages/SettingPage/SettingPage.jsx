@@ -162,7 +162,7 @@ export default function SettingPage() {
     try {
       await AsyncStorage.removeItem('isAuthenticated');
       await AsyncStorage.removeItem('userData');
-      navigation.navigate('Home');
+      navigation.navigate('Auth');
     } catch (e) {
       console.error('Error clearing storage', e);
     }

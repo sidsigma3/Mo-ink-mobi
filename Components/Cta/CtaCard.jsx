@@ -22,7 +22,7 @@ const CtaCard = () => {
           ))}
         </View>
         <Image
-          source={{uri:'../../assets/Images/cta-wool-2.png'}}
+          source={{uri:'../../assets/images/cta_wool_2.png'}}
           style={styles.cardImage}
           resizeMode="contain"
         />
@@ -38,7 +38,7 @@ const CtaCard = () => {
           <Text style={styles.buttonText}>{t('cta.learnMore')} ➡️</Text>
         </TouchableOpacity>
         <Image
-          source={{uri:'../../assets/Images/cta-wool.png'}}
+          source={{uri:'../../assets/images/cta_wool.png'}}
           style={styles.cardImage}
           resizeMode="contain"
         />
@@ -54,7 +54,7 @@ const CtaCard = () => {
           <Text style={styles.buttonText}>{t('cta.learnMore')} ➡️</Text>
         </TouchableOpacity>
         <Image
-          source={{uri:'../../assets/Images/cta-wool-2.png'}}
+          source={{uri:'../../assets/images/cta_wool_2.png'}}
           style={styles.cardImage}
           resizeMode="contain"
         />

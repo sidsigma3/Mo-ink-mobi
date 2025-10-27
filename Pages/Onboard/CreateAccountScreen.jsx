@@ -13,10 +13,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Image } from "react-native";
 import { auth } from '../../firebase'; 
 import * as AuthSession from 'expo-auth-session';
-import * as Facebook from 'expo-facebook';
+// import * as Facebook from 'expo-facebook';
 
 export default function CreateAccountScreen({ navigation, route }) {
-  const { customerData: phoneData } = route.params || {}; // ✅ Get phone/whatsapp from OTP screen
+  const {phone} = route.params || {}; // ✅ Get phone/whatsapp from OTP screen
 
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
@@ -31,46 +31,11 @@ export default function CreateAccountScreen({ navigation, route }) {
       return;
     }
 
-    // ✅ Build minimal customer data
-    const customerData = {
-      customerName: "", // will be filled later in ProfileScreen
-      phoneNumber: phoneData?.phoneNumber || null,
-      whatsappNumber: phoneData?.whatsappNumber || null,
-      email: email,
+    navigation.navigate("ProfileScreen", {
+      phone,
+      email,
       password: pw,
-      company: null,
-      gstNumber: null,
-      customerAddress: "",
-      addresses: [
-        {
-          customerAddress: "",
-          street: "",
-          city: "",
-          state: "",
-          country: "",
-          zipcode: "",
-          addressType: "HOME",
-        },
-      ],
-      customerStatus: "ACTIVE",
-    };
-
-    try {
-      setLoading(true);
-      const res = await createCustomer({ email, password: pw, phoneNumber: phoneData?.phoneNumber });
-
-      if (res?.id || res?.success) {
-        Alert.alert("Success", "Account created successfully!");
-        navigation.navigate("ProfileScreen", { customer: res });
-        await AsyncStorage.setItem('customerData', JSON.stringify(res)); 
-      } else {
-        Alert.alert("Error", res?.message || "Something went wrong");
-      }
-    } catch (err) {
-      Alert.alert("Error", "Account creation failed. Try again.");
-    } finally {
-      setLoading(false);
-    }
+    });
   };
 
   const handleSignInPress = () => {
@@ -107,25 +72,25 @@ React.useEffect(() => {
 }, [response]);
 
 // Facebook Sign-In handler
-const handleFacebookLogin = async () => {
-  try {
-    await Facebook.initializeAsync({ appId: "1199335138639496" });
-    const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-      permissions: ['public_profile','email'],
-    });
+// const handleFacebookLogin = async () => {
+//   try {
+//     await Facebook.initializeAsync({ appId: "1199335138639496" });
+//     const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+//       permissions: ['public_profile','email'],
+//     });
 
-    if (type === 'success' && token) {
-      const credential = FacebookAuthProvider.credential(token);
-      signInWithCredential(auth, credential)
-        .then(user => Alert.alert('Facebook Sign-In Success', `Welcome ${user.user.displayName}`))
-        .catch(err => Alert.alert('Error', err.message));
-    } else {
-      Alert.alert('Facebook login cancelled');
-    }
-  } catch (err) {
-    Alert.alert('Facebook login error', err.message);
-  }
-};
+//     if (type === 'success' && token) {
+//       const credential = FacebookAuthProvider.credential(token);
+//       signInWithCredential(auth, credential)
+//         .then(user => Alert.alert('Facebook Sign-In Success', `Welcome ${user.user.displayName}`))
+//         .catch(err => Alert.alert('Error', err.message));
+//     } else {
+//       Alert.alert('Facebook login cancelled');
+//     }
+//   } catch (err) {
+//     Alert.alert('Facebook login error', err.message);
+//   }
+// };
 
 
   return (
@@ -189,14 +154,14 @@ const handleFacebookLogin = async () => {
 
         <View style={styles.socialContainer}>
           <TouchableOpacity style={styles.socialButton} onPress={() => promptAsync()}>
-  <Image source={require('../../assets/Images/GoogleIcon.png')} style={styles.socialIcon} />
+  <Image source={require('../../assets/images/google_icon.png')} style={styles.socialIcon} />
   <Text style={styles.socialButtonText}>Google</Text>
 </TouchableOpacity>
 
-<TouchableOpacity style={styles.socialButton} onPress={handleFacebookLogin}>
-  <Image source={require('../../assets/Images/facebookIcon.png')} style={styles.socialIcon} />
+{/* <TouchableOpacity style={styles.socialButton} onPress={handleFacebookLogin}>
+  <Image source={require('../../assets/images/facebook_icon.png')} style={styles.socialIcon} />
   <Text style={styles.socialButtonText}>Facebook</Text>
-</TouchableOpacity>
+</TouchableOpacity> */}
 
         </View>
       </View>

@@ -138,7 +138,7 @@ const SignupPage = ({ togglePage }) => {
       />
 
       <View style={styles.logoContainer}>
-        <Image source={{uri:'../../../assets/Images/logo.png'}} style={styles.logo} />
+        <Image source={{uri:'../../../assets/images/logo.png'}} style={styles.logo} />
       </View>
 
       <View style={styles.formBox}>

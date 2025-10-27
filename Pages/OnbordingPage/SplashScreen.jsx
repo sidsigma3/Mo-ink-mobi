@@ -37,7 +37,7 @@ export default function SplashScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.centered}>
-        <Image source={require('../../assets/Images/logo.png')} style={styles.logo} />
+        <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
         <Text style={styles.logoText}>InkNdye</Text>
       </View>
     </View>

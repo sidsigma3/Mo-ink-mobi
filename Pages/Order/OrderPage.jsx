@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, FlatList, StyleSheet, ActivityIndicator } from "react-native";
+import { View, Text, TouchableOpacity, FlatList, StyleSheet, ActivityIndicator, ScrollView } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -88,6 +88,7 @@ const fetchOrders = async (customerId, page) => {
 
   return (
     <View style={{ flex: 1 }}>
+      <ScrollView>
       <NavbarHeader />
       <HeroSection productName={"Your Orders"} breadcrumbs={breadcrumbs}/>
 
@@ -143,6 +144,7 @@ const fetchOrders = async (customerId, page) => {
 
       <Cta />
       <Footer />
+      </ScrollView>
       <BottomNav />
     </View>
   );

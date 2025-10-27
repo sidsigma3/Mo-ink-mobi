@@ -39,13 +39,8 @@ export default function OtpScreen({ navigation, route }) {
         accountType: "CUSTOMER",
         otpType: "PHONE",
       });
-
-      if (res?.success) {
         Alert.alert("Success", "OTP verified successfully!");
         navigation.navigate("CreateAccountScreen", { phone });
-      } else {
-        Alert.alert("Error", res?.message || "Invalid OTP");
-      }
     } catch (err) {
       console.error("OTP Verify Error:", err);
       Alert.alert("Error", "Something went wrong verifying OTP");

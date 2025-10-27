@@ -40,7 +40,7 @@ const NavbarHeader = () => {
         </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <Image source={require('../../assets/Images/logo.png')} style={styles.logo} />
+        <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
       </TouchableOpacity>
 
       {/* Right side icons */}

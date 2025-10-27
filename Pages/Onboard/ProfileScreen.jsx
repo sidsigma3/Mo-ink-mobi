@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateCustomerDetails } from '../../Service/authService';
-
+import { createCustomer } from '../../Service/CustomerService';
 export default function ProfileScreen({ navigation, route }) {
   const { customer } = route.params || {};
 
@@ -20,39 +20,61 @@ export default function ProfileScreen({ navigation, route }) {
   const [company, setCompany] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSave = async () => {
-    if (!firstName || !lastName) {
-      Alert.alert("Error", "First name and last name are required");
-      return;
+const handleSave = async () => {
+  if (!firstName || !lastName) {
+    Alert.alert("Error", "First name and last name are required");
+    return;
+  }
+
+  console.log('hello')
+
+  try {
+    setLoading(true);
+
+    // ✅ Build payload exactly as backend expects
+    const customerData = {
+      customerName: `${firstName.trim()} ${lastName.trim()}`,
+      phoneNumber: route.params?.phone || "",
+      whatsappNumber: whatsapp || route.params?.phone || "",
+      email: route.params?.email || "",
+      password: route.params?.password || "",
+      company: company || "",
+      gstNumber: gst || "",
+      cancelledCheque: null,
+      addresses: [
+        {
+          customerAddress: "",
+          street: "",
+          city: "",
+          state: "",
+          country: "",
+          zipcode: "",
+          addressType: "HOME"
+        }
+      ],
+      customerStatus: "ACTIVE",
+    };
+
+    console.log("📤 Creating customer with data:", customerData);
+    console.log("📤 Route params:", route.params);
+    const res = await createCustomer(customerData);
+
+    if (res?.data || res?.id) {
+      await AsyncStorage.setItem("customerData", JSON.stringify(res));
+      Alert.alert("Success", "Account created successfully!");
+      navigation.navigate("AccountCreatedScreen");
+    } else {
+      Alert.alert("Error", res?.message || "Account creation failed");
     }
 
-    try {
-      setLoading(true);
+  } catch (err) {
+    console.error("❌ Error creating customer:", err.response?.data || err.message);
+    Alert.alert("Error", "Something went wrong during account creation");
+  } finally {
+    setLoading(false);
+  }
+};
 
-      const updatedData = {
-        customerName: `${firstName} ${lastName}`.trim(),
-        gstNumber: gst || null,
-        whatsappNumber: whatsapp || null,
-        company: company || null,
-      };
-
-      // ✅ Use customer.id directly
-      await updateCustomerDetails(customer.id, updatedData);
-
-      // ✅ Update AsyncStorage
-      const mergedData = { ...customer, ...updatedData };
-      await AsyncStorage.setItem('customerData', JSON.stringify(mergedData));
-
-      Alert.alert("Success", "Profile updated successfully");
-      navigation.navigate('AccountCreatedScreen');
-
-    } catch (err) {
-      console.error(err);
-      Alert.alert("Error", "Failed to update profile");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <View style={styles.container}>
